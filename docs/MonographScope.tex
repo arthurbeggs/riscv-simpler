@@ -1,5 +1,10 @@
 \documentclass{article}
+\usepackage{indentfirst}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage[portuguese]{babel}
 
 \title{Monografia Arthur}
 \author{Arthur de Matos Beggs e Marcus Vinicius Lamar}
@@ -33,11 +38,11 @@
     {Outro fator que estimula o uso do \textit{RISC-V} é a modernização dos livros didáticos. A nova versão do livro utilizado em OAC, Organização e Projeto de Computadores, de David Patterson e John Hennessy, utiliza a \textit{ISA RISC-V}.}
 
 
-\section{O Projeto}
+\section{Especificação}
 
     {A proposta do projeto consiste no desenvolvimento de um processador sintetizável em \textit{FPGA}, utilizando o conjunto de instruções \textit{RISC-V}. O caminho da dados inicialmente implementado será um Uniciclo de 64 bits, já prevendo sua expansão para um \textit{datapath} Multiciclo e um \textit{Pipeline}.}
 
-    {O processador deverá conter os subconjuntos de instruções I (para operações com inteiros, sendo o único subconjunto com implementação mandatória pela arquitetura), M (para multiplicação e divisão de inteiros), F (para ponto flutuante com precisão simples conforme o padrão IEEE 754 com revisão de 2008), possivelmente D (ponto flutuante de precisão dupla) e, uma vez que o caminho de dados terá 64 bits e já precisará de um controle para instruções de tamanho variável, C (para instruções comprimidas em 16 bits). No presente momento, a implementação do subconjunto D é duvidosa e a do subconjunto A (operações atômicas de sincronização) está descartada, e com isso o trabalho desenvolvido não pode ser definido como de propósito geral, G (que deve conter os pacotes I, M, A, F e D). Assim, pela nomenclatura da arquitetura, o processador desenvolvido será um \textit{RV64IMFC}.}
+    {O processador deverá conter os subconjuntos de instruções I (para operações com inteiros, sendo o único subconjunto com implementação mandatória pela arquitetura), M (para multiplicação e divisão de inteiros), F (para ponto flutuante com precisão simples conforme o padrão IEEE 754 com revisão de 2008) e possivelmente D (ponto flutuante de precisão dupla). No presente momento, a implementação do subconjunto D é duvidosa e a do subconjunto A (operações atômicas de sincronização) está descartada, e com isso o trabalho desenvolvido não pode ser definido como de propósito geral, G (que deve conter os pacotes I, M, A, F e D). Assim, pela nomenclatura da arquitetura, o processador desenvolvido será um \textit{RV64IMF}.}
 
     {O projeto também pretende contemplar \textit{traps}, interrupções, exceções e outras funcionalidades de nível privilegiado da arquitetura. Porém, no presente momento as especificações do nível privilegiado da arquitetura encontram-se em versão \textit{draft}. Com isso, a definição do que será implementado da camada privilegiada deverá aguardar a publicação da versão \textit{standard}.}
 
@@ -45,5 +50,12 @@
 
     {Como a \textit{ISA RISC-V} é relativamente nova, faltam ferramentas didáticas (como o simulador da \textit{ISA MIPS}, o \textit{MARS}) para uma aplicabilidade adequada do conteúdo em sala de aula e em laboratório. Desta forma, é necessária a implementação de um \textit{IDE} (\textit{Integrated Development Environment}, ou Ambiente de Desenvolvimento Integrado) para a escrita de código \textit{Assembly RISC-V}, além de montagem e simulação do \textit{Assembly}. Uma outra possibilidade é a criação de um pacote com sintaxe, montador e simulador da arquitetura para ser utilizado em um \textit{IDE} já existente (e.g. Atom Editor).}
 
+
+\section{Implementação}
+
+\subsection{\textit{Hardware}}
+
+
+\subsection{\textit{Software}}
 
 \end{document}
