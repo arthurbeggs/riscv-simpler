@@ -18,3 +18,8 @@
 *.summary
 *.bak
 *.temp
+
+# LaTeX build files
+**/monograph/output
+*.fdb_latexmk
+*.synctex.gz
