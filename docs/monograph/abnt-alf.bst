@@ -23,7 +23,7 @@
 %% não sobre campos title que estão vazios.
 %%
 %% Revision 1.44  2003/07/22 16:26:01  gweber
-%% Adicionada a op��o abnt-title-command. Com esta opção pode-se definir o comando
+%% Adicionada a opção abnt-title-command. Com esta opção pode-se definir o comando
 %% \bibtextitlecommand que permite formatações especiais no titulo.
 %%
 %% Revision 1.43  2003/06/05 14:34:05  gweber
