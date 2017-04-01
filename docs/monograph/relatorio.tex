@@ -30,6 +30,7 @@
 % Pacotes
 \usepackage[T1]{fontenc}
 \usepackage[brazilian]{babel}
+\usepackage{babel}
 \usepackage{epsfig}
 \usepackage{subfigure}
 \usepackage{amsfonts}
@@ -48,18 +49,16 @@
 \usepackage{rotating}
 \usepackage{makeidx}
 \usepackage{indentfirst}
-% Pacotes para adição de figuras do inkscape
 \usepackage{graphicx}
 \usepackage{import}
 
-% Escolher um dos seguintes formatos:
-\usepackage{ft2unb} % segue padrão de fontes do Latex
+% Escolher um dos seguintes formatos: (ft1unb) ou (ft2unb)
+\usepackage{ft2unb} % ft2unb segue padrão de fontes do LaTeX;
 
 \makeindex
 
 \makeatother
 
-\usepackage{babel}
 \begin{document}
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{2}
@@ -69,221 +68,111 @@
 
 \tipodemonografia{TRABALHO DE GRADUAÇÃO}
 
-\begin{comment}
-Título
-\end{comment}
-
-
+% Título
+% TODO: Definir título do TG;
 \titulolinhai{TÍTULO DO TRABALHO DIVIDIDO EM}
-
 \titulolinhaii{MAIS DE UMA LINHA PARA TÍTULOS}
-
 \titulolinhaiii{REALMENTE LONGOS COMO ESTE}
-
 \titulolinhaiv{}
 
-\begin{comment}
-Autores. Basta retirar o texto totalmente caso não haja um determinado
-autor.
-\end{comment}
 
-
-\autori{João da Silva}
-
+% Autores
+\autori{Arthur de Matos Beggs}
 \autorii{}
-
 \autoriii{}
 
-\begin{comment}
-Membros da banca. Basta retirar o texto totalmente caso não haja um
-determinado membro da banca.
-\end{comment}
 
-
-\membrodabancai{Prof. Fulano de Sousa, ENE/UnB}
-
+% Membros da banca
+\membrodabancai{Prof. Marcus Vinicius Lamar, CIC/UnB}
 \membrodabancaifuncao{Orientador}
 
-\membrodabancaii{Prof. Ciclano dos Santos, ENE/UnB}
+\membrodabancaii{Prof. Ricardo Pezzuol Jacobi, CIC/UnB}
+\membrodabancaiifuncao{Co-Orientador}
 
-\membrodabancaiifuncao{Examinador interno}
-
-\membrodabancaiii{Prof. Beltrano da Silva, ENE/UnB}
-
-\membrodabancaiiifuncao{Examinador interno}
+\membrodabancaiii{}
+\membrodabancaiiifuncao{}
 
 \membrodabancaiv{}
-
 \membrodabancaivfuncao{}
 
 \membrodabancav{}
-
 \membrodabancavfuncao{}
 
-\begin{comment}
-Data de defesa: mês e ano
-\end{comment}
 
-
+% Data de defesa
 \mes{dezembro}
-\ano{2015}
-
-\begin{comment}
-Comandos para criar a capa e a página de assinaturas
-\end{comment}
+\ano{2018}
 
 
+% Comandos para criar a capa e a página de assinaturas
 \capaprincipal
 \capaassinaturas
 
-\begin{comment}
-Ficha Catalográfica
-\end{comment}
 
-
+% Ficha Catalográfica
 \include{ficha_catalografica}
 
-\begin{comment}
-Dedicatória
-\end{comment}
 
-
+% Dedicatória
 \frontmatter
 
-\begin{comment}
-Texto de dedicatória do primeiro autor.
-\end{comment}
-
-
-\dedicatoriaautori{um beijo pra minha mãe, pro meu pai, e pra você}
-
-\begin{comment}
-Texto de dedicatória do segundo autor. Caso não tenha um segundo autor,
-este texto não será mostrado
-\end{comment}
-
-
-\dedicatoriaautorii{Dedicatória do autor 2}
-
-\begin{comment}
-Texto de dedicatória do terceiro autor. Caso não tenha um terceiro
-autor, este texto não será mostrado
-\end{comment}
-
-
-\dedicatoriaautoriii{Dedicatória do autor 3}
-
-\begin{comment}
-Comando para criar a página de dedicatória
-\end{comment}
-
+\dedicatoriaautori{Dedico ao pato de borracha especialista em TI que sempre me ajuda a depurar meus códigos.}
+\dedicatoriaautorii{}
+\dedicatoriaautoriii{}
 
 \dedicatoria
 
-\begin{comment}
-Agradecimentos
-\end{comment}
 
-
-\begin{comment}
-Texto de agradecimentos do primeiro autor.
-\end{comment}
-
-
+% Agradecimentos
 \agradecimentosautori{Agradecimentos!}
-
-\begin{comment}
-Texto de agradecimentos do segundo autor. Caso não tenha um segundo
-autor, este texto não será mostrado.
-\end{comment}
-
-
-\agradecimentosautorii{A inclusão desta seção de agradecimentos é
-opcional e fica à critério do(s) autor(es), que caso deseje(em) inclui-la
-deverá(ão) utilizar este espaço, seguindo esta formatação.}
-
-\begin{comment}
-Texto de agradecimentos do terceiro autor. Caso não tenha um terceiro
-autor, este texto não será mostrado.
-\end{comment}
-
-
-\agradecimentosautoriii{A inclusão desta seção de agradecimentos
-é opcional e fica à critério do(s) autor(es), que caso deseje(em)
-inclui-la deverá(ão) utilizar este espaço, seguindo esta formatação.}
-
-\begin{comment}
-Comando para criar a página de agradecimentos
-\end{comment}
-
+\agradecimentosautorii{}
+\agradecimentosautoriii{}
 
 \agradecimentos
+
 
 \resumo{resumo}{Resumo!
 
 \medskip{}
 
 
-Palavras Chave: bla, ble, bli
+Palavras Chave: RISC-V
 
 }\vspace*{2cm}
 
 
-\resumo{Abstract}{Abstract, in English ofc!
+\resumo{Abstract}{Abstract!
 
 \medskip{}
 
 
-Keywords: bla, ble, bli
+Keywords: RISC-V
 
 }
 
-\begin{comment}
-Listas de conteúdo, figuras e tabelas
-\end{comment}
-
-
+% Listas de conteúdo, figuras e tabelas
 \sumario
 \listadefiguras
 \listadetabelas
 
-\begin{comment}
-Lista de Símbolos
-\end{comment}
 
-
+% Lista de Símbolos
 \include{simbolos}
 
-\begin{comment}
-Corpo Principal
-\end{comment}
 
-
+% Corpo Principal
 \mainmatter
 \setcounter{page}{1}
 \pagenumbering{arabic}
 \pagestyle{plain}
 
-\begin{comment}
-Introdução
-\end{comment}
 \include{cap_Introducao}
-
-\begin{comment}
-Fundamentos
-\end{comment}
-\include{cap_Fundamentos}
-
-\begin{comment}
-Conclusões
-\end{comment}
+\include{cap_Especificacao}
+\include{cap_Desenvolvimento}
 \include{cap_Conclusoes}
 
-\begin{comment}
-Bibliografia
-\end{comment}
 
-
+% Bibliografia
 \renewcommand{\bibname}{REFERÊNCIAS BIBLIOGRÁFICAS}
 \addcontentsline{toc}{chapter}{REFERÊNCIAS BIBLIOGRÁFICAS}
 
@@ -291,11 +180,7 @@ Bibliografia
 \bibliography{bibliography}
 
 
-\begin{comment}
-Anexos
-\end{comment}
-
-
+% Anexos
 \anexos
 \makeatletter
 % não retirar estes comandos
@@ -308,26 +193,19 @@ Anexos
 }
 \makeatother
 
-\begin{comment}
-Anexo I: Descrição do CD
-\end{comment}
 
-
+% Anexo I: Descrição do CD
 \include{anexo_CD}
 
 \refstepcounter{noAnexo}
 
-\begin{comment}
-Anexo II: Programas Utilizados
-\end{comment}
 
-
+% Anexo II: Programas Utilizados
 \include{anexo_Codigos}
 
 \refstepcounter{noAnexo}
 
-\begin{comment}
-Acrescente mais anexos conforme julgar necessário.
-\end{comment}
+
+% Acrescente mais anexos conforme julgar necessário.
 
 \end{document}
