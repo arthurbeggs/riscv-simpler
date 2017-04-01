@@ -1478,7 +1478,7 @@ FUNCTION { abnt-options1 }
     abnt-emphasize "\bf" = abnt-emphasize "\it" = or abnt-emphasize "\em" = or
     abnt-emphasize "\bfseries" = or
       {"não use " abnt-emphasize * " para abnt-emphasize em " * cite$ *
-      ", isto alterará TODO o texto. Use \textbf ou \emph. Veja a documentação abnt-bibtex-doc para mais detalhes." * warning$}
+      ", isto alterará todo o texto. Use \textbf ou \emph. Veja a documentação abnt-bibtex-doc para mais detalhes." * warning$}
     'skip$ if$
     } if$
 
