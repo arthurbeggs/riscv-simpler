@@ -54,6 +54,13 @@ parameter
     ALU_OR          = 3'b110,
     ALU_AND         = 3'b111,
 
-
 // Operações da ULA de Ponto flutuante
     // FALUOP_ = ,
+
+// Interpretação do campo funct3 para Branches
+    BRANCH_EQ       = 3'b000,
+    BRANCH_NE       = 3'b001,
+    BRANCH_LT       = 3'b100,
+    BRANCH_GE       = 3'b101,
+    BRANCH_LTU      = 3'b110,
+    BRANCH_GEU      = 3'b111
