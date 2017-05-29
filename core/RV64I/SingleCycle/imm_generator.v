@@ -5,20 +5,35 @@ module imm_generator(
     output [63:0] immediate
 );
 
-`ifdef IMM_GEN_OPTIMAL
-    // TODO: Implementar a geração de imediato otimizada;
-`endif
+// `ifdef IMM_GEN_OPTIMAL
+//
+//     wire bit_0;
+//     wire [3:0]  bit_4_1;
+//     wire [5:0]  bit_10_5;
+//     wire bit_11;
+//     wire [7:0]  bit_19_12;
+//     wire [10:0] bit_30_20;
+//     wire [32:0] bit_63_31;
+//
+//     assign immediate = {bit_63_31, bit_30_20, bit_19_12, bit_11, bit_10_5, bit_4_1, bit_0};
+//
+//     always @ ( * ) begin
+//
+//     end
+//
+// `endif
 
 
-// Geração de imediatos menos robusta
-`ifndef IMM_GEN_OPTIMAL
+// NOTE: Verificar como é sintetizado antes de tentar produzir uma versão melhor
+// `ifndef IMM_GEN_OPTIMAL
     wire [63:0] imm_I, imm_S, imm_B, imm_U, imm_J;
 
-    assign imm_I = {53{inst[31]}, inst[30:25], inst[24:20]};
-    assign imm_S = {53{inst[31]}, inst[30:25], inst[11:7]};
-    assign imm_B = {52{inst[31]}, inst[7], inst[30:25], inst[11:8], 1b'0};
-    assign imm_U = {33{inst[31]}, inst[30:20], inst[19:12], 12b'0};
-    assign imm_J = {44{inst[31]}, inst[19:12], inst[20], inst[30:25], inst[24:21], 1b'0};
+// Imediatos
+// I = {53{inst[31]},                                     inst[30:25], inst[24:20]};
+// S = {53{inst[31]},                                     inst[30:25], inst[11:7]};
+// B = {52{inst[31]}, inst[7],                            inst[30:25], inst[11:8], 1b'0};
+// U = {33{inst[31]}, inst[30:20], inst[19:12], 12b'0};
+// J = {44{inst[31]},              inst[19:12], inst[20], inst[30:25], inst[24:21], 1b'0};
 
     always @ ( * ) begin
         case (inst[6:0]) // == inst_opcode
@@ -27,25 +42,27 @@ module imm_generator(
             OPC_OP_IMM,
             OPC_OP_IMM_32,
             OPC_JALR:   // Opcodes com imediato do tipo I
-                immediate = imm_I;
+                immediate = {53{inst[31]}, inst[30:25], inst[24:20]};
 
             // OPC_STORE_FP,
             OPC_STORE:  // Opcodes com imediato do tipo S
-                immediate = imm_S;
+                immediate = {53{inst[31]}, inst[30:25], inst[11:7]};
 
             OPC_BRANCH: // Opcodes com imediato do tipo B
-                immediate = imm_B;
+                immediate = {52{inst[31]}, inst[7], inst[30:25], inst[11:8], 1b'0};
 
             OPC_AUIPC,
             OPC_LUI:    // Opcodes com imediato do tipo U
-                immediate = imm_U;
+                immediate = {33{inst[31]}, inst[30:20], inst[19:12], 12b'0};
 
             OPC_JAL:    // Opcodes com imediato do tipo J
-                immediate = imm_J;
+                immediate = {44{inst[31]}, inst[19:12], inst[20], inst[30:25], inst[24:21], 1b'0};
 
             default:
-                immediate = 64'b0;
+                // NOTE: verificar o melhor comportamento para default
+                // immediate = 64'b0;
+                immediate = {33{inst[31]}, inst[30:20], inst[19:12], 12b'0}; // Tipo U possui o menor fan out para o bit inst[31];
         endcase
     end
 
-`endif
+// `endif
