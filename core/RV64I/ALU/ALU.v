@@ -8,10 +8,12 @@ module alu (
     input  [63:0] operandA,
     input  [63:0] operandB,
     output [63:0] result,
+    output result_lsb,              // Bit menos significativo do resultado
     output result_eq_zero           // Indica se result == 64'b0
 );
 
-assign result_eq_zero = (result == 64'b0);
+assign result_lsb       = result[0];
+assign result_eq_zero   = (result == 64'b0);
 
 // NOTE: Um segundo/terceiro nível de lógica reduz LUT's, mas aumenta o tempo de propagação. O que seria melhor aqui? A síntese já escolhe o melhor?
 
