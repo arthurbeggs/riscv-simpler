@@ -5,8 +5,8 @@ module alu (
                                     // alu_function[3] escolhe ADD | SUB, SRL | SRA;
                                     // alu_function[2:0] define o "supergrupo" de funções
 
-    input  [63:0] operandA,
-    input  [63:0] operandB,
+    input  [63:0] operand_a,
+    input  [63:0] operand_b,
     output [63:0] result,
     output result_lsb,              // Bit menos significativo do resultado
     output result_eq_zero           // Indica se result == 64'b0
@@ -22,43 +22,43 @@ always @ ( * ) begin
         ALU_ADD_SUB:
             case (alu_function[3])        // (inst[30] & Rtype) ? SUB : ADD;
                 1'b0:   // ADD
-                    result = operandA + operandB;
+                    result = operand_a + operand_b;
                 1'b1:   // SUB
-                    result = operandA - operandB;
+                    result = operand_a - operand_b;
             endcase
         ALU_SLL:
             case (alu_function[4])
                 1'b0:   // 64 bits de range
-                    result = operandA << operandB[5:0];
+                    result = operand_a << operand_b[5:0];
                 1'b1:   // 32 bits de range
-                    result = operandA << operandB[4:0];
+                    result = operand_a << operand_b[4:0];
             endcase
         ALU_SLT:
-            result = operandA < operandB;
+            result = operand_a < operand_b;
         ALU_SLTU:
-            result = $unsigned(operandA) < $unsigned(operandB);
+            result = $unsigned(operand_a) < $unsigned(operand_b);
         ALU_XOR:
-            result = operandA ^ operandB;
+            result = operand_a ^ operand_b;
         ALU_SHIFTR:
             case (alu_function[3])        // (inst[30] & Rtype) ? SRA : SRL;
                 1'b0:   // SRL
                 case (alu_function[4])
                     1'b0:   // 64 bits de range
-                        result = operandA >> operandB[5:0];
+                        result = operand_a >> operand_b[5:0];
                     1'b1:   // 32 bits de range
-                        result = operandA >> operandB[4:0];
+                        result = operand_a >> operand_b[4:0];
                 endcase
                 1'b1:   // SRA
                 case (alu_function[4])
                     1'b0:   // 64 bits de range
-                        result = operandA >>> operandB[5:0];
+                        result = operand_a >>> operand_b[5:0];
                     1'b1:   // 32 bits de range
-                        result = operandA >>> operandB[4:0];
+                        result = operand_a >>> operand_b[4:0];
                 endcase
             endcase
         ALU_OR:
-            result = operandA | operandB;
+            result = operand_a | operand_b;
         ALU_AND:
-            result = operandA & operandB;
+            result = operand_a & operand_b;
     endcase
 end
