@@ -11,10 +11,10 @@ module control_singlecycle (
     output [1:0] mem_to_reg_sel,    // Seleciona a entrada de escrita do regfile
     output [1:0] alu_op,            // Seleciona a funcionalidade da ALU
     output [1:0] alu_sel_src_a,     // Seleciona a entrada A da ALU
-    output [1:0] alu_sel_src_b,     // Seleciona a entrada B da ALU
+    output [1:0] alu_sel_src_b      // Seleciona a entrada B da ALU
 );
 
-wire [12:0] control_signals;
+reg  [12:0] control_signals;
 
 assign branch_enable            = control_signals[12];
 assign data_mem_read_enable     = control_signals[11];
@@ -29,7 +29,6 @@ assign alu_sel_src_b            = control_signals[1:0];
 
 // NOTE: A estratégia de código compacto é uma boa ideia?
 
-// TODO: passar sinais PC e 64'b0 para alu_sel_src_b e retirar alu_sel_src_a;
 // TODO: passar pc_write_enable para o MSB (fica mais fácil de desativá-lo);
 
 initial begin
@@ -38,52 +37,55 @@ end
 
 always @ ( * ) begin
     case (inst_opcode)
-        OPC_LOAD:
+        `OPC_LOAD:
             control_signals = { 1'b0 , 1'b1 , 1'b0 , 1'b1 , 1'b1 , 2'b01 , 2'b00 , 2'b00 , 2'b01 };
-        // OPC_LOAD_FP:
-        // OPC_custom0:
-        // OPC_MISC_MEM:
-        OPC_OP_IMM:
+        // `OPC_LOAD_FP:
+        // `OPC_custom0:
+        // `OPC_MISC_MEM:
+        `OPC_OP_IMM:
             control_signals = { 1'b0 , 1'b0 , 1'b0 , 1'b1 , 1'b1 , 2'b00 , 2'b10 , 2'b00 , 2'b01 };
-        OPC_AUIPC:                                                                // PC
+        `OPC_AUIPC:                                                                // PC
             control_signals = { 1'b0 , 1'b0 , 1'b0 , 1'b1 , 1'b1 , 2'b00 , 2'b00 , 2'b01 , 2'b01 };
-        OPC_OP_IMM_32:
+        `OPC_OP_IMM_32:
             control_signals = { 1'b0 , 1'b0 , 1'b0 , 1'b1 , 1'b1 , 2'b00 , 2'b10 , 2'b00 , 2'b01 };
-        // OPC_LEN_48b0:
-        OPC_STORE:
+        // `OPC_LEN_48b0:
+        `OPC_STORE:
             control_signals = { 1'b0 , 1'b0 , 1'b1 , 1'b0 , 1'b1 , 2'b00 , 2'b00 , 2'b00 , 2'b01 };
-        // OPC_STORE_FP:
-        // OPC_custom1:
-        // OPC_AMO:
-        OPC_OP:
+        // `OPC_STORE_FP:
+        // `OPC_custom1:
+        // `OPC_AMO:
+        `OPC_OP:
             control_signals = { 1'b0 , 1'b0 , 1'b0 , 1'b1 , 1'b1 , 2'b00 , 2'b10 , 2'b00 , 2'b00 };
-        OPC_LUI:                                                                 // 64'b0
+        `OPC_LUI:                                                                 // 64'b0
             control_signals = { 1'b0 , 1'b0 , 1'b0 , 1'b1 , 1'b1 , 2'b00 , 2'b00 , 2'b10 , 2'b01 };
-        OPC_OP_32:
+        `OPC_OP_32:
             control_signals = { 1'b0 , 1'b0 , 1'b0 , 1'b1 , 1'b1 , 2'b00 , 2'b10 , 2'b00 , 2'b00 };
-        // OPC_LEN_64b:
-        // OPC_MADD:
-        // OPC_MSUB:
-        // OPC_NMSUB:
-        // OPC_NMADD:
-        // OPC_OP_FP:
-        // OPC_reserved0:
-        // OPC_custom2:
-        // OPC_LEN_48b1:
-        OPC_BRANCH:
+        // `OPC_LEN_64b:
+        // `OPC_MADD:
+        // `OPC_MSUB:
+        // `OPC_NMSUB:
+        // `OPC_NMADD:
+        // `OPC_OP_FP:
+        // `OPC_reserved0:
+        // `OPC_custom2:
+        // `OPC_LEN_48b1:
+        `OPC_BRANCH:
             control_signals = { 1'b1 , 1'b0 , 1'b0 , 1'b0 , 1'b1 , 2'b00 , 2'b11 , 2'b00 , 2'b00 };
-        OPC_JALR:
+        `OPC_JALR:
             control_signals = { 1'b0 , 1'b0 , 1'b0 , 1'b1 , 1'b1 , 2'b00 , 2'b00 , 2'b00 , 2'b01 };
-        // OPC_reserved1:
-        OPC_JAL:                                                                  // PC
+        // `OPC_reserved1:
+        `OPC_JAL:                                                                  // PC
             control_signals = { 1'b0 , 1'b0 , 1'b0 , 1'b1 , 1'b1 , 2'b00 , 2'b00 , 2'b01 , 2'b01 };
-        // OPC_SYSTEM:
-        // OPC_reserved2:
-        // OPC_custom3:
-        // OPC_LEN_80b:
+        // `OPC_SYSTEM:
+        // `OPC_reserved2:
+        // `OPC_custom3:
+        // `OPC_LEN_80b:
 
         default:
             control_signals = { 1'b0 , 1'b0 , 1'b0 , 1'b0 , 1'b1 , 2'b00 , 2'b00 , 2'b00 , 2'b00 };
 
     endcase
 end
+
+
+endmodule
