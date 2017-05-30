@@ -40,3 +40,6 @@ always @ ( posedge clk ) begin
         if (write_reg != 5'b0)
             registers[write_reg] <= write_data;
 end
+
+
+endmodule
