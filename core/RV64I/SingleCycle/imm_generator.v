@@ -1,8 +1,8 @@
 // TODO: Cabeçalho
 
-module imm_generator(
+module imm_generator (
     input  [31:0] inst,
-    output [63:0] immediate
+    output reg [63:0] immediate
 );
 
 // `ifdef IMM_GEN_OPTIMAL
@@ -37,32 +37,35 @@ module imm_generator(
 
     always @ ( * ) begin
         case (inst[6:0]) // == inst_opcode
-            OPC_LOAD,
-            // OPC_LOAD_FP,
-            OPC_OP_IMM,
-            OPC_OP_IMM_32,
-            OPC_JALR:   // Opcodes com imediato do tipo I
-                immediate = {53{inst[31]}, inst[30:25], inst[24:20]};
+            `OPC_LOAD,
+            // `OPC_LOAD_FP,
+            `OPC_OP_IMM,
+            `OPC_OP_IMM_32,
+            `OPC_JALR:      // Opcodes com imediato do tipo I
+                immediate = {{53{inst[31]}}, inst[30:25], inst[24:20]};
 
-            // OPC_STORE_FP,
-            OPC_STORE:  // Opcodes com imediato do tipo S
-                immediate = {53{inst[31]}, inst[30:25], inst[11:7]};
+            // `OPC_STORE_FP,
+            `OPC_STORE:     // Opcodes com imediato do tipo S
+                immediate = {{53{inst[31]}}, inst[30:25], inst[11:7]};
 
-            OPC_BRANCH: // Opcodes com imediato do tipo B
-                immediate = {52{inst[31]}, inst[7], inst[30:25], inst[11:8], 1b'0};
+            `OPC_BRANCH:    // Opcodes com imediato do tipo B
+                immediate = {{52{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0};
 
-            OPC_AUIPC,
-            OPC_LUI:    // Opcodes com imediato do tipo U
-                immediate = {33{inst[31]}, inst[30:20], inst[19:12], 12b'0};
+            `OPC_AUIPC,
+            `OPC_LUI:       // Opcodes com imediato do tipo U
+                immediate = {{33{inst[31]}}, inst[30:20], inst[19:12], 12'b0};
 
-            OPC_JAL:    // Opcodes com imediato do tipo J
-                immediate = {44{inst[31]}, inst[19:12], inst[20], inst[30:25], inst[24:21], 1b'0};
+            `OPC_JAL:    // Opcodes com imediato do tipo J
+                immediate = {{44{inst[31]}}, inst[19:12], inst[20], inst[30:25], inst[24:21], {1'b0}};
 
             default:
                 // NOTE: verificar o melhor comportamento para default
                 // immediate = 64'b0;
-                immediate = {33{inst[31]}, inst[30:20], inst[19:12], 12b'0}; // Tipo U possui o menor fan out para o bit inst[31];
+                immediate = {{33{inst[31]}}, inst[30:20], inst[19:12], {12'b0}}; // Tipo U possui o menor fan out para o bit inst[31];
         endcase
     end
 
 // `endif
+
+
+endmodule
