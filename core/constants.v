@@ -67,3 +67,5 @@
 `define    BRANCH_GE       3'b101
 `define    BRANCH_LTU      3'b110
 `define    BRANCH_GEU      3'b111
+
+`define    INITIAL_PC      32'b0

@@ -39,7 +39,7 @@
 
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE75F29C7
-set_global_assignment -name TOP_LEVEL_ENTITY control_transfer_singlecycle
+set_global_assignment -name TOP_LEVEL_ENTITY program_counter
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 16.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "15:00:06  MAY 11, 2017"
 set_global_assignment -name LAST_QUARTUS_VERSION "16.1.0 Lite Edition"
@@ -64,6 +64,7 @@ set_global_assignment -name VERILOG_FILE ../../RV64I/SingleCycle/control_singlec
 set_global_assignment -name VERILOG_FILE ../../RV64I/SingleCycle/control_transfer_singlecycle.v
 set_global_assignment -name VERILOG_FILE ../../RV64I/SingleCycle/datapath_singlecycle.v
 set_global_assignment -name VERILOG_FILE ../../RV64I/SingleCycle/imm_generator.v
+set_global_assignment -name VERILOG_FILE ../../RV64I/Registers/program_counter.v
 set_global_assignment -name VERILOG_FILE ../../RV64I/Registers/regfile.v
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
