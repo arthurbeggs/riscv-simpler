@@ -46,7 +46,7 @@ always @ ( * ) begin
         2'b10:  // OPC_OP, OPC_OP_32, OPC_OP_IMM e OPC_OP_IMM_32
             alu_funct = {secondary_funct, inst_funct3};
         2'b11:  // Branches
-            alu_funct = {1'b0, branch_funct};
+            alu_funct = {1'b1, branch_funct};   // alu_funct[3] == 1 para subtrair operandos
     endcase
 end
 
