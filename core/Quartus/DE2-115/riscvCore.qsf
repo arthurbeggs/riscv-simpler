@@ -39,7 +39,7 @@
 
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE75F29C7
-set_global_assignment -name TOP_LEVEL_ENTITY alu_control
+set_global_assignment -name TOP_LEVEL_ENTITY mux
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 16.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "15:00:06  MAY 11, 2017"
 set_global_assignment -name LAST_QUARTUS_VERSION "16.1.0 Lite Edition"
@@ -56,6 +56,7 @@ set_global_assignment -name VERILOG_FILE ../../constants.v
 set_global_assignment -name VERILOG_FILE ../../configs.v
 set_global_assignment -name VERILOG_FILE ../../riscv_simple.v
 set_global_assignment -name VERILOG_FILE ../../RV64I/CPUInterface.v
+set_global_assignment -name VERILOG_FILE ../../RV64I/Muxes/mux.v
 set_global_assignment -name VERILOG_FILE ../../RV64I/ALU/alu.v
 set_global_assignment -name VERILOG_FILE ../../RV64I/ALU/alu32.v
 set_global_assignment -name VERILOG_FILE ../../RV64I/ALU/alu_control.v
