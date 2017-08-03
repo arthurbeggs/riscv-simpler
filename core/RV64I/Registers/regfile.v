@@ -1,44 +1,44 @@
 // TODO: Cabeçalho
 
 module regfile (
-    input  write_enable,
+    input  write_en,
     input  [4:0] write_reg,
-    input  [4:0] read_reg1,
-    input  [4:0] read_reg2,
+    input  [4:0] read_reg_a,
+    input  [4:0] read_reg_b,
 
     input  [63:0] write_data,
-    output [63:0] read_data1,
-    output [63:0] read_data2,
+    output [63:0] reg_a_data,
+    output [63:0] reg_b_data,
 
     input clk,
     input rst
 );
 
 // 32 registradores de 64 bits
-reg [63:0] registers [0:31];
+reg [63:0] register [0:31];
 
 // Contador para loop de inicialização de registradores
 integer i;
 
 initial begin
     for (i = 0; i <= 31; i = i + 1)
-        registers[i] <= 64'b0;
+        register[i] <= 64'b0;
     // NOTE: Inserir registradores com valor inicial != 64'b0
 end
 
-assign read_data1 = registers[read_reg1];
-assign read_data2 = registers[read_reg2];
+assign reg_a_data = register[read_reg_a];
+assign reg_b_data = register[read_reg_b];
 
 
 always @ ( posedge clk ) begin
     if (rst) begin
         for (i = 0; i <= 31; i = i + 1)
-            registers[i] <= 64'b0;
+            register[i] <= 64'b0;
         // NOTE: Inserir registradores com valor inicial != 64'b0
     end
-    else if (write_enable)
+    else if (write_en)
         if (write_reg != 5'b0)
-            registers[write_reg] <= write_data;
+            register[write_reg] <= write_data;
 end
 
 
