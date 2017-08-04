@@ -1,6 +1,6 @@
 # linguist overrides
 
-^docs/ linguist-documentation=false
+^[Dd]ocs?/ linguist-documentation=false
 ^docs/monograph/.*?\.tex$ linguist-documentation=false
 ^docs/monograph/.*?\.bst$ linguist-documentation
 ^docs/monograph/.*?\.bib$ linguist-documentation
@@ -13,3 +13,4 @@
 ^core/Quartus linguist-vendored
 
 *.v linguist-language=Verilog
+*.tex linguist-language=TeX
