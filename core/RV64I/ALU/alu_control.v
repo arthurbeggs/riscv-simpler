@@ -8,7 +8,6 @@ module alu_control (
     output reg [3:0] alu_funct
 );
 
-// TODO: Tentar melhorar a lógica de controle. Caminho crítico está longo.
 
 // Verifica se a instrução atual é SUB ou SRA
 wire secondary_funct = (((inst_funct3 == `ALU_ADD_SUB) || (inst_funct3 == `ALU_SHIFTR)) && inst_bit30) ? 1'b1 : 1'b0;

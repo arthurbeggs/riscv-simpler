@@ -11,7 +11,7 @@ module alu32 (
 
 reg [31:0] part_result;
 
-assign result32 = { {32{part_result[31]}}, part_result[31:0] };
+assign result32 = { {33{part_result[31]}}, part_result[30:0] };
 
 
 // NOTE: Há ambiguidades na especificação. Verificar se as operações de 32 bits estão corretas ou se entendi errado.
