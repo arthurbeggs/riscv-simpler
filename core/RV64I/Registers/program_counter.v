@@ -3,6 +3,7 @@
 module program_counter (
     input  clk,
     input  rst,
+    
     input  pc_en,
     input  [31:0] next_pc,
 

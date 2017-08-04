@@ -1,6 +1,9 @@
 // TODO: Cabeçalho
 
 module regfile (
+    input clk,
+    input rst,
+
     input  write_en,
     input  [4:0] write_reg,
     input  [4:0] read_reg_a,
@@ -8,10 +11,7 @@ module regfile (
 
     input  [63:0] write_data,
     output [63:0] reg_a_data,
-    output [63:0] reg_b_data,
-
-    input clk,
-    input rst
+    output [63:0] reg_b_data
 );
 
 // 32 registradores de 64 bits

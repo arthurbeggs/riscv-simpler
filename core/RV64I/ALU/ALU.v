@@ -1,8 +1,8 @@
 // TODO: Cabeçalho
 
 module alu (
-    input  [3:0] alu_function,      // alu_function[3] escolhe ADD || SUB, SRL || SRA;
-                                    // alu_function[2:0] define o "supergrupo" de funções (funct3)
+    input  [3:0] alu_funct,     // alu_funct[3] escolhe ADD || SUB, SRL || SRA;
+                                // alu_funct[2:0] define o "supergrupo" de funções (funct3)
 
     input  [63:0] operand_a,
     input  [63:0] operand_b,
@@ -16,9 +16,9 @@ assign result_eq_zero   = (result == 64'b0);
 
 
 always @ ( * ) begin
-    case (alu_function[2:0])        // funct3
+    case (alu_funct[2:0])        // funct3
         `ALU_ADD_SUB:
-            case (alu_function[3])  // (`ALU_ADD_SUB || `ALU_SHIFTR) && inst_bit30) ? SUB : ADD;
+            case (alu_funct[3])  // (`ALU_ADD_SUB || `ALU_SHIFTR) && inst_bit30) ? SUB : ADD;
                 1'b0:   // ADD
                     result = operand_a + operand_b;
                 1'b1:   // SUB
@@ -38,7 +38,7 @@ always @ ( * ) begin
             result = operand_a ^ operand_b;
 
         `ALU_SHIFTR:
-            case (alu_function[3])  // (`ALU_ADD_SUB || `ALU_SHIFTR) && inst_bit30) ? SRA : SRL;
+            case (alu_funct[3])  // (`ALU_ADD_SUB || `ALU_SHIFTR) && inst_bit30) ? SRA : SRL;
                 1'b0:   // SRL
                     result = operand_a >> operand_b[5:0];
                 1'b1:   // SRA
