@@ -1,0 +1,13 @@
+# linguist overrides
+
+# ^docs/ linguist-documentation=false
+^docs/monograph/.*?\.tex$ linguist-documentation=false
+# ^docs/monograph/.*?\.bst$ linguist-documentation
+# ^docs/monograph/.*?\.bib$ linguist-documentation
+# ^docs/monograph/.*?\.sty$ linguist-documentation
+# ^docs/monograph/.*?\.pdf$ linguist-documentation
+# .*?figs/ linguist-documentation
+
+^core/ linguist-vendored=false
+^core/ linguist-documentation=false
+^core/Quartus linguist-vendored

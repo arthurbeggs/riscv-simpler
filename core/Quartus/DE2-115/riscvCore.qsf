@@ -39,7 +39,7 @@
 
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE75F29C7
-set_global_assignment -name TOP_LEVEL_ENTITY riscv_simple
+set_global_assignment -name TOP_LEVEL_ENTITY datapath_singlecycle
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 16.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "15:00:06  MAY 11, 2017"
 set_global_assignment -name LAST_QUARTUS_VERSION "16.1.0 Lite Edition"
@@ -50,11 +50,24 @@ set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
 set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name VERILOG_FILE ../../RV64I/ALU/controlALU.v
-set_global_assignment -name VERILOG_FILE ../../RV64I/ALU/ALU.v
-set_global_assignment -name VERILOG_FILE ../../RV64I/Registers/registerBank.v
-set_global_assignment -name VERILOG_FILE ../../RV64I/SingleCycle/datapathSINGLE.v
-set_global_assignment -name VERILOG_FILE ../../RV64I/SingleCycle/controlSINGLE.v
-set_global_assignment -name VERILOG_FILE ../../RV64I/CPUInterface.v
-set_global_assignment -name VERILOG_FILE ../../riscv_simple.v
+set_global_assignment -name TIMEQUEST_MULTICORNER_ANALYSIS ON
+set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
+set_global_assignment -name VERILOG_FILE ../../constants.v
 set_global_assignment -name VERILOG_FILE ../../configs.v
+set_global_assignment -name VERILOG_FILE ../../riscv_simple.v
+set_global_assignment -name VERILOG_FILE ../../Utils/adder.v
+set_global_assignment -name VERILOG_FILE ../../Utils/mux.v
+set_global_assignment -name VERILOG_FILE ../../RV64I/CPUInterface.v
+set_global_assignment -name VERILOG_FILE ../../RV64I/ALU/alu.v
+set_global_assignment -name VERILOG_FILE ../../RV64I/ALU/alu32.v
+set_global_assignment -name VERILOG_FILE ../../RV64I/ALU/alu_control.v
+set_global_assignment -name VERILOG_FILE ../../RV64I/SingleCycle/control_singlecycle.v
+set_global_assignment -name VERILOG_FILE ../../RV64I/SingleCycle/control_transfer_singlecycle.v
+set_global_assignment -name VERILOG_FILE ../../RV64I/SingleCycle/datapath_singlecycle.v
+set_global_assignment -name VERILOG_FILE ../../RV64I/SingleCycle/imm_generator.v
+set_global_assignment -name VERILOG_FILE ../../RV64I/Registers/program_counter.v
+set_global_assignment -name VERILOG_FILE ../../RV64I/Registers/regfile.v
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
