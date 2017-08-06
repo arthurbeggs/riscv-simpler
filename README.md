@@ -36,16 +36,16 @@ A tabela a seguir apresenta as instruções já implementadas:
 
 Para que o projeto seja completamente compatível com as especificações do módulo RV64I, é necessário implementar:
 
-- [ ] Issue #3 - Tratamento de exceções, interrupções e *traps*;
-- [ ] Issue #4 - Excessão de endereço de instrução desalinhado;
-- [ ] Issue #5 - Excessão de acesso de memória proibido;
-- [ ] Issue #6 - Excessão de instrução ilegal;
-- [ ] Issue #7 - Registradores de Controle e Status (CSR);
-- [ ] Issue #8 - Instruções CSR;
-- [ ] Issue #9 - Instruções de ambiente (ECALL/EBREAK);
-- [ ] Issue #10 - Instruções de FENCE;
-- [ ] Issue #11 - Suporte para acesso desalinhado à memória de dados;
-- [ ] Issue #12 - Pilha de endereço de retorno (RAS);
+- [ ] Issue [#3](https://github.com/arthurbeggs/riscv-simple/issues/3) - Tratamento de exceções, interrupções e *traps*;
+- [ ] Issue [#4](https://github.com/arthurbeggs/riscv-simple/issues/4) - Excessão de endereço de instrução desalinhado;
+- [ ] Issue [#5](https://github.com/arthurbeggs/riscv-simple/issues/5) - Excessão de acesso de memória proibido;
+- [ ] Issue [#6](https://github.com/arthurbeggs/riscv-simple/issues/6) - Excessão de instrução ilegal;
+- [ ] Issue [#7](https://github.com/arthurbeggs/riscv-simple/issues/7) - Registradores de Controle e Status (CSR);
+- [ ] Issue [#8](https://github.com/arthurbeggs/riscv-simple/issues/8) - Instruções CSR;
+- [ ] Issue [#9](https://github.com/arthurbeggs/riscv-simple/issues/9) - Instruções de ambiente (ECALL/EBREAK);
+- [ ] Issue [#10](https://github.com/arthurbeggs/riscv-simple/issues/10) - Instruções de FENCE;
+- [ ] Issue [#11](https://github.com/arthurbeggs/riscv-simple/issues/11) - Suporte para acesso desalinhado à memória de dados;
+- [ ] Issue [#12](https://github.com/arthurbeggs/riscv-simple/issues/12) - Pilha de endereço de retorno (RAS);
 
 
 Após a completa adequação à especificação do módulo RV64I, os módulos M e F serão implementados.
@@ -101,16 +101,16 @@ The following table shows all instructions already implemented:
 
 in order for the project to be fully compliant with RV64I specs, it is necessary to implement:
 
-- [ ] Issue #3 - Exception, interruption and trap handler;
-- [ ] Issue #4 - Instruction misaligned address exception;
-- [ ] Issue #5 - Forbidden memory access exception;
-- [ ] Issue #6 - Illegal instruction exception;
-- [ ] Issue #7 - Control and Status Registers (CSRs);
-- [ ] Issue #8 - CSR instructions;
-- [ ] Issue #9 - Environment instructions (ECALL/EBREAK);
-- [ ] Issue #10 - FENCE instructions;
-- [ ] Issue #11 - Support for misaligned data fetches;
-- [ ] Issue #12 - Return Address Stack (RAS);
+- [ ] Issue [#3](https://github.com/arthurbeggs/riscv-simple/issues/3) - Exception, interruption and trap handler;
+- [ ] Issue [#4](https://github.com/arthurbeggs/riscv-simple/issues/4) - Instruction misaligned address exception;
+- [ ] Issue [#5](https://github.com/arthurbeggs/riscv-simple/issues/5) - Forbidden memory access exception;
+- [ ] Issue [#6](https://github.com/arthurbeggs/riscv-simple/issues/6) - Illegal instruction exception;
+- [ ] Issue [#7](https://github.com/arthurbeggs/riscv-simple/issues/7) - Control and Status Registers (CSRs);
+- [ ] Issue [#8](https://github.com/arthurbeggs/riscv-simple/issues/8) - CSR instructions;
+- [ ] Issue [#9](https://github.com/arthurbeggs/riscv-simple/issues/9) - Environment instructions (ECALL/EBREAK);
+- [ ] Issue [#10](https://github.com/arthurbeggs/riscv-simple/issues/10) - FENCE instructions;
+- [ ] Issue [#11](https://github.com/arthurbeggs/riscv-simple/issues/11) - Support for misaligned data fetches;
+- [ ] Issue [#12](https://github.com/arthurbeggs/riscv-simple/issues/12) - Return Address Stack (RAS);
 
 After complete compliance with RV64I spec, modules M and F will be implemented.
 
