@@ -1,4 +1,4 @@
-<p style="text-align: right;">
+<p align="right">
     :us: <a href="https://github.com/arthurbeggs/riscv-simple/tree/docs#risc-v-simple-en">
         <b>English Version</b>
     </a>
