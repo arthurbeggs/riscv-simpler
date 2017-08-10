@@ -1,16 +1,23 @@
-// TODO: Cabeçalho
+////////////////////////////////////////////////////////////////////////////////
+//                 RISC-V SiMPLE - Unidade Lógica Aritmética                  //
+//                                                                            //
+//        Código fonte em https://github.com/arthurbeggs/riscv-simple         //
+//                            BSD 3-Clause License                            //
+////////////////////////////////////////////////////////////////////////////////
+
 
 module alu (
     input  [3:0] alu_funct,     // alu_funct[3] escolhe ADD || SUB, SRL || SRA;
-                                // alu_funct[2:0] define o "supergrupo" de funções (funct3)
+                                // alu_funct[2:0] define a função da ULA (funct3)
 
-    input  [63:0] operand_a,
-    input  [63:0] operand_b,
+    input  [63:0] operand_a,    // Entrada A da ULA
+    input  [63:0] operand_b,    // Entrada B da ULA
 
-    output reg [63:0] result,
+    output reg [63:0] result,   // Resultado da operação executada
 
-    output result_eq_zero           // Indica se result == 64'b0
+    output result_eq_zero       // Indica se result == 64'b0
 );
+
 
 assign result_eq_zero   = (result == 64'b0);
 
@@ -21,6 +28,7 @@ always @ ( * ) begin
             case (alu_funct[3])  // (`ALU_ADD_SUB || `ALU_SHIFTR) && inst_bit30) ? SUB : ADD;
                 1'b0:   // ADD
                     result = operand_a + operand_b;
+
                 1'b1:   // SUB
                     result = operand_a - operand_b;
             endcase
@@ -50,7 +58,6 @@ always @ ( * ) begin
 
         `ALU_AND:
             result = operand_a & operand_b;
-
     endcase
 end
 

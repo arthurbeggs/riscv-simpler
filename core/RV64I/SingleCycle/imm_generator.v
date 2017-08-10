@@ -1,4 +1,10 @@
-// TODO: Cabeçalho
+////////////////////////////////////////////////////////////////////////////////
+//                    RISC-V SiMPLE - Geração de Imediatos                    //
+//                                                                            //
+//        Código fonte em https://github.com/arthurbeggs/riscv-simple         //
+//                            BSD 3-Clause License                            //
+////////////////////////////////////////////////////////////////////////////////
+
 
 module imm_generator (
     input  [31:0] inst,
@@ -18,7 +24,7 @@ wire [63:0] imm_I, imm_S, imm_B, imm_U, imm_J;
 // J = {{44{inst[31]}},              inst[19:12], inst[20], inst[30:25], inst[24:21],  1`b0};
 
 always @ ( * ) begin
-    case (inst[6:0]) // == opcode       // NOTE: Verificar se os cases não ordenados alteram a síntese.
+    case (inst[6:0]) // Opcode
         `OPC_LOAD,
         // `OPC_LOAD_FP,
         `OPC_OP_IMM,

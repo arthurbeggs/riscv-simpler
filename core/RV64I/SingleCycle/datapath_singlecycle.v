@@ -1,4 +1,10 @@
-// TODO: Fazer cabeçalho
+////////////////////////////////////////////////////////////////////////////////
+//                 RISC-V SiMPLE - Caminho de Dados Uniciclo                  //
+//                                                                            //
+//        Código fonte em https://github.com/arthurbeggs/riscv-simple         //
+//                            BSD 3-Clause License                            //
+////////////////////////////////////////////////////////////////////////////////
+
 
 module datapath_singlecycle (
     input  clk,
@@ -14,6 +20,7 @@ module datapath_singlecycle (
     output [63:0] data_mem_write_data,
     output [2:0]  data_mem_width
 );
+
 
 wire [1:0]   pc_sel;            // Seletor do mux do próximo pc
 wire [31:0]  next_pc;           // PC da próxima instrução
@@ -63,7 +70,6 @@ assign operand_b_bus = { immediate , reg_b_data };
 assign data_mem_addr        = alu_result[31:0];
 assign data_mem_write_data  = reg_b_data;
 assign data_mem_width       = inst[14:12];
-
 
 
 

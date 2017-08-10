@@ -1,4 +1,10 @@
-// TODO: Cabeçalho
+////////////////////////////////////////////////////////////////////////////////
+//                         RISC-V SiMPLE - Controle da ULA                    //
+//                                                                            //
+//        Código fonte em https://github.com/arthurbeggs/riscv-simple         //
+//                            BSD 3-Clause License                            //
+////////////////////////////////////////////////////////////////////////////////
+
 
 module alu_control (
     input  [1:0] alu_op,        // ADD || SUB || OP || Branch
@@ -10,12 +16,14 @@ module alu_control (
 
 
 // Verifica se a instrução atual é SUB ou SRA
-wire secondary_funct = (((inst_funct3 == `ALU_ADD_SUB) || (inst_funct3 == `ALU_SHIFTR)) && inst_bit30) ? 1'b1 : 1'b0;
+wire secondary_funct = (((inst_funct3 == `ALU_ADD_SUB)
+                      || (inst_funct3 == `ALU_SHIFTR)) && inst_bit30) ? 1'b1 : 1'b0;
 
 
 // Escolhe a função utilizada para os branches
 reg [2:0] branch_funct;
 
+// Mapeia o funct3 dos Branches para as operações da ULA
 always @ ( * ) begin
     case (inst_funct3)
         `BRANCH_EQ,
@@ -38,12 +46,15 @@ end
 
 always @ ( * ) begin
     case (alu_op)
-        2'b00:
+        2'b00:  //ADD
             alu_funct = {1'b0, `ALU_ADD_SUB};
-        2'b01:
+
+        2'b01:  //SUB
             alu_funct = {1'b1, `ALU_ADD_SUB};
+
         2'b10:  // OPC_OP, OPC_OP_32, OPC_OP_IMM e OPC_OP_IMM_32
             alu_funct = {secondary_funct, inst_funct3};
+
         2'b11:  // Branches
             alu_funct = {1'b1, branch_funct};   // alu_funct[3] == 1 para subtrair operandos
     endcase

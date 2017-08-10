@@ -1,17 +1,26 @@
-// TODO: Fazer cabeçalho
+////////////////////////////////////////////////////////////////////////////////
+//            RISC-V SiMPLE - Unidade de Transferência de Controle            //
+//                                                                            //
+//        Código fonte em https://github.com/arthurbeggs/riscv-simple         //
+//                            BSD 3-Clause License                            //
+////////////////////////////////////////////////////////////////////////////////
+
 
 module control_transfer_singlecycle (
-    input  branch_en,
-    input  jal_en,
-    input  jalr_en,
+    input  branch_en,           // Sinal de instrução == Branch
+    input  jal_en,              // Sinal de instrução == JAL
+    input  jalr_en,             // Sinal de instrução == JALR
     input  result_bit0,
-    input  result_eq_zero,
-    input  [2:0] inst_funct3,
+    input  result_eq_zero,      // Sinal de resultado da ULA == 64'b0
+    input  [2:0] inst_funct3,   // Campo funct3 da instrução
 
-    output reg [1:0] pc_sel
+    output reg [1:0] pc_sel     // Seletor do multiplexer de próximo PC
 );
+// TODO: Retirar result_bit0. result_bit0 == !result_eq_zero
+
 
 always @ ( * ) begin
+    // Se instrução == Branch, próximo PC pode ser PC+4 ou PC+imm
     if (branch_en) begin
         case (inst_funct3)
             `BRANCH_EQ:
@@ -33,20 +42,22 @@ always @ ( * ) begin
                 pc_sel = result_bit0    ? 2'b00 : 2'b01;
 
             default:
-                // NOTE: Instrução inválida
+                // Instrução inválida
                 pc_sel = 2'b00;
-
         endcase
     end
 
+    // Se instrução == JAL, próximo PC == PC+imm
     else if (jal_en) begin
         pc_sel = 2'b01;
     end
 
+    // Se instrução == JALR, próximo PC == {(rs1_data + imm)[31:1], 1'b0}
     else if (jalr_en) begin
         pc_sel = 2'b10;
     end
 
+    // Se a instrução for qualquer outra, próximo PC == PC+4
     else begin
         pc_sel = 2'b00;
     end
