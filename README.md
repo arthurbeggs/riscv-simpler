@@ -25,13 +25,13 @@ O diagrama a seguir mostra o caminho de dados do *RISC-V SiMPLE Single-cycle*:
 
 A tabela a seguir apresenta as instruções já implementadas:
 
-|             |            |            |            |           |            |            |            |           |            |
+|          |         |         |         |         |         |         |         |         |         |
 |:--------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
-|  LUI      | AUIPC | JAL     | JALR    | BEQ    | BNE    | BLT     | BGE    | BLTU   | BGEU  |
-|  LB       | LH       | LW     | LBU      | LHU   | SB       | SH      | SW     | ADDI   | SLTI    |
-|  SLTIU  | XORI   | ORI    | ANDI    | SLLI   | SRLI     | SRAI   | ADD   | SUB     | SLL    |
-|  SLT      | SLTU   | XOR   | SRL      | SRA   | OR       | AND   | LWU   | LD       | SD     |
-| ADDIW | SLLIW | SRLIW | SRAIW | ADDW | SUBW | SLLW | SRLW | SRAW |          |
+|  LUI     | AUIPC   | JAL     | JALR    | BEQ     | BNE     | BLT     | BGE     | BLTU    | BGEU    |
+|  LB      | LH      | LW      | LBU     | LHU     | SB      | SH      | SW      | ADDI    | SLTI    |
+|  SLTIU   | XORI    | ORI     | ANDI    | SLLI    | SRLI    | SRAI    | ADD     | SUB     | SLL     |
+|  SLT     | SLTU    | XOR     | SRL     | SRA     | OR      | AND     | LWU     | LD      | SD      |
+| ADDIW    | SLLIW   | SRLIW   | SRAIW   | ADDW    | SUBW    | SLLW    | SRLW    | SRAW    |         |
 
 
 Para que o projeto seja completamente compatível com as especificações do módulo RV64I, é necessário implementar:
@@ -91,13 +91,13 @@ The follwing diagram shows the *RISC-V SiMPLE Single-cycle* datapath:
 
 The following table shows all instructions already implemented:
 
-|             |            |            |            |           |            |            |            |           |            |
+|          |         |         |         |         |         |         |         |         |         |
 |:--------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
-|  LUI      | AUIPC | JAL     | JALR    | BEQ    | BNE    | BLT     | BGE    | BLTU   | BGEU  |
-|  LB       | LH       | LW     | LBU      | LHU   | SB       | SH      | SW     | ADDI   | SLTI    |
-|  SLTIU  | XORI   | ORI    | ANDI    | SLLI   | SRLI     | SRAI   | ADD   | SUB     | SLL    |
-|  SLT      | SLTU   | XOR   | SRL      | SRA   | OR       | AND   | LWU   | LD       | SD     |
-| ADDIW | SLLIW | SRLIW | SRAIW | ADDW | SUBW | SLLW | SRLW | SRAW |          |
+|  LUI     | AUIPC   | JAL     | JALR    | BEQ     | BNE     | BLT     | BGE     | BLTU    | BGEU    |
+|  LB      | LH      | LW      | LBU     | LHU     | SB      | SH      | SW      | ADDI    | SLTI    |
+|  SLTIU   | XORI    | ORI     | ANDI    | SLLI    | SRLI    | SRAI    | ADD     | SUB     | SLL     |
+|  SLT     | SLTU    | XOR     | SRL     | SRA     | OR      | AND     | LWU     | LD      | SD      |
+| ADDIW    | SLLIW   | SRLIW   | SRAIW   | ADDW    | SUBW    | SLLW    | SRLW    | SRAW    |         |
 
 in order for the project to be fully compliant with RV64I specs, it is necessary to implement:
 
