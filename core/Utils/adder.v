@@ -1,4 +1,10 @@
-// TODO: Fazer cabeçalho
+////////////////////////////////////////////////////////////////////////////////
+//                      RISC-V SiMPLE - Somador Genérico                      //
+//                                                                            //
+//        Código fonte em https://github.com/arthurbeggs/riscv-simple         //
+//                            BSD 3-Clause License                            //
+////////////////////////////////////////////////////////////////////////////////
+
 
 module adder #(
     parameter WIDTH = 32 ) (
@@ -8,6 +14,7 @@ module adder #(
 
     output reg [WIDTH-1:0] result
 );
+
 
 always @ ( * ) begin
     result = operand_a + operand_b;

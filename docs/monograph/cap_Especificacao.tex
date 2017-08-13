@@ -5,12 +5,33 @@
 % Resumo opcional. Comentar se não usar.
 %\resumodocapitulo{Resumo opcional}
 
-    {A proposta do projeto consiste no desenvolvimento de um processador sintetizável em \textit{FPGA}, utilizando o conjunto de instruções \textit{RISC-V}. O caminho da dados inicialmente implementado será um Uniciclo de 64 bits, já prevendo sua expansão para um \textit{datapath} Multiciclo e um \textit{Pipeline}.}
+    {O projeto \textit{RISC-V SiMPLE (Single-cycle Multicycle Pipeline Learning Environment)} consiste no desenvolvimento de um processador com conjunto de instruções \textit{RISC-V}, sintetizável em \textit{FPGA} e com \textit{hardware} descrito em \textit{Verilog}. A microarquitetura implementada nesse trabalho é uniciclo, escalar, em ordem, com um único \textit{hart} e com caminho de dados de 64 bits. Trabalhos futuros utilizarão a estrutura altamente configurável e modularizada do projeto para desenvolver as versões em microarquiteturas multiciclo e \textit{pipeline}.}
 
-    {O processador deverá conter os subconjuntos de instruções I (para operações com inteiros, sendo o único subconjunto com implementação mandatória pela arquitetura), M (para multiplicação e divisão de inteiros), F (para ponto flutuante com precisão simples conforme o padrão IEEE 754 com revisão de 2008) e possivelmente D (ponto flutuante de precisão dupla). No presente momento, a implementação do subconjunto D é duvidosa e a do subconjunto A (operações atômicas de sincronização) está descartada, e com isso o trabalho desenvolvido não pode ser definido como de propósito geral, G (que deve conter os pacotes I, M, A, F e D). Assim, pela nomenclatura da arquitetura, o processador desenvolvido será um \textit{RV64IMF}.}
+    {O processador contém o conjunto de instruções I (para operações com inteiros, sendo o único módulo com implementação mandatória pela arquitetura) e as extensões \textit{standard} M (para multiplicação e divisão de inteiros) e F (para ponto flutuante com precisão simples conforme o padrão IEEE 754 com revisão de 2008). O projeto não implementa as extensões D (ponto-flutuante de precisão dupla) e A (operações atômicas de sincronização), e com isso o \textit{soft core} desenvolvido não pode ser definido como de propósito geral, G (que deve conter os módulos I, M, A, F e D). Assim, pela nomenclatura da arquitetura, o processador desenvolvido é um \textit{RV64IMF}.}
 
-    {O projeto também pretende contemplar \textit{traps}, interrupções, exceções e outras funcionalidades de nível privilegiado da arquitetura. Porém, no presente momento as especificações do nível privilegiado da arquitetura encontram-se em versão \textit{draft}. Com isso, a definição do que será implementado da camada privilegiada deverá aguardar a publicação da versão \textit{standard}.}
+    {O projeto contempla \textit{traps}, interrupções, exceções, \textit{CSRs}, chamadas de sistema e outras funcionalidades de nível privilegiado da arquitetura.}
 
-    {Uma vez que o projeto utilizará a estrutura do processador \textit{MIPS-PUM} (processador de arquitetura \textit{MIPS32} atualmente desenvolvido na turma de OAC do prof. Marcus Vinicuis Lamar) como referência, as interfaces e controladores dos periféricos serão reaproveitadas, sendo reescritas e melhor documentadas quando possível e/ou necessário.}
+    {O \textit{soft core} possui barramento Avalon para se comunicar com os periféricos das plataformas de desenvolvimento. O projeto foi desenvolvido utilizando a placa DE2-115 com \textit{FPGA Altera Cyclone} e permite a fácil adaptação para outras placas da Altera.}
 
-    {Como a \textit{ISA RISC-V} é relativamente nova, faltam ferramentas didáticas (como o simulador da \textit{ISA MIPS}, o \textit{MARS}) para uma aplicabilidade adequada do conteúdo em sala de aula e em laboratório. Desta forma, é necessária a implementação de um \textit{IDE} (\textit{Integrated Development Environment}, ou Ambiente de Desenvolvimento Integrado) para a escrita de código \textit{Assembly RISC-V}, além de montagem e simulação do \textit{Assembly}. Uma outra possibilidade é a criação de um pacote com sintaxe, montador e simulador da arquitetura para ser utilizado em um \textit{IDE} já existente (e.g. Atom Editor).}
+
+    \section{Conjunto de Instruções I}
+        {}
+
+        \begin{figure}[H]
+        \centering
+            \includegraphics[width=.8\linewidth]{figs/singlecycle.png}
+            \caption{Diagrama da microarquitetura uniciclo do RISC-V SiMPLE.}
+            \label{fig:singlecycle}
+        \end{figure}
+
+    \section{Extensão M}
+        {}
+
+    \section{Extensão F}
+        {}
+
+    \section{Barramento Avalon}
+        {}
+
+    \section{Arquitetura Privilegiada}
+        {}

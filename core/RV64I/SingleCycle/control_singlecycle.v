@@ -1,4 +1,10 @@
-// TODO: Cabeçalho;
+////////////////////////////////////////////////////////////////////////////////
+//                    RISC-V SiMPLE - Controle do Uniciclo                    //
+//                                                                            //
+//        Código fonte em https://github.com/arthurbeggs/riscv-simple         //
+//                            BSD 3-Clause License                            //
+////////////////////////////////////////////////////////////////////////////////
+
 
 module control_singlecycle (
     input  [6:0] inst_opcode,
@@ -31,8 +37,7 @@ assign alu_sel_src_a        = control[1];   // reg_a_data || pc
 assign alu_sel_src_b        = control[0];   // reg_b_data || immediate
 
 
-// NOTE: A estratégia de código compacto é uma boa ideia?
-
+// Define valores iniciais dos sinais de controle
 initial begin
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         //                                                                                                    //
@@ -51,6 +56,7 @@ initial begin
             control = { 1'b1 , 1'b0 , 1'b0 , 1'b0 , 1'b0 , 1'b0 , 1'b0 , 3'b000 , 2'b00 , 1'b0 , 1'b0 };
 end
 
+// Gera os sinais de controle de acordo com o opcode da instrução atual
 always @ ( * ) begin
     case (inst_opcode)
         `OPC_LOAD:
