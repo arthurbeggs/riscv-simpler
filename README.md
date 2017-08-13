@@ -48,7 +48,7 @@ Para que o projeto seja completamente compatível com as especificações do mó
 - [ ] Issue [#12](https://github.com/arthurbeggs/riscv-simple/issues/12) - Pilha de endereço de retorno (RAS);
 
 
-Após a completa adequação à especificação do módulo RV64I, os módulos M e F serão implementados.
+Após a completa adequação à especificação do módulo RV64I e implementação do barramento Avalon, os módulos M e F serão implementados.
 
 
 ### **Multiciclo**
@@ -112,7 +112,7 @@ in order for the project to be fully compliant with RV64I specs, it is necessary
 - [ ] Issue [#11](https://github.com/arthurbeggs/riscv-simple/issues/11) - Support for misaligned data fetches;
 - [ ] Issue [#12](https://github.com/arthurbeggs/riscv-simple/issues/12) - Return Address Stack (RAS);
 
-After complete compliance with RV64I spec, modules M and F will be implemented.
+After complete compliance with RV64I spec and development of the Avalon bus, modules M and F will be implemented.
 
 
 ### **Multicycle**
