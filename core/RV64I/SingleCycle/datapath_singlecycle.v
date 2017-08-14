@@ -50,10 +50,10 @@ wire [1:0] alu_op;              // Liga control à alu_control e define a opera�
 wire alu_sel_src_a;             // Seletor do mux da entrada A da ULA
 wire alu_sel_src_b;             // Seletor do mux da entrada B da ULA
 
-wire [63:0]  reg_a_data;        // Saída do registrador A do banco de registradores
-wire [63:0]  reg_b_data;        // Saída do registrador B do banco de registradores
-wire [63:0]  reg_write_data;    // Dado a ser escrito no banco de registradores
 wire [511:0] reg_writeback_bus; // Barramento com todos os possíveis dados de write back
+wire [63:0]  rd_data;           // Dado a ser escrito no registrador rd
+wire [63:0]  rs1_data;          // Saída do registrador rs1
+wire [63:0]  rs2_data;          // Saída do registrador rs2
 
 
 // Concatenação das entradas do mux, da maior para a menor
@@ -68,7 +68,7 @@ assign operand_b_bus = { immediate , reg_b_data };
 
 // Ligação das demais portas de entrada e saída do módulo
 assign data_mem_addr        = alu_result[31:0];
-assign data_mem_write_data  = reg_b_data;
+assign data_mem_write_data  = rs2_data;
 assign data_mem_width       = inst[14:12];
 
 
@@ -155,7 +155,7 @@ mux #(
 ) mux_mem_to_reg (
     .in_bus(reg_writeback_bus), // Sinais de entrada concatenados
     .sel(mem_to_reg_sel),       // Sinal de seleção de entrada
-    .out(reg_write_data)        // Sinal de saída
+    .out(rd_data)               // Sinal de saída
 );
 
 
@@ -202,12 +202,12 @@ regfile regfile(
     .clk(clk),
     .rst(rst),
     .write_en(regfile_write_en),
-    .write_reg(inst[11:7]),
-    .read_reg_a(inst[19:15]),
-    .read_reg_b(inst[24:20]),
-    .write_data(reg_write_data),
-    .reg_a_data(reg_a_data),
-    .reg_b_data(reg_b_data)
+    .rd_addr(inst[11:7]),
+    .rs1_addr(inst[19:15]),
+    .rs2_addr(inst[24:20]),
+    .rd_data(rd_data),
+    .rs1_data(rs1_data),
+    .rs2_data(rs2_data)
 );
 
 
