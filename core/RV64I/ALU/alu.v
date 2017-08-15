@@ -25,7 +25,8 @@ assign result_eq_zero   = (result == 64'b0);
 always @ ( * ) begin
     case (alu_funct[2:0])        // funct3
         `ALU_ADD_SUB:
-            case (alu_funct[3])  // (`ALU_ADD_SUB || `ALU_SHIFTR) && inst_bit30) ? SUB : ADD;
+            // (`ALU_ADD_SUB || `ALU_SHIFTR) && inst_bit30) ? SUB : ADD;
+            case (alu_funct[3])
                 1'b0:   // ADD
                     result = operand_a + operand_b;
 
@@ -46,7 +47,8 @@ always @ ( * ) begin
             result = operand_a ^ operand_b;
 
         `ALU_SHIFTR:
-            case (alu_funct[3])  // (`ALU_ADD_SUB || `ALU_SHIFTR) && inst_bit30) ? SRA : SRL;
+            // (`ALU_ADD_SUB || `ALU_SHIFTR) && inst_bit30) ? SRA : SRL;
+            case (alu_funct[3])
                 1'b0:   // SRL
                     result = operand_a >> operand_b[5:0];
                 1'b1:   // SRA

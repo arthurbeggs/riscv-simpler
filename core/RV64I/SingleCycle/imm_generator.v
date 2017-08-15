@@ -4,6 +4,10 @@
 //        Código fonte em https://github.com/arthurbeggs/riscv-simple         //
 //                            BSD 3-Clause License                            //
 ////////////////////////////////////////////////////////////////////////////////
+//                                                                            //
+//  Desabilite o "soft-wrapping" de seu editor para visualizar corretamente!  //
+//                                                                            //
+////////////////////////////////////////////////////////////////////////////////
 
 
 module imm_generator (
@@ -12,7 +16,7 @@ module imm_generator (
 );
 
 
-// NOTE: Verificar como é sintetizado antes de tentar produzir uma versão melhor
+// TODO: Produzir uma versão melhor
 wire [63:0] imm_I, imm_S, imm_B, imm_U, imm_J;
 
 // Imediatos
@@ -49,7 +53,9 @@ always @ ( * ) begin
         default:
             // NOTE: verificar o melhor comportamento para default
             // immediate = 64'b0;
-            immediate = {{33{inst[31]}}, inst[30:20], inst[19:12], {12'b0}}; // Tipo U possui o menor fanout para o bit inst[31];
+            
+            // Tipo U possui o menor fanout para o bit inst[31];
+            immediate = {{33{inst[31]}}, inst[30:20], inst[19:12], {12'b0}};
     endcase
 end
 

@@ -7,20 +7,19 @@
 
 
 module control_transfer_singlecycle (
-    input  branch_en,           // Sinal de instrução == Branch
-    input  jal_en,              // Sinal de instrução == JAL
-    input  jalr_en,             // Sinal de instrução == JALR
-    input  result_bit0,
+    input  branch_en,           // Instrução == Branch
+    input  jal_en,              // Instrução == JAL
+    input  jalr_en,             // Instrução == JALR
     input  result_eq_zero,      // Sinal de resultado da ULA == 64'b0
     input  [2:0] inst_funct3,   // Campo funct3 da instrução
 
     output reg [1:0] pc_sel     // Seletor do multiplexer de próximo PC
 );
-// TODO: Retirar result_bit0. result_bit0 == !result_eq_zero
 
 
 always @ ( * ) begin
     // Se instrução == Branch, próximo PC pode ser PC+4 ou PC+imm
+    // alu_result[0] == !result_eq_zero
     if (branch_en) begin
         case (inst_funct3)
             `BRANCH_EQ:
@@ -30,16 +29,16 @@ always @ ( * ) begin
                 pc_sel = result_eq_zero ? 2'b00 : 2'b01;
 
             `BRANCH_LT:
-                pc_sel = result_bit0    ? 2'b01 : 2'b00;
+                pc_sel = result_eq_zero ? 2'b00 : 2'b01;
 
             `BRANCH_GE:
-                pc_sel = result_bit0    ? 2'b00 : 2'b01;
+                pc_sel = result_eq_zero ? 2'b01 : 2'b00;
 
             `BRANCH_LTU:
-                pc_sel = result_bit0    ? 2'b01 : 2'b00;
+                pc_sel = result_eq_zero ? 2'b00 : 2'b01;
 
             `BRANCH_GEU:
-                pc_sel = result_bit0    ? 2'b00 : 2'b01;
+                pc_sel = result_eq_zero ? 2'b01 : 2'b00;
 
             default:
                 // Instrução inválida

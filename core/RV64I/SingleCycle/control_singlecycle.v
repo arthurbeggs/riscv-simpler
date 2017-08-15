@@ -4,6 +4,10 @@
 //        Código fonte em https://github.com/arthurbeggs/riscv-simple         //
 //                            BSD 3-Clause License                            //
 ////////////////////////////////////////////////////////////////////////////////
+//                                                                            //
+//  Desabilite o "soft-wrapping" de seu editor para visualizar corretamente!  //
+//                                                                            //
+////////////////////////////////////////////////////////////////////////////////
 
 
 module control_singlecycle (
@@ -13,13 +17,13 @@ module control_singlecycle (
     output jal_en,                  // JAL
     output jalr_en,                 // JALR
     output branch_en,               // Branching
-    output data_mem_read_en,        // NOTE: Read enable é necessário?
+    output data_mem_read_en,        // Habilita leitura da memória de dados
     output data_mem_write_en,       // Habilita escrita na memória de dados
     output regfile_write_en,        // Habilita escrita no regfile
     output [2:0] mem_to_reg_sel,    // Seleciona a entrada de escrita do regfile
     output [1:0] alu_op,            // Seleciona a funcionalidade da ULA
-    output alu_sel_src_a,           // Seleciona a entrada A da ULA
-    output alu_sel_src_b            // Seleciona a entrada B da ULA
+    output alu_src_a_sel,           // Seleciona a entrada A da ULA
+    output alu_src_b_sel            // Seleciona a entrada B da ULA
 );
 
 reg  [13:0] control;
@@ -31,10 +35,10 @@ assign branch_en            = control[10];
 assign data_mem_read_en     = control[9];
 assign data_mem_write_en    = control[8];
 assign regfile_write_en     = control[7];
-assign mem_to_reg_sel       = control[6:4]; // ALU || MEM || OP-32 || LUI || pc+4
+assign mem_to_reg_sel       = control[6:4]; // ALU || MEM || OP-32 || LUI|| pc+4
 assign alu_op               = control[3:2]; // ADD || SUB || OP || Branch
-assign alu_sel_src_a        = control[1];   // reg_a_data || pc
-assign alu_sel_src_b        = control[0];   // reg_b_data || immediate
+assign alu_src_a_sel        = control[1];   // rs1_data || pc
+assign alu_src_b_sel        = control[0];   // rs2_data || immediate
 
 
 // Define valores iniciais dos sinais de controle

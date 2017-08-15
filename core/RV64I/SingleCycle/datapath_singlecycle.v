@@ -10,65 +10,82 @@ module datapath_singlecycle (
     input  clk,
     input  rst,
 
-    input  [31:0] inst,
-    output [31:0] pc,
+    input  [31:0] inst,         // Instrução atual
+    output [31:0] pc,           // Program Counter atual
 
-    input  [63:0] data_mem_data_fetched,
-    output data_mem_read_en,
-    output data_mem_write_en,
-    output [31:0] data_mem_addr,
-    output [63:0] data_mem_write_data,
-    output [2:0]  data_mem_width
+    input  [63:0] data_mem_data_fetched,  // Dado recebido da memória de dados
+    output data_mem_read_en,              // Habilita leitura da mem de dados
+    output data_mem_write_en,             // Habilita escrita da mem de dados
+    output [31:0] data_mem_addr,          // Endereço desejado da mem de dados
+    output [63:0] data_mem_write_data,    // Dado a ser escrito na mem de dados
+    output [2:0]  data_mem_width          // Largura do dado a ser lido/escrito
 );
 
 
-wire [1:0]   pc_sel;            // Seletor do mux do próximo pc
-wire [31:0]  next_pc;           // PC da próxima instrução
+wire [1:0]   pc_sel;            // Seletor do mux_pc_sel
 wire [31:0]  pc_plus_4;         // pc + 4
 wire [31:0]  pc_plus_immediate; // pc + immediate
-wire [127:0] next_pc_bus;       // Barramento com todos os possíveis próximos Program Counters
+wire [31:0]  next_pc;           // PC da próxima instrução
 
 wire [63:0] immediate;          // Imediato gerado.
 
-wire [3:0]  alu_funct;          // Função executada pela ULA. Liga alu_control e alu.
-wire [63:0] alu_operand_a;      // Liga mux de entrada das ULAs às entradas das ULAs.
-wire [63:0] alu_operand_b;      // Liga mux de entrada das ULAs às entradas das ULAs.
+wire [3:0]  alu_funct;          // Função executada pela ULA
+wire [63:0] alu_operand_a;      // Entrada A da ULA
+wire [63:0] alu_operand_b;      // Entrada B da ULA
 wire [63:0] alu_result;         // Resultado do cálculo da ULA de 64 bits
 wire [63:0] alu32_result;       // Resultado do cálculo da ULA de 32 bits
 wire alu_result_eq_zero;        // Resultado da ULA de 64 bits == 0 ? 1 : 0
 
-wire [127:0] operand_a_bus;     // Barramento com todos os possíveis operandos do mux da entrada A da ULA
-wire [127:0] operand_b_bus;     // Barramento com todos os possíveis operandos do mux da entrada B da ULA
-
 wire pc_write_en;               // Habilita escrita do próximo pc no registrador
-wire jal_en;                    // Sinal de transferência de controle para instrução JAL
-wire jalr_en;                   // Sinal de transferência de controle para instrução JALR
-wire branch_en;                 // Sinal de transferência de controle para instruções de Branch
+wire jal_en;                    // Transferência de controle - instrução JAL
+wire jalr_en;                   // Transferência de controle - instrução JALR
+wire branch_en;                 // Transferência de controle - Branches
 wire regfile_write_en;          // Habilita escrita no banco de registradores
-wire [2:0] mem_to_reg_sel;      // Seletor do mux de write-back do banco de registradores
-wire [1:0] alu_op;              // Liga control à alu_control e define a operação a ser executada
-wire alu_sel_src_a;             // Seletor do mux da entrada A da ULA
-wire alu_sel_src_b;             // Seletor do mux da entrada B da ULA
+wire [2:0] mem_to_reg_sel;      // Seletor do mux_mem_to_reg
+wire [1:0] alu_op;              // Sinal de controle recebido por alu_control
+wire alu_src_a_sel;             // Seletor do mux da entrada A da ULA
+wire alu_src_b_sel;             // Seletor do mux da entrada B da ULA
 
-wire [63:0]  reg_a_data;        // Saída do registrador A do banco de registradores
-wire [63:0]  reg_b_data;        // Saída do registrador B do banco de registradores
-wire [63:0]  reg_write_data;    // Dado a ser escrito no banco de registradores
-wire [511:0] reg_writeback_bus; // Barramento com todos os possíveis dados de write back
+wire [63:0]  rd_data;           // Dado a ser escrito no registrador rd
+wire [63:0]  rs1_data;          // Saída do registrador rs1
+wire [63:0]  rs2_data;          // Saída do registrador rs2
 
 
-// Concatenação das entradas do mux, da maior para a menor
-assign next_pc_bus = { 32'b0, {alu_result[31:1], 1'b0}, pc_plus_immediate, pc_plus_4};
+// Barramentos de entrada dos multiplexadores
+wire [511:0] mem_to_reg_bus;    // Barramento de entrada do mux_mem_to_reg
+wire [127:0] next_pc_bus;       // Barramento de entrada do mux_pc_sel
+wire [127:0] operand_a_bus;     // Barramento de entrada do mux_operand_a
+wire [127:0] operand_b_bus;     // Barramento de entrada do mux_operand_b
 
-assign reg_writeback_bus = { 64'b0, 64'b0, 64'b0, {32'b0, pc_plus_4}, immediate, alu32_result, data_mem_data_fetched, alu_result };
+// 8 entradas de 64 bits
+assign mem_to_reg_bus   = { 64'b0,                      // mux_mem_to_reg_in[7]
+                            64'b0,                      // mux_mem_to_reg_in[6]
+                            64'b0,                      // mux_mem_to_reg_in[5]
+                            {32'b0, pc_plus_4},         // mux_mem_to_reg_in[4]
+                            immediate,                  // mux_mem_to_reg_in[3]
+                            alu32_result,               // mux_mem_to_reg_in[2]
+                            data_mem_data_fetched,      // mux_mem_to_reg_in[1]
+                            alu_result };               // mux_mem_to_reg_in[0]
 
-assign operand_a_bus = { {32'b0, pc}, reg_a_data };
+// 4 entradas de 32 bits
+assign next_pc_bus      = { 32'b0,                      // mux_pc_sel_in[3]
+                            {alu_result[31:1], 1'b0},   // mux_pc_sel_in[2]
+                            pc_plus_immediate,          // mux_pc_sel_in[1]
+                            pc_plus_4};                 // mux_pc_sel_in[0]
 
-assign operand_b_bus = { immediate , reg_b_data };
+// 2 entradas de 64 bits
+assign operand_a_bus    = { {32'b0, pc},                // mux_operand_a_in[1]
+                            rs1_data };                 // mux_operand_a_in[0]
+
+// 2 entradas de 64 bits
+assign operand_b_bus    = { immediate,                  // mux_operand_b_in[1]
+                            rs2_data };                 // mux_operand_b_in[0]
+
 
 
 // Ligação das demais portas de entrada e saída do módulo
 assign data_mem_addr        = alu_result[31:0];
-assign data_mem_write_data  = reg_b_data;
+assign data_mem_write_data  = rs2_data;
 assign data_mem_width       = inst[14:12];
 
 
@@ -104,7 +121,7 @@ alu32 alu32(
     .alu_funct(alu_funct),
     .operand_a(alu_operand_a[31:0]),
     .operand_b(alu_operand_b[31:0]),
-    .result32(alu32_result)
+    .result(alu32_result)
 );
 
 
@@ -127,8 +144,8 @@ control_singlecycle control_singlecycle(
     .regfile_write_en(regfile_write_en),
     .mem_to_reg_sel(mem_to_reg_sel),
     .alu_op(alu_op),
-    .alu_sel_src_a(alu_sel_src_a),
-    .alu_sel_src_b(alu_sel_src_b)
+    .alu_src_a_sel(alu_src_a_sel),
+    .alu_src_b_sel(alu_src_b_sel)
 );
 
 
@@ -136,7 +153,6 @@ control_transfer_singlecycle control_transfer_singlecycle (
     .branch_en(branch_en),
     .jal_en(jal_en),
     .jalr_en(jalr_en),
-    .result_bit0(alu_result[0]),
     .result_eq_zero(alu_result_eq_zero),
     .inst_funct3(inst[14:12]),
     .pc_sel(pc_sel)
@@ -153,39 +169,39 @@ mux #(
     .WIDTH(64),                 // Largura da palavra
     .CHANNELS(8)                // Quantidade de entradas SEMPRE IGUAL a 2^n
 ) mux_mem_to_reg (
-    .in_bus(reg_writeback_bus), // Sinais de entrada concatenados
+    .in_bus(mem_to_reg_bus),    // Sinais de entrada concatenados
     .sel(mem_to_reg_sel),       // Sinal de seleção de entrada
-    .out(reg_write_data)        // Sinal de saída
+    .out(rd_data)               // Sinal de saída
 );
 
 
 mux #(
-    .WIDTH(32),             // Largura da palavra
-    .CHANNELS(4)            // Quantidade de entradas SEMPRE IGUAL a 2^n
+    .WIDTH(32),                 // Largura da palavra
+    .CHANNELS(4)                // Quantidade de entradas SEMPRE IGUAL a 2^n
 ) mux_pc_sel (
-    .in_bus(next_pc_bus),   // Sinais de entrada concatenados
-    .sel(pc_sel),           // Sinal de seleção de entrada
-    .out(next_pc)           // Sinal de saída
+    .in_bus(next_pc_bus),       // Sinais de entrada concatenados
+    .sel(pc_sel),               // Sinal de seleção de entrada
+    .out(next_pc)               // Sinal de saída
 );
 
 
 mux #(
-    .WIDTH(64),             // Largura da palavra
-    .CHANNELS(2)            // Quantidade de entradas SEMPRE IGUAL a 2^n
-) mux_sel_operand_a (
-    .in_bus(operand_a_bus), // Sinais de entrada concatenados
-    .sel(alu_sel_src_a),    // Sinal de seleção de entrada
-    .out(alu_operand_a)     // Sinal de saída
+    .WIDTH(64),                 // Largura da palavra
+    .CHANNELS(2)                // Quantidade de entradas SEMPRE IGUAL a 2^n
+) mux_operand_a (
+    .in_bus(operand_a_bus),     // Sinais de entrada concatenados
+    .sel(alu_src_a_sel),        // Sinal de seleção de entrada
+    .out(alu_operand_a)         // Sinal de saída
 );
 
 
 mux #(
-    .WIDTH(64),             // Largura da palavra
-    .CHANNELS(2)            // Quantidade de entradas SEMPRE IGUAL a 2^n
-) mux_sel_operand_b (
-    .in_bus(operand_b_bus), // Sinais de entrada concatenados
-    .sel(alu_sel_src_b),    // Sinal de seleção de entrada
-    .out(alu_operand_b)     // Sinal de saída
+    .WIDTH(64),                 // Largura da palavra
+    .CHANNELS(2)                // Quantidade de entradas SEMPRE IGUAL a 2^n
+) mux_operand_b (
+    .in_bus(operand_b_bus),     // Sinais de entrada concatenados
+    .sel(alu_src_b_sel),        // Sinal de seleção de entrada
+    .out(alu_operand_b)         // Sinal de saída
 );
 
 
@@ -202,12 +218,12 @@ regfile regfile(
     .clk(clk),
     .rst(rst),
     .write_en(regfile_write_en),
-    .write_reg(inst[11:7]),
-    .read_reg_a(inst[19:15]),
-    .read_reg_b(inst[24:20]),
-    .write_data(reg_write_data),
-    .reg_a_data(reg_a_data),
-    .reg_b_data(reg_b_data)
+    .rd_addr(inst[11:7]),
+    .rs1_addr(inst[19:15]),
+    .rs2_addr(inst[24:20]),
+    .rd_data(rd_data),
+    .rs1_data(rs1_data),
+    .rs2_data(rs2_data)
 );
 
 

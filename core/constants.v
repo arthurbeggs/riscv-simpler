@@ -6,7 +6,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-// Opcodes (NOTE: Instruções comprimidas omitidas)
+// Opcodes das instruções de 32 bits
 `define    OPC_LOAD        7'b0000011
 // `define    OPC_LOAD_FP     7'b0000111
 // `define    OPC_custom0     7'b0001011
@@ -41,12 +41,12 @@
 // `define    OPC_LEN_80b     7'b1111111
 
 // Interpretação do campo funct3 para a Unidade Lógica e Aritmética
-`define    ALU_ADD_SUB     3'b000       // (inst[30] & Rtype) ? SUB : ADD;
+`define    ALU_ADD_SUB     3'b000
 `define    ALU_SLL         3'b001
 `define    ALU_SLT         3'b010
 `define    ALU_SLTU        3'b011
 `define    ALU_XOR         3'b100
-`define    ALU_SHIFTR      3'b101       // (inst[30] & Rtype) ? SRA : SRL;
+`define    ALU_SHIFTR      3'b101
 `define    ALU_OR          3'b110
 `define    ALU_AND         3'b111
 
@@ -61,4 +61,5 @@
 `define    BRANCH_LTU      3'b110
 `define    BRANCH_GEU      3'b111
 
+// Valor inicial de pc
 `define    INITIAL_PC      32'b0
