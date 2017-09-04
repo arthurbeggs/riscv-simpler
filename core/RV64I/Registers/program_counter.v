@@ -18,18 +18,18 @@ module program_counter (
 
 
 initial begin
-    pc = `INITIAL_PC;       // Constante que define o PC inicial
+    pc <= `INITIAL_PC;       // Constante que define o PC inicial
 end
 
 always @ (posedge clk) begin
     // Reseta o contador de programa
     if (rst) begin
-        pc = `INITIAL_PC;
+        pc <= `INITIAL_PC;
     end
 
     // Habilta a escrita de PC
     else if (pc_en) begin
-        pc = next_pc;
+        pc <= next_pc;
     end
 end
 
