@@ -39,7 +39,7 @@ assign rs1_data = register[rs1_addr];
 assign rs2_data = register[rs2_addr];
 
 // Grava novos valores no banco de registradores
-always @ ( posedge clk ) begin
+always @ (posedge clk or posedge rst) begin
     // Reseta os registradores
     if (rst) begin
         for (i = 0; i <= 31; i = i + 1)

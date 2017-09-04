@@ -21,7 +21,7 @@ initial begin
     pc <= `INITIAL_PC;       // Constante que define o PC inicial
 end
 
-always @ (posedge clk) begin
+always @ (posedge clk or posedge rst) begin
     // Reseta o contador de programa
     if (rst) begin
         pc <= `INITIAL_PC;
