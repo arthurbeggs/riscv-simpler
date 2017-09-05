@@ -39,7 +39,7 @@
 
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE75F29C7
-set_global_assignment -name TOP_LEVEL_ENTITY alu
+set_global_assignment -name TOP_LEVEL_ENTITY alu32
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 16.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "15:00:06  MAY 11, 2017"
 set_global_assignment -name LAST_QUARTUS_VERSION "16.1.0 Lite Edition"
@@ -74,7 +74,7 @@ set_global_assignment -name EDA_MAP_ILLEGAL_CHARACTERS ON -section_id eda_simula
 set_global_assignment -name EDA_RUN_TOOL_AUTOMATICALLY OFF -section_id eda_simulation
 set_global_assignment -name EDA_ENABLE_GLITCH_FILTERING ON -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
-set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH alu_tb -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH alu32_tb -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_NAME program_counter_tb -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id program_counter_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME program_counter_tb -section_id program_counter_tb
@@ -87,11 +87,15 @@ set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME alu_control_tb -section_i
 set_global_assignment -name EDA_TEST_BENCH_NAME alu_tb -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id alu_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME alu_tb -section_id alu_tb
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name EDA_TEST_BENCH_FILE ../../RV64I/Registers/program_counter_tb.v -section_id program_counter_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE ../../RV64I/Registers/regfile_tb.v -section_id regfile_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE ../../RV64I/ALU/alu_control_tb.v -section_id alu_control_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE ../../RV64I/ALU/alu_tb.v -section_id alu_tb
+set_global_assignment -name EDA_TEST_BENCH_NAME alu32_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id alu32_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME alu32_tb -section_id alu32_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE ../../RV64I/ALU/alu32_tb.v -section_id alu32_tb
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
