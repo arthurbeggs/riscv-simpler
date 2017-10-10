@@ -1,0 +1,781 @@
+From,To,Assignment Name,Direction,Value,I/O Standard,VREF Group,Reserved,I/O Bank
+,AUD_ADCDAT,Location,Input,PIN_D2,3.3-V LVTTL,B1_N0,,1
+,AUD_ADCLRCK,Location,Bidir,PIN_C2,3.3-V LVTTL,B1_N0,,1
+,AUD_BCLK,Location,Bidir,PIN_F2,3.3-V LVTTL,B1_N1,,1
+,AUD_DACDAT,Location,Output,PIN_D1,3.3-V LVTTL,B1_N0,,1
+,AUD_DACLRCK,Location,Bidir,PIN_E3,3.3-V LVTTL,B1_N0,,1
+,AUD_XCK,Location,Output,PIN_E1,3.3-V LVTTL,B1_N0,,1
+,CLOCK2_50,Location,Input,PIN_AG14,3.3-V LVTTL,B3_N0,,3
+,CLOCK3_50,Location,Input,PIN_AG15,3.3-V LVTTL,B4_N2,,4
+,CLOCK_50,Location,Input,PIN_Y2,3.3-V LVTTL,B2_N0,,2
+,DRAM_ADDR[12],Location,Output,PIN_Y7,3.3-V LVTTL,B2_N2,,2
+,DRAM_ADDR[11],Location,Output,PIN_AA5,3.3-V LVTTL,B2_N2,,2
+,DRAM_ADDR[10],Location,Output,PIN_R5,3.3-V LVTTL,B2_N0,,2
+,DRAM_ADDR[9],Location,Output,PIN_Y6,3.3-V LVTTL,B2_N2,,2
+,DRAM_ADDR[8],Location,Output,PIN_Y5,3.3-V LVTTL,B2_N2,,2
+,DRAM_ADDR[7],Location,Output,PIN_AA7,3.3-V LVTTL,B2_N2,,2
+,DRAM_ADDR[6],Location,Output,PIN_W7,3.3-V LVTTL,B2_N2,,2
+,DRAM_ADDR[5],Location,Output,PIN_W8,3.3-V LVTTL,B2_N2,,2
+,DRAM_ADDR[4],Location,Output,PIN_V5,3.3-V LVTTL,B2_N1,,2
+,DRAM_ADDR[3],Location,Output,PIN_P1,3.3-V LVTTL,B1_N2,,1
+,DRAM_ADDR[2],Location,Output,PIN_U8,3.3-V LVTTL,B2_N1,,2
+,DRAM_ADDR[1],Location,Output,PIN_V8,3.3-V LVTTL,B2_N1,,2
+,DRAM_ADDR[0],Location,Output,PIN_R6,3.3-V LVTTL,B2_N0,,2
+,DRAM_BA[1],Location,Output,PIN_R4,3.3-V LVTTL,B2_N0,,2
+,DRAM_BA[0],Location,Output,PIN_U7,3.3-V LVTTL,B2_N1,,2
+,DRAM_CAS_N,Location,Output,PIN_V7,3.3-V LVTTL,B2_N1,,2
+,DRAM_CKE,Location,Output,PIN_AA6,3.3-V LVTTL,B2_N2,,2
+,DRAM_CLK,Location,Output,PIN_AE5,3.3-V LVTTL,B3_N2,,3
+,DRAM_CS_N,Location,Output,PIN_T4,3.3-V LVTTL,B2_N0,,2
+,DRAM_DQ[31],Location,Bidir,PIN_U1,3.3-V LVTTL,B2_N0,,2
+,DRAM_DQ[30],Location,Bidir,PIN_U4,3.3-V LVTTL,B2_N0,,2
+,DRAM_DQ[29],Location,Bidir,PIN_T3,3.3-V LVTTL,B2_N0,,2
+,DRAM_DQ[28],Location,Bidir,PIN_R3,3.3-V LVTTL,B2_N0,,2
+,DRAM_DQ[27],Location,Bidir,PIN_R2,3.3-V LVTTL,B2_N0,,2
+,DRAM_DQ[26],Location,Bidir,PIN_R1,3.3-V LVTTL,B2_N0,,2
+,DRAM_DQ[25],Location,Bidir,PIN_R7,3.3-V LVTTL,B2_N0,,2
+,DRAM_DQ[24],Location,Bidir,PIN_U5,3.3-V LVTTL,B2_N1,,2
+,DRAM_DQ[23],Location,Bidir,PIN_L7,3.3-V LVTTL,B1_N2,,1
+,DRAM_DQ[22],Location,Bidir,PIN_M7,3.3-V LVTTL,B1_N2,,1
+,DRAM_DQ[21],Location,Bidir,PIN_M4,3.3-V LVTTL,B1_N1,,1
+,DRAM_DQ[20],Location,Bidir,PIN_N4,3.3-V LVTTL,B1_N2,,1
+,DRAM_DQ[19],Location,Bidir,PIN_N3,3.3-V LVTTL,B1_N2,,1
+,DRAM_DQ[18],Location,Bidir,PIN_P2,3.3-V LVTTL,B1_N2,,1
+,DRAM_DQ[17],Location,Bidir,PIN_L8,3.3-V LVTTL,B1_N2,,1
+,DRAM_DQ[16],Location,Bidir,PIN_M8,3.3-V LVTTL,B1_N2,,1
+,DRAM_DQ[15],Location,Bidir,PIN_AC2,3.3-V LVTTL,B2_N1,,2
+,DRAM_DQ[14],Location,Bidir,PIN_AB3,3.3-V LVTTL,B2_N1,,2
+,DRAM_DQ[13],Location,Bidir,PIN_AC1,3.3-V LVTTL,B2_N1,,2
+,DRAM_DQ[12],Location,Bidir,PIN_AB2,3.3-V LVTTL,B2_N0,,2
+,DRAM_DQ[11],Location,Bidir,PIN_AA3,3.3-V LVTTL,B2_N1,,2
+,DRAM_DQ[10],Location,Bidir,PIN_AB1,3.3-V LVTTL,B2_N0,,2
+,DRAM_DQ[9],Location,Bidir,PIN_Y4,3.3-V LVTTL,B2_N1,,2
+,DRAM_DQ[8],Location,Bidir,PIN_Y3,3.3-V LVTTL,B2_N1,,2
+,DRAM_DQ[7],Location,Bidir,PIN_U3,3.3-V LVTTL,B2_N0,,2
+,DRAM_DQ[6],Location,Bidir,PIN_V1,3.3-V LVTTL,B2_N0,,2
+,DRAM_DQ[5],Location,Bidir,PIN_V2,3.3-V LVTTL,B2_N0,,2
+,DRAM_DQ[4],Location,Bidir,PIN_V3,3.3-V LVTTL,B2_N0,,2
+,DRAM_DQ[3],Location,Bidir,PIN_W1,3.3-V LVTTL,B2_N1,,2
+,DRAM_DQ[2],Location,Bidir,PIN_V4,3.3-V LVTTL,B2_N0,,2
+,DRAM_DQ[1],Location,Bidir,PIN_W2,3.3-V LVTTL,B2_N0,,2
+,DRAM_DQ[0],Location,Bidir,PIN_W3,3.3-V LVTTL,B2_N2,,2
+,DRAM_DQM[3],Location,Output,PIN_N8,3.3-V LVTTL,B1_N2,,1
+,DRAM_DQM[2],Location,Output,PIN_K8,3.3-V LVTTL,B1_N2,,1
+,DRAM_DQM[1],Location,Output,PIN_W4,3.3-V LVTTL,B2_N2,,2
+,DRAM_DQM[0],Location,Output,PIN_U2,3.3-V LVTTL,B2_N0,,2
+,DRAM_RAS_N,Location,Output,PIN_U6,3.3-V LVTTL,B2_N1,,2
+,DRAM_WE_N,Location,Output,PIN_V6,3.3-V LVTTL,B2_N1,,2
+,EEP_I2C_SCLK,Location,Output,PIN_D14,3.3-V LVTTL,B8_N0,,8
+,EEP_I2C_SDAT,Location,Bidir,PIN_E14,3.3-V LVTTL,B8_N0,,8
+,ENET0_GTX_CLK,Location,Output,PIN_A17,2.5 V,B7_N2,,7
+,ENET0_INT_N,Location,Input,PIN_A21,2.5 V,B7_N1,,7
+,ENET0_LINK100,Location,Input,PIN_C14,3.3-V LVTTL,B8_N0,,8
+,ENET0_MDC,Location,Output,PIN_C20,2.5 V,B7_N1,,7
+,ENET0_MDIO,Location,Bidir,PIN_B21,2.5 V,B7_N1,,7
+,ENET0_RST_N,Location,Output,PIN_C19,2.5 V,B7_N1,,7
+,ENET0_RX_CLK,Location,Input,PIN_A15,2.5 V,B7_N2,,7
+,ENET0_RX_COL,Location,Input,PIN_E15,2.5 V,B7_N2,,7
+,ENET0_RX_CRS,Location,Input,PIN_D15,2.5 V,B7_N2,,7
+,ENET0_RX_DATA[3],Location,Input,PIN_C15,2.5 V,B7_N2,,7
+,ENET0_RX_DATA[2],Location,Input,PIN_D17,2.5 V,B7_N1,,7
+,ENET0_RX_DATA[1],Location,Input,PIN_D16,2.5 V,B7_N2,,7
+,ENET0_RX_DATA[0],Location,Input,PIN_C16,2.5 V,B7_N2,,7
+,ENET0_RX_DV,Location,Input,PIN_C17,2.5 V,B7_N1,,7
+,ENET0_RX_ER,Location,Input,PIN_D18,2.5 V,B7_N1,,7
+,ENET0_TX_CLK,Location,Input,PIN_B17,2.5 V,B7_N2,,7
+,ENET0_TX_DATA[3],Location,Output,PIN_B19,2.5 V,B7_N1,,7
+,ENET0_TX_DATA[2],Location,Output,PIN_A19,2.5 V,B7_N1,,7
+,ENET0_TX_DATA[1],Location,Output,PIN_D19,2.5 V,B7_N1,,7
+,ENET0_TX_DATA[0],Location,Output,PIN_C18,2.5 V,B7_N1,,7
+,ENET0_TX_EN,Location,Output,PIN_A18,2.5 V,B7_N1,,7
+,ENET0_TX_ER,Location,Output,PIN_B18,2.5 V,B7_N1,,7
+,ENET1_GTX_CLK,Location,Output,PIN_C23,2.5 V,B7_N0,,7
+,ENET1_INT_N,Location,Input,PIN_D24,2.5 V,B7_N0,,7
+,ENET1_LINK100,Location,Input,PIN_D13,3.3-V LVTTL,B8_N0,,8
+,ENET1_MDC,Location,Output,PIN_D23,2.5 V,B7_N0,,7
+,ENET1_MDIO,Location,Bidir,PIN_D25,2.5 V,B7_N0,,7
+,ENET1_RST_N,Location,Output,PIN_D22,2.5 V,B7_N0,,7
+,ENET1_RX_CLK,Location,Input,PIN_B15,2.5 V,B7_N2,,7
+,ENET1_RX_COL,Location,Input,PIN_B22,2.5 V,B7_N1,,7
+,ENET1_RX_CRS,Location,Input,PIN_D20,2.5 V,B7_N1,,7
+,ENET1_RX_DATA[3],Location,Input,PIN_D21,2.5 V,B7_N0,,7
+,ENET1_RX_DATA[2],Location,Input,PIN_A23,2.5 V,B7_N0,,7
+,ENET1_RX_DATA[1],Location,Input,PIN_C21,2.5 V,B7_N0,,7
+,ENET1_RX_DATA[0],Location,Input,PIN_B23,2.5 V,B7_N0,,7
+,ENET1_RX_DV,Location,Input,PIN_A22,2.5 V,B7_N1,,7
+,ENET1_RX_ER,Location,Input,PIN_C24,2.5 V,B7_N0,,7
+,ENET1_TX_CLK,Location,Input,PIN_C22,2.5 V,B7_N0,,7
+,ENET1_TX_DATA[3],Location,Output,PIN_C26,2.5 V,B7_N0,,7
+,ENET1_TX_DATA[2],Location,Output,PIN_B26,2.5 V,B7_N0,,7
+,ENET1_TX_DATA[1],Location,Output,PIN_A26,2.5 V,B7_N0,,7
+,ENET1_TX_DATA[0],Location,Output,PIN_C25,2.5 V,B7_N0,,7
+,ENET1_TX_EN,Location,Output,PIN_B25,2.5 V,B7_N0,,7
+,ENET1_TX_ER,Location,Output,PIN_A25,2.5 V,B7_N0,,7
+,ENETCLK_25,Location,Input,PIN_A14,3.3-V LVTTL,B8_N0,,8
+,EX_IO[6],Location,Bidir,PIN_D9,3.3-V LVTTL,B8_N1,,8
+,EX_IO[5],Location,Bidir,PIN_E10,3.3-V LVTTL,B8_N1,,8
+,EX_IO[4],Location,Bidir,PIN_F14,3.3-V LVTTL,B8_N0,,8
+,EX_IO[3],Location,Bidir,PIN_H14,3.3-V LVTTL,B8_N0,,8
+,EX_IO[2],Location,Bidir,PIN_H13,3.3-V LVTTL,B8_N0,,8
+,EX_IO[1],Location,Bidir,PIN_J14,3.3-V LVTTL,B8_N0,,8
+,EX_IO[0],Location,Bidir,PIN_J10,3.3-V LVTTL,B8_N1,,8
+,FL_ADDR[22],Location,Output,PIN_AD11,3.3-V LVTTL,B3_N0,,3
+,FL_ADDR[21],Location,Output,PIN_AD10,3.3-V LVTTL,B3_N2,,3
+,FL_ADDR[20],Location,Output,PIN_AE10,3.3-V LVTTL,B3_N1,,3
+,FL_ADDR[19],Location,Output,PIN_AD12,3.3-V LVTTL,B3_N0,,3
+,FL_ADDR[18],Location,Output,PIN_AC12,3.3-V LVTTL,B3_N0,,3
+,FL_ADDR[17],Location,Output,PIN_AH12,3.3-V LVTTL,B3_N0,,3
+,FL_ADDR[16],Location,Output,PIN_AA8,3.3-V LVTTL,B3_N1,,3
+,FL_ADDR[15],Location,Output,PIN_Y10,3.3-V LVTTL,B3_N2,,3
+,FL_ADDR[14],Location,Output,PIN_AC8,3.3-V LVTTL,B3_N1,,3
+,FL_ADDR[13],Location,Output,PIN_AD8,3.3-V LVTTL,B3_N2,,3
+,FL_ADDR[12],Location,Output,PIN_AA10,3.3-V LVTTL,B3_N1,,3
+,FL_ADDR[11],Location,Output,PIN_AF9,3.3-V LVTTL,B3_N1,,3
+,FL_ADDR[10],Location,Output,PIN_AE9,3.3-V LVTTL,B3_N1,,3
+,FL_ADDR[9],Location,Output,PIN_AB10,3.3-V LVTTL,B3_N1,,3
+,FL_ADDR[8],Location,Output,PIN_AB12,3.3-V LVTTL,B3_N0,,3
+,FL_ADDR[7],Location,Output,PIN_AB13,3.3-V LVTTL,B3_N0,,3
+,FL_ADDR[6],Location,Output,PIN_AA12,3.3-V LVTTL,B3_N0,,3
+,FL_ADDR[5],Location,Output,PIN_AA13,3.3-V LVTTL,B3_N0,,3
+,FL_ADDR[4],Location,Output,PIN_Y12,3.3-V LVTTL,B3_N0,,3
+,FL_ADDR[3],Location,Output,PIN_Y14,3.3-V LVTTL,B3_N0,,3
+,FL_ADDR[2],Location,Output,PIN_Y13,3.3-V LVTTL,B3_N0,,3
+,FL_ADDR[1],Location,Output,PIN_AH7,3.3-V LVTTL,B3_N1,,3
+,FL_ADDR[0],Location,Output,PIN_AG12,3.3-V LVTTL,B3_N0,,3
+,FL_CE_N,Location,Output,PIN_AG7,3.3-V LVTTL,B3_N2,,3
+,FL_DQ[7],Location,Bidir,PIN_AF12,3.3-V LVTTL,B3_N1,,3
+,FL_DQ[6],Location,Bidir,PIN_AH11,3.3-V LVTTL,B3_N0,,3
+,FL_DQ[5],Location,Bidir,PIN_AG11,3.3-V LVTTL,B3_N0,,3
+,FL_DQ[4],Location,Bidir,PIN_AF11,3.3-V LVTTL,B3_N1,,3
+,FL_DQ[3],Location,Bidir,PIN_AH10,3.3-V LVTTL,B3_N1,,3
+,FL_DQ[2],Location,Bidir,PIN_AG10,3.3-V LVTTL,B3_N1,,3
+,FL_DQ[1],Location,Bidir,PIN_AF10,3.3-V LVTTL,B3_N1,,3
+,FL_DQ[0],Location,Bidir,PIN_AH8,3.3-V LVTTL,B3_N1,,3
+,FL_OE_N,Location,Output,PIN_AG8,3.3-V LVTTL,B3_N1,,3
+,FL_RST_N,Location,Output,PIN_AE11,3.3-V LVTTL,B3_N1,,3
+,FL_RY,Location,Input,PIN_Y1,3.3-V LVTTL,B2_N0,,2
+,FL_WE_N,Location,Output,PIN_AC10,3.3-V LVTTL,B3_N0,,3
+,FL_WP_N,Location,Output,PIN_AE12,3.3-V LVTTL,B3_N1,,3
+,GPIO[35],Location,Bidir,PIN_AG26,3.3-V LVTTL,B4_N0,,4
+,GPIO[34],Location,Bidir,PIN_AH23,3.3-V LVTTL,B4_N1,,4
+,GPIO[33],Location,Bidir,PIN_AH26,3.3-V LVTTL,B4_N0,,4
+,GPIO[32],Location,Bidir,PIN_AF20,3.3-V LVTTL,B4_N1,,4
+,GPIO[31],Location,Bidir,PIN_AG23,3.3-V LVTTL,B4_N1,,4
+,GPIO[30],Location,Bidir,PIN_AE20,3.3-V LVTTL,B4_N1,,4
+,GPIO[29],Location,Bidir,PIN_AF26,3.3-V LVTTL,B4_N1,,4
+,GPIO[28],Location,Bidir,PIN_AH22,3.3-V LVTTL,B4_N1,,4
+,GPIO[27],Location,Bidir,PIN_AE24,3.3-V LVTTL,B4_N0,,4
+,GPIO[26],Location,Bidir,PIN_AG22,3.3-V LVTTL,B4_N1,,4
+,GPIO[25],Location,Bidir,PIN_AE25,3.3-V LVTTL,B4_N1,,4
+,GPIO[24],Location,Bidir,PIN_AH25,3.3-V LVTTL,B4_N1,,4
+,GPIO[23],Location,Bidir,PIN_AD25,3.3-V LVTTL,B4_N0,,4
+,GPIO[22],Location,Bidir,PIN_AG25,3.3-V LVTTL,B4_N1,,4
+,GPIO[21],Location,Bidir,PIN_AD22,3.3-V LVTTL,B4_N0,,4
+,GPIO[20],Location,Bidir,PIN_AF22,3.3-V LVTTL,B4_N0,,4
+,GPIO[19],Location,Bidir,PIN_AF21,3.3-V LVTTL,B4_N1,,4
+,GPIO[18],Location,Bidir,PIN_AE22,3.3-V LVTTL,B4_N0,,4
+,GPIO[17],Location,Bidir,PIN_AC22,3.3-V LVTTL,B4_N0,,4
+,GPIO[16],Location,Bidir,PIN_AF25,3.3-V LVTTL,B4_N1,,4
+,GPIO[15],Location,Bidir,PIN_AE21,3.3-V LVTTL,B4_N1,,4
+,GPIO[14],Location,Bidir,PIN_AF24,3.3-V LVTTL,B4_N1,,4
+,GPIO[13],Location,Bidir,PIN_AF15,3.3-V LVTTL,B4_N2,,4
+,GPIO[12],Location,Bidir,PIN_AD19,3.3-V LVTTL,B4_N0,,4
+,GPIO[11],Location,Bidir,PIN_AF16,3.3-V LVTTL,B4_N2,,4
+,GPIO[10],Location,Bidir,PIN_AC19,3.3-V LVTTL,B4_N0,,4
+,GPIO[9],Location,Bidir,PIN_AE15,3.3-V LVTTL,B4_N2,,4
+,GPIO[8],Location,Bidir,PIN_AD15,3.3-V LVTTL,B4_N2,,4
+,GPIO[7],Location,Bidir,PIN_AE16,3.3-V LVTTL,B4_N2,,4
+,GPIO[6],Location,Bidir,PIN_AD21,3.3-V LVTTL,B4_N0,,4
+,GPIO[5],Location,Bidir,PIN_Y16,3.3-V LVTTL,B4_N0,,4
+,GPIO[4],Location,Bidir,PIN_AC21,3.3-V LVTTL,B4_N0,,4
+,GPIO[3],Location,Bidir,PIN_Y17,3.3-V LVTTL,B4_N0,,4
+,GPIO[2],Location,Bidir,PIN_AB21,3.3-V LVTTL,B4_N0,,4
+,GPIO[1],Location,Bidir,PIN_AC15,3.3-V LVTTL,B4_N2,,4
+,GPIO[0],Location,Bidir,PIN_AB22,3.3-V LVTTL,B4_N0,,4
+,HEX0[6],Location,Output,PIN_H22,2.5 V,B6_N0,,6
+,HEX0[5],Location,Output,PIN_J22,2.5 V,B6_N0,,6
+,HEX0[4],Location,Output,PIN_L25,2.5 V,B6_N1,,6
+,HEX0[3],Location,Output,PIN_L26,2.5 V,B6_N1,,6
+,HEX0[2],Location,Output,PIN_E17,2.5 V,B7_N2,,7
+,HEX0[1],Location,Output,PIN_F22,2.5 V,B7_N0,,7
+,HEX0[0],Location,Output,PIN_G18,2.5 V,B7_N2,,7
+,HEX1[6],Location,Output,PIN_U24,2.5 V,B5_N0,,5
+,HEX1[5],Location,Output,PIN_U23,2.5 V,B5_N1,,5
+,HEX1[4],Location,Output,PIN_W25,2.5 V,B5_N1,,5
+,HEX1[3],Location,Output,PIN_W22,2.5 V,B5_N0,,5
+,HEX1[2],Location,Output,PIN_W21,2.5 V,B5_N1,,5
+,HEX1[1],Location,Output,PIN_Y22,2.5 V,B5_N0,,5
+,HEX1[0],Location,Output,PIN_M24,2.5 V,B6_N2,,6
+,HEX2[6],Location,Output,PIN_W28,2.5 V,B5_N1,,5
+,HEX2[5],Location,Output,PIN_W27,2.5 V,B5_N1,,5
+,HEX2[4],Location,Output,PIN_Y26,2.5 V,B5_N1,,5
+,HEX2[3],Location,Output,PIN_W26,2.5 V,B5_N1,,5
+,HEX2[2],Location,Output,PIN_Y25,2.5 V,B5_N1,,5
+,HEX2[1],Location,Output,PIN_AA26,2.5 V,B5_N1,,5
+,HEX2[0],Location,Output,PIN_AA25,2.5 V,B5_N1,,5
+,HEX3[6],Location,Output,PIN_Y19,3.3-V LVTTL,B4_N0,,4
+,HEX3[5],Location,Output,PIN_AF23,3.3-V LVTTL,B4_N0,,4
+,HEX3[4],Location,Output,PIN_AD24,3.3-V LVTTL,B4_N0,,4
+,HEX3[3],Location,Output,PIN_AA21,3.3-V LVTTL,B4_N0,,4
+,HEX3[2],Location,Output,PIN_AB20,3.3-V LVTTL,B4_N0,,4
+,HEX3[1],Location,Output,PIN_U21,2.5 V,B5_N0,,5
+,HEX3[0],Location,Output,PIN_V21,2.5 V,B5_N1,,5
+,HEX4[6],Location,Output,PIN_AE18,3.3-V LVTTL,B4_N2,,4
+,HEX4[5],Location,Output,PIN_AF19,3.3-V LVTTL,B4_N1,,4
+,HEX4[4],Location,Output,PIN_AE19,3.3-V LVTTL,B4_N1,,4
+,HEX4[3],Location,Output,PIN_AH21,3.3-V LVTTL,B4_N2,,4
+,HEX4[2],Location,Output,PIN_AG21,3.3-V LVTTL,B4_N2,,4
+,HEX4[1],Location,Output,PIN_AA19,3.3-V LVTTL,B4_N0,,4
+,HEX4[0],Location,Output,PIN_AB19,3.3-V LVTTL,B4_N0,,4
+,HEX5[6],Location,Output,PIN_AH18,3.3-V LVTTL,B4_N2,,4
+,HEX5[5],Location,Output,PIN_AF18,3.3-V LVTTL,B4_N1,,4
+,HEX5[4],Location,Output,PIN_AG19,3.3-V LVTTL,B4_N2,,4
+,HEX5[3],Location,Output,PIN_AH19,3.3-V LVTTL,B4_N2,,4
+,HEX5[2],Location,Output,PIN_AB18,3.3-V LVTTL,B4_N0,,4
+,HEX5[1],Location,Output,PIN_AC18,3.3-V LVTTL,B4_N1,,4
+,HEX5[0],Location,Output,PIN_AD18,3.3-V LVTTL,B4_N1,,4
+,HEX6[6],Location,Output,PIN_AC17,3.3-V LVTTL,B4_N2,,4
+,HEX6[5],Location,Output,PIN_AA15,3.3-V LVTTL,B4_N2,,4
+,HEX6[4],Location,Output,PIN_AB15,3.3-V LVTTL,B4_N2,,4
+,HEX6[3],Location,Output,PIN_AB17,3.3-V LVTTL,B4_N1,,4
+,HEX6[2],Location,Output,PIN_AA16,3.3-V LVTTL,B4_N2,,4
+,HEX6[1],Location,Output,PIN_AB16,3.3-V LVTTL,B4_N2,,4
+,HEX6[0],Location,Output,PIN_AA17,3.3-V LVTTL,B4_N1,,4
+,HEX7[6],Location,Output,PIN_AA14,3.3-V LVTTL,B3_N0,,3
+,HEX7[5],Location,Output,PIN_AG18,3.3-V LVTTL,B4_N2,,4
+,HEX7[4],Location,Output,PIN_AF17,3.3-V LVTTL,B4_N2,,4
+,HEX7[3],Location,Output,PIN_AH17,3.3-V LVTTL,B4_N2,,4
+,HEX7[2],Location,Output,PIN_AG17,3.3-V LVTTL,B4_N2,,4
+,HEX7[1],Location,Output,PIN_AE17,3.3-V LVTTL,B4_N2,,4
+,HEX7[0],Location,Output,PIN_AD17,3.3-V LVTTL,B4_N2,,4
+,HSMC_CLKIN0,Location,Input,PIN_AH15,3.0-V LVTTL,B4_N2,,4
+,HSMC_CLKIN_P1,Location,Input,PIN_J27,LVDS,B6_N2,,6
+,HSMC_CLKIN_P2,Location,Input,PIN_Y27,LVDS,B5_N0,,5
+,HSMC_CLKOUT0,Location,Output,PIN_AD28,2.5 V,B5_N2,,5
+,HSMC_CLKOUT_P1,Location,Output,PIN_G23,LVDS,B6_N0,,6
+,HSMC_CLKOUT_P2,Location,Output,PIN_V23,LVDS,B5_N1,,5
+,HSMC_D[3],Location,Bidir,PIN_AF27,2.5 V,B5_N2,,5
+,HSMC_D[2],Location,Bidir,PIN_AE27,2.5 V,B5_N2,,5
+,HSMC_D[1],Location,Bidir,PIN_AE28,2.5 V,B5_N2,,5
+,HSMC_D[0],Location,Bidir,PIN_AE26,2.5 V,B5_N2,,5
+,HSMC_RX_D_P[16],Location,Input,PIN_T21,LVDS,B5_N0,,5
+,HSMC_RX_D_P[15],Location,Input,PIN_R22,LVDS,B5_N0,,5
+,HSMC_RX_D_P[14],Location,Input,PIN_P21,LVDS,B5_N0,,5
+,HSMC_RX_D_P[13],Location,Input,PIN_P25,LVDS,B6_N2,,6
+,HSMC_RX_D_P[12],Location,Input,PIN_N25,LVDS,B6_N2,,6
+,HSMC_RX_D_P[11],Location,Input,PIN_L21,LVDS,B6_N0,,6
+,HSMC_RX_D_P[10],Location,Input,PIN_U25,LVDS,B5_N0,,5
+,HSMC_RX_D_P[9],Location,Input,PIN_T25,LVDS,B5_N0,,5
+,HSMC_RX_D_P[8],Location,Input,PIN_R25,LVDS,B5_N0,,5
+,HSMC_RX_D_P[7],Location,Input,PIN_M25,LVDS,B6_N2,,6
+,HSMC_RX_D_P[6],Location,Input,PIN_L23,LVDS,B6_N1,,6
+,HSMC_RX_D_P[5],Location,Input,PIN_K25,LVDS,B6_N1,,6
+,HSMC_RX_D_P[4],Location,Input,PIN_H25,LVDS,B6_N1,,6
+,HSMC_RX_D_P[3],Location,Input,PIN_G25,LVDS,B6_N0,,6
+,HSMC_RX_D_P[2],Location,Input,PIN_F26,LVDS,B6_N1,,6
+,HSMC_RX_D_P[1],Location,Input,PIN_D26,LVDS,B6_N0,,6
+,HSMC_RX_D_P[0],Location,Input,PIN_F24,LVDS,B6_N0,,6
+,HSMC_TX_D_P[16],Location,Output,PIN_U22,LVDS,B5_N0,,5
+,HSMC_TX_D_P[15],Location,Output,PIN_V27,LVDS,B5_N1,,5
+,HSMC_TX_D_P[14],Location,Output,PIN_U27,LVDS,B5_N0,,5
+,HSMC_TX_D_P[13],Location,Output,PIN_R27,LVDS,B5_N0,,5
+,HSMC_TX_D_P[12],Location,Output,PIN_V25,LVDS,B5_N1,,5
+,HSMC_TX_D_P[11],Location,Output,PIN_L27,LVDS,B6_N2,,6
+,HSMC_TX_D_P[10],Location,Output,PIN_J25,LVDS,B6_N1,,6
+,HSMC_TX_D_P[9],Location,Output,PIN_P27,LVDS,B6_N2,,6
+,HSMC_TX_D_P[8],Location,Output,PIN_J23,LVDS,B6_N0,,6
+,HSMC_TX_D_P[7],Location,Output,PIN_H23,LVDS,B6_N0,,6
+,HSMC_TX_D_P[6],Location,Output,PIN_K21,LVDS,B6_N0,,6
+,HSMC_TX_D_P[5],Location,Output,PIN_M27,LVDS,B6_N2,,6
+,HSMC_TX_D_P[4],Location,Output,PIN_K27,LVDS,B6_N1,,6
+,HSMC_TX_D_P[3],Location,Output,PIN_G27,LVDS,B6_N1,,6
+,HSMC_TX_D_P[2],Location,Output,PIN_F27,LVDS,B6_N1,,6
+,HSMC_TX_D_P[1],Location,Output,PIN_E27,LVDS,B6_N1,,6
+,HSMC_TX_D_P[0],Location,Output,PIN_D27,LVDS,B6_N0,,6
+,I2C_SCLK,Location,Output,PIN_B7,3.3-V LVTTL,B8_N1,,8
+,I2C_SDAT,Location,Bidir,PIN_A8,3.3-V LVTTL,B8_N1,,8
+,IRDA_RXD,Location,Input,PIN_Y15,3.3-V LVTTL,B3_N0,,3
+,KEY[3],Location,Input,PIN_R24,2.5 V,B5_N0,,5
+,KEY[2],Location,Input,PIN_N21,2.5 V,B6_N2,,6
+,KEY[1],Location,Input,PIN_M21,2.5 V,B6_N1,,6
+,KEY[0],Location,Input,PIN_M23,2.5 V,B6_N2,,6
+,LCD_BLON,Location,Output,PIN_L6,3.3-V LVTTL,B1_N2,,1
+,LCD_DATA[7],Location,Bidir,PIN_M5,3.3-V LVTTL,B1_N2,,1
+,LCD_DATA[6],Location,Bidir,PIN_M3,3.3-V LVTTL,B1_N1,,1
+,LCD_DATA[5],Location,Bidir,PIN_K2,3.3-V LVTTL,B1_N1,,1
+,LCD_DATA[4],Location,Bidir,PIN_K1,3.3-V LVTTL,B1_N1,,1
+,LCD_DATA[3],Location,Bidir,PIN_K7,3.3-V LVTTL,B1_N1,,1
+,LCD_DATA[2],Location,Bidir,PIN_L2,3.3-V LVTTL,B1_N2,,1
+,LCD_DATA[1],Location,Bidir,PIN_L1,3.3-V LVTTL,B1_N2,,1
+,LCD_DATA[0],Location,Bidir,PIN_L3,3.3-V LVTTL,B1_N1,,1
+,LCD_EN,Location,Output,PIN_L4,3.3-V LVTTL,B1_N1,,1
+,LCD_ON,Location,Output,PIN_L5,3.3-V LVTTL,B1_N1,,1
+,LCD_RS,Location,Output,PIN_M2,3.3-V LVTTL,B1_N2,,1
+,LCD_RW,Location,Output,PIN_M1,3.3-V LVTTL,B1_N2,,1
+,LEDG[8],Location,Output,PIN_F17,2.5 V,B7_N2,,7
+,LEDG[7],Location,Output,PIN_G21,2.5 V,B7_N1,,7
+,LEDG[6],Location,Output,PIN_G22,2.5 V,B7_N2,,7
+,LEDG[5],Location,Output,PIN_G20,2.5 V,B7_N1,,7
+,LEDG[4],Location,Output,PIN_H21,2.5 V,B7_N2,,7
+,LEDG[3],Location,Output,PIN_E24,2.5 V,B7_N1,,7
+,LEDG[2],Location,Output,PIN_E25,2.5 V,B7_N1,,7
+,LEDG[1],Location,Output,PIN_E22,2.5 V,B7_N0,,7
+,LEDG[0],Location,Output,PIN_E21,2.5 V,B7_N0,,7
+,LEDR[17],Location,Output,PIN_H15,2.5 V,B7_N2,,7
+,LEDR[16],Location,Output,PIN_G16,2.5 V,B7_N2,,7
+,LEDR[15],Location,Output,PIN_G15,2.5 V,B7_N2,,7
+,LEDR[14],Location,Output,PIN_F15,2.5 V,B7_N2,,7
+,LEDR[13],Location,Output,PIN_H17,2.5 V,B7_N2,,7
+,LEDR[12],Location,Output,PIN_J16,2.5 V,B7_N2,,7
+,LEDR[11],Location,Output,PIN_H16,2.5 V,B7_N2,,7
+,LEDR[10],Location,Output,PIN_J15,2.5 V,B7_N2,,7
+,LEDR[9],Location,Output,PIN_G17,2.5 V,B7_N1,,7
+,LEDR[8],Location,Output,PIN_J17,2.5 V,B7_N2,,7
+,LEDR[7],Location,Output,PIN_H19,2.5 V,B7_N2,,7
+,LEDR[6],Location,Output,PIN_J19,2.5 V,B7_N2,,7
+,LEDR[5],Location,Output,PIN_E18,2.5 V,B7_N1,,7
+,LEDR[4],Location,Output,PIN_F18,2.5 V,B7_N1,,7
+,LEDR[3],Location,Output,PIN_F21,2.5 V,B7_N0,,7
+,LEDR[2],Location,Output,PIN_E19,2.5 V,B7_N0,,7
+,LEDR[1],Location,Output,PIN_F19,2.5 V,B7_N0,,7
+,LEDR[0],Location,Output,PIN_G19,2.5 V,B7_N2,,7
+,OTG_ADDR[1],Location,Output,PIN_C3,3.3-V LVTTL,B8_N2,,8
+,OTG_ADDR[0],Location,Output,PIN_H7,3.3-V LVTTL,B1_N0,,1
+,OTG_CS_N,Location,Output,PIN_A3,3.3-V LVTTL,B8_N2,,8
+,OTG_DACK_N[1],Location,Output,PIN_D4,3.3-V LVTTL,B8_N2,,8
+,OTG_DACK_N[0],Location,Output,PIN_C4,3.3-V LVTTL,B8_N2,,8
+,OTG_DATA[15],Location,Bidir,PIN_G4,3.3-V LVTTL,B1_N0,,1
+,OTG_DATA[14],Location,Bidir,PIN_F3,3.3-V LVTTL,B1_N0,,1
+,OTG_DATA[13],Location,Bidir,PIN_F1,3.3-V LVTTL,B1_N1,,1
+,OTG_DATA[12],Location,Bidir,PIN_G3,3.3-V LVTTL,B1_N0,,1
+,OTG_DATA[11],Location,Bidir,PIN_G2,3.3-V LVTTL,B1_N1,,1
+,OTG_DATA[10],Location,Bidir,PIN_G1,3.3-V LVTTL,B1_N1,,1
+,OTG_DATA[9],Location,Bidir,PIN_H4,3.3-V LVTTL,B1_N0,,1
+,OTG_DATA[8],Location,Bidir,PIN_H3,3.3-V LVTTL,B1_N0,,1
+,OTG_DATA[7],Location,Bidir,PIN_H6,3.3-V LVTTL,B1_N0,,1
+,OTG_DATA[6],Location,Bidir,PIN_J7,3.3-V LVTTL,B1_N1,,1
+,OTG_DATA[5],Location,Bidir,PIN_J3,3.3-V LVTTL,B1_N1,,1
+,OTG_DATA[4],Location,Bidir,PIN_J4,3.3-V LVTTL,B1_N1,,1
+,OTG_DATA[3],Location,Bidir,PIN_K3,3.3-V LVTTL,B1_N1,,1
+,OTG_DATA[2],Location,Bidir,PIN_J5,3.3-V LVTTL,B1_N1,,1
+,OTG_DATA[1],Location,Bidir,PIN_K4,3.3-V LVTTL,B1_N1,,1
+,OTG_DATA[0],Location,Bidir,PIN_J6,3.3-V LVTTL,B1_N1,,1
+,OTG_DREQ[1],Location,Input,PIN_B4,3.3-V LVTTL,B8_N2,,8
+,OTG_DREQ[0],Location,Input,PIN_J1,3.3-V LVTTL,B1_N2,,1
+,OTG_FSPEED,Location,Bidir,PIN_C6,3.3-V LVTTL,B8_N2,,8
+,OTG_INT[1],Location,Input,PIN_D5,3.3-V LVTTL,B8_N2,,8
+,OTG_INT[0],Location,Input,PIN_A6,3.3-V LVTTL,B8_N1,,8
+,OTG_LSPEED,Location,Bidir,PIN_B6,3.3-V LVTTL,B8_N1,,8
+,OTG_RD_N,Location,Output,PIN_B3,3.3-V LVTTL,B8_N2,,8
+,OTG_RST_N,Location,Output,PIN_C5,3.3-V LVTTL,B8_N2,,8
+,OTG_WR_N,Location,Output,PIN_A4,3.3-V LVTTL,B8_N2,,8
+,PS2_CLK,Location,Bidir,PIN_G6,3.3-V LVTTL,B1_N0,,1
+,PS2_CLK2,Location,Bidir,PIN_G5,3.3-V LVTTL,B1_N0,,1
+,PS2_DAT,Location,Bidir,PIN_H5,3.3-V LVTTL,B1_N1,,1
+,PS2_DAT2,Location,Bidir,PIN_F5,3.3-V LVTTL,B1_N0,,1
+,SD_CLK,Location,Output,PIN_AE13,3.3-V LVTTL,B3_N0,,3
+,SD_CMD,Location,Bidir,PIN_AD14,3.3-V LVTTL,B3_N0,,3
+,SD_DAT[3],Location,Bidir,PIN_AC14,3.3-V LVTTL,B3_N0,,3
+,SD_DAT[2],Location,Bidir,PIN_AB14,3.3-V LVTTL,B3_N0,,3
+,SD_DAT[1],Location,Bidir,PIN_AF13,3.3-V LVTTL,B3_N0,,3
+,SD_DAT[0],Location,Bidir,PIN_AE14,3.3-V LVTTL,B3_N0,,3
+,SD_WP_N,Location,Input,PIN_AF14,3.3-V LVTTL,B3_N0,,3
+,SMA_CLKIN,Location,Input,PIN_AH14,3.3-V LVTTL,B3_N0,,3
+,SMA_CLKOUT,Location,Output,PIN_AE23,3.3-V LVTTL,B4_N0,,4
+,SRAM_ADDR[19],Location,Output,PIN_T8,3.3-V LVTTL,B2_N1,,2
+,SRAM_ADDR[18],Location,Output,PIN_AB8,3.3-V LVTTL,B3_N2,,3
+,SRAM_ADDR[17],Location,Output,PIN_AB9,3.3-V LVTTL,B3_N2,,3
+,SRAM_ADDR[16],Location,Output,PIN_AC11,3.3-V LVTTL,B3_N0,,3
+,SRAM_ADDR[15],Location,Output,PIN_AB11,3.3-V LVTTL,B3_N1,,3
+,SRAM_ADDR[14],Location,Output,PIN_AA4,3.3-V LVTTL,B2_N1,,2
+,SRAM_ADDR[13],Location,Output,PIN_AC3,3.3-V LVTTL,B2_N1,,2
+,SRAM_ADDR[12],Location,Output,PIN_AB4,3.3-V LVTTL,B2_N2,,2
+,SRAM_ADDR[11],Location,Output,PIN_AD3,3.3-V LVTTL,B2_N1,,2
+,SRAM_ADDR[10],Location,Output,PIN_AF2,3.3-V LVTTL,B2_N2,,2
+,SRAM_ADDR[9],Location,Output,PIN_T7,3.3-V LVTTL,B2_N0,,2
+,SRAM_ADDR[8],Location,Output,PIN_AF5,3.3-V LVTTL,B3_N2,,3
+,SRAM_ADDR[7],Location,Output,PIN_AC5,3.3-V LVTTL,B2_N2,,2
+,SRAM_ADDR[6],Location,Output,PIN_AB5,3.3-V LVTTL,B2_N2,,2
+,SRAM_ADDR[5],Location,Output,PIN_AE6,3.3-V LVTTL,B3_N2,,3
+,SRAM_ADDR[4],Location,Output,PIN_AB6,3.3-V LVTTL,B2_N2,,2
+,SRAM_ADDR[3],Location,Output,PIN_AC7,3.3-V LVTTL,B3_N2,,3
+,SRAM_ADDR[2],Location,Output,PIN_AE7,3.3-V LVTTL,B3_N1,,3
+,SRAM_ADDR[1],Location,Output,PIN_AD7,3.3-V LVTTL,B3_N2,,3
+,SRAM_ADDR[0],Location,Output,PIN_AB7,3.3-V LVTTL,B3_N1,,3
+,SRAM_CE_N,Location,Output,PIN_AF8,3.3-V LVTTL,B3_N1,,3
+,SRAM_DQ[15],Location,Bidir,PIN_AG3,3.3-V LVTTL,B3_N2,,3
+,SRAM_DQ[14],Location,Bidir,PIN_AF3,3.3-V LVTTL,B3_N2,,3
+,SRAM_DQ[13],Location,Bidir,PIN_AE4,3.3-V LVTTL,B3_N2,,3
+,SRAM_DQ[12],Location,Bidir,PIN_AE3,3.3-V LVTTL,B2_N2,,2
+,SRAM_DQ[11],Location,Bidir,PIN_AE1,3.3-V LVTTL,B2_N1,,2
+,SRAM_DQ[10],Location,Bidir,PIN_AE2,3.3-V LVTTL,B2_N1,,2
+,SRAM_DQ[9],Location,Bidir,PIN_AD2,3.3-V LVTTL,B2_N1,,2
+,SRAM_DQ[8],Location,Bidir,PIN_AD1,3.3-V LVTTL,B2_N1,,2
+,SRAM_DQ[7],Location,Bidir,PIN_AF7,3.3-V LVTTL,B3_N1,,3
+,SRAM_DQ[6],Location,Bidir,PIN_AH6,3.3-V LVTTL,B3_N2,,3
+,SRAM_DQ[5],Location,Bidir,PIN_AG6,3.3-V LVTTL,B3_N2,,3
+,SRAM_DQ[4],Location,Bidir,PIN_AF6,3.3-V LVTTL,B3_N2,,3
+,SRAM_DQ[3],Location,Bidir,PIN_AH4,3.3-V LVTTL,B3_N2,,3
+,SRAM_DQ[2],Location,Bidir,PIN_AG4,3.3-V LVTTL,B3_N2,,3
+,SRAM_DQ[1],Location,Bidir,PIN_AF4,3.3-V LVTTL,B3_N2,,3
+,SRAM_DQ[0],Location,Bidir,PIN_AH3,3.3-V LVTTL,B3_N2,,3
+,SRAM_LB_N,Location,Output,PIN_AD4,3.3-V LVTTL,B3_N2,,3
+,SRAM_OE_N,Location,Output,PIN_AD5,3.3-V LVTTL,B3_N2,,3
+,SRAM_UB_N,Location,Output,PIN_AC4,3.3-V LVTTL,B2_N2,,2
+,SRAM_WE_N,Location,Output,PIN_AE8,3.3-V LVTTL,B3_N1,,3
+,SW[17],Location,Input,PIN_Y23,2.5 V,B5_N2,,5
+,SW[16],Location,Input,PIN_Y24,2.5 V,B5_N2,,5
+,SW[15],Location,Input,PIN_AA22,2.5 V,B5_N2,,5
+,SW[14],Location,Input,PIN_AA23,2.5 V,B5_N2,,5
+,SW[13],Location,Input,PIN_AA24,2.5 V,B5_N2,,5
+,SW[12],Location,Input,PIN_AB23,2.5 V,B5_N2,,5
+,SW[11],Location,Input,PIN_AB24,2.5 V,B5_N2,,5
+,SW[10],Location,Input,PIN_AC24,2.5 V,B5_N2,,5
+,SW[9],Location,Input,PIN_AB25,2.5 V,B5_N1,,5
+,SW[8],Location,Input,PIN_AC25,2.5 V,B5_N2,,5
+,SW[7],Location,Input,PIN_AB26,2.5 V,B5_N1,,5
+,SW[6],Location,Input,PIN_AD26,2.5 V,B5_N2,,5
+,SW[5],Location,Input,PIN_AC26,2.5 V,B5_N2,,5
+,SW[4],Location,Input,PIN_AB27,2.5 V,B5_N1,,5
+,SW[3],Location,Input,PIN_AD27,2.5 V,B5_N2,,5
+,SW[2],Location,Input,PIN_AC27,2.5 V,B5_N2,,5
+,SW[1],Location,Input,PIN_AC28,2.5 V,B5_N2,,5
+,SW[0],Location,Input,PIN_AB28,2.5 V,B5_N1,,5
+,TD_CLK27,Location,Input,PIN_B14,3.3-V LVTTL,B8_N0,,8
+,TD_DATA[7],Location,Input,PIN_F7,3.3-V LVTTL,B8_N2,,8
+,TD_DATA[6],Location,Input,PIN_E7,3.3-V LVTTL,B8_N2,,8
+,TD_DATA[5],Location,Input,PIN_D6,3.3-V LVTTL,B8_N2,,8
+,TD_DATA[4],Location,Input,PIN_D7,3.3-V LVTTL,B8_N2,,8
+,TD_DATA[3],Location,Input,PIN_C7,3.3-V LVTTL,B8_N2,,8
+,TD_DATA[2],Location,Input,PIN_D8,3.3-V LVTTL,B8_N2,,8
+,TD_DATA[1],Location,Input,PIN_A7,3.3-V LVTTL,B8_N1,,8
+,TD_DATA[0],Location,Input,PIN_E8,3.3-V LVTTL,B8_N2,,8
+,TD_HS,Location,Input,PIN_E5,3.3-V LVTTL,B8_N2,,8
+,TD_RESET_N,Location,Output,PIN_G7,3.3-V LVTTL,B8_N2,,8
+,TD_VS,Location,Input,PIN_E4,3.3-V LVTTL,B8_N2,,8
+,UART_CTS,Location,Output,PIN_G14,3.3-V LVTTL,B8_N0,,8
+,UART_RTS,Location,Input,PIN_J13,3.3-V LVTTL,B8_N0,,8
+,UART_RXD,Location,Input,PIN_G12,3.3-V LVTTL,B8_N1,,8
+,UART_TXD,Location,Output,PIN_G9,3.3-V LVTTL,B8_N2,,8
+,VGA_B[7],Location,Output,PIN_D12,3.3-V LVTTL,B8_N0,,8
+,VGA_B[6],Location,Output,PIN_D11,3.3-V LVTTL,B8_N1,,8
+,VGA_B[5],Location,Output,PIN_C12,3.3-V LVTTL,B8_N0,,8
+,VGA_B[4],Location,Output,PIN_A11,3.3-V LVTTL,B8_N0,,8
+,VGA_B[3],Location,Output,PIN_B11,3.3-V LVTTL,B8_N0,,8
+,VGA_B[2],Location,Output,PIN_C11,3.3-V LVTTL,B8_N1,,8
+,VGA_B[1],Location,Output,PIN_A10,3.3-V LVTTL,B8_N0,,8
+,VGA_B[0],Location,Output,PIN_B10,3.3-V LVTTL,B8_N0,,8
+,VGA_BLANK_N,Location,Output,PIN_F11,3.3-V LVTTL,B8_N1,,8
+,VGA_CLK,Location,Output,PIN_A12,3.3-V LVTTL,B8_N0,,8
+,VGA_G[7],Location,Output,PIN_C9,3.3-V LVTTL,B8_N1,,8
+,VGA_G[6],Location,Output,PIN_F10,3.3-V LVTTL,B8_N1,,8
+,VGA_G[5],Location,Output,PIN_B8,3.3-V LVTTL,B8_N1,,8
+,VGA_G[4],Location,Output,PIN_C8,3.3-V LVTTL,B8_N1,,8
+,VGA_G[3],Location,Output,PIN_H12,3.3-V LVTTL,B8_N1,,8
+,VGA_G[2],Location,Output,PIN_F8,3.3-V LVTTL,B8_N2,,8
+,VGA_G[1],Location,Output,PIN_G11,3.3-V LVTTL,B8_N1,,8
+,VGA_G[0],Location,Output,PIN_G8,3.3-V LVTTL,B8_N2,,8
+,VGA_HS,Location,Output,PIN_G13,3.3-V LVTTL,B8_N0,,8
+,VGA_R[7],Location,Output,PIN_H10,3.3-V LVTTL,B8_N1,,8
+,VGA_R[6],Location,Output,PIN_H8,3.3-V LVTTL,B8_N2,,8
+,VGA_R[5],Location,Output,PIN_J12,3.3-V LVTTL,B8_N0,,8
+,VGA_R[4],Location,Output,PIN_G10,3.3-V LVTTL,B8_N1,,8
+,VGA_R[3],Location,Output,PIN_F12,3.3-V LVTTL,B8_N1,,8
+,VGA_R[2],Location,Output,PIN_D10,3.3-V LVTTL,B8_N1,,8
+,VGA_R[1],Location,Output,PIN_E11,3.3-V LVTTL,B8_N1,,8
+,VGA_R[0],Location,Output,PIN_E12,3.3-V LVTTL,B8_N1,,8
+,VGA_SYNC_N,Location,Output,PIN_C10,3.3-V LVTTL,B8_N0,,8
+,VGA_VS,Location,Output,PIN_C13,3.3-V LVTTL,B8_N0,,8
+,HSMC_CLKIN_N1,Location,Unknown,PIN_J28,LVDS,B6_N2,,6
+,HSMC_CLKIN_N2,Location,Unknown,PIN_Y28,LVDS,B5_N0,,5
+,HSMC_TX_D_N[0],Location,Unknown,PIN_D28,LVDS,B6_N0,,6
+,HSMC_RX_D_N[0],Location,Unknown,PIN_F25,LVDS,B6_N0,,6
+,HSMC_RX_D_N[1],Location,Unknown,PIN_C27,LVDS,B6_N0,,6
+,HSMC_TX_D_N[1],Location,Unknown,PIN_E28,LVDS,B6_N1,,6
+,HSMC_TX_D_N[2],Location,Unknown,PIN_F28,LVDS,B6_N1,,6
+,HSMC_RX_D_N[2],Location,Unknown,PIN_E26,LVDS,B6_N1,,6
+,HSMC_TX_D_N[3],Location,Unknown,PIN_G28,LVDS,B6_N1,,6
+,HSMC_RX_D_N[3],Location,Unknown,PIN_G26,LVDS,B6_N0,,6
+,HSMC_TX_D_N[4],Location,Unknown,PIN_K28,LVDS,B6_N1,,6
+,HSMC_RX_D_N[4],Location,Unknown,PIN_H26,LVDS,B6_N1,,6
+,HSMC_TX_D_N[5],Location,Unknown,PIN_M28,LVDS,B6_N2,,6
+,HSMC_RX_D_N[5],Location,Unknown,PIN_K26,LVDS,B6_N1,,6
+,HSMC_TX_D_N[6],Location,Unknown,PIN_K22,LVDS,B6_N0,,6
+,HSMC_RX_D_N[6],Location,Unknown,PIN_L24,LVDS,B6_N2,,6
+,HSMC_TX_D_N[7],Location,Unknown,PIN_H24,LVDS,B6_N0,,6
+,HSMC_RX_D_N[7],Location,Unknown,PIN_M26,LVDS,B6_N2,,6
+,HSMC_TX_D_N[8],Location,Unknown,PIN_J24,LVDS,B6_N0,,6
+,HSMC_RX_D_N[8],Location,Unknown,PIN_R26,LVDS,B5_N0,,5
+,HSMC_TX_D_N[9],Location,Unknown,PIN_P28,LVDS,B6_N2,,6
+,HSMC_RX_D_N[9],Location,Unknown,PIN_T26,LVDS,B5_N0,,5
+,HSMC_TX_D_N[10],Location,Unknown,PIN_J26,LVDS,B6_N1,,6
+,HSMC_RX_D_N[10],Location,Unknown,PIN_U26,LVDS,B5_N0,,5
+,HSMC_TX_D_N[11],Location,Unknown,PIN_L28,LVDS,B6_N2,,6
+,HSMC_RX_D_N[11],Location,Unknown,PIN_L22,LVDS,B6_N0,,6
+,HSMC_TX_D_N[12],Location,Unknown,PIN_V26,LVDS,B5_N1,,5
+,HSMC_RX_D_N[12],Location,Unknown,PIN_N26,LVDS,B6_N2,,6
+,HSMC_TX_D_N[13],Location,Unknown,PIN_R28,LVDS,B5_N0,,5
+,HSMC_RX_D_N[13],Location,Unknown,PIN_P26,LVDS,B6_N2,,6
+,HSMC_TX_D_N[14],Location,Unknown,PIN_U28,LVDS,B5_N0,,5
+,HSMC_RX_D_N[14],Location,Unknown,PIN_R21,LVDS,B5_N0,,5
+,HSMC_TX_D_N[15],Location,Unknown,PIN_V28,LVDS,B5_N1,,5
+,HSMC_RX_D_N[15],Location,Unknown,PIN_R23,LVDS,B5_N0,,5
+,HSMC_TX_D_N[16],Location,Unknown,PIN_V22,LVDS,B5_N1,,5
+,HSMC_RX_D_N[16],Location,Unknown,PIN_T22,LVDS,B5_N0,,5
+,HSMC_CLKOUT_N2,Location,Unknown,PIN_V24,LVDS,B5_N1,,5
+,HSMC_CLKOUT_N1,Location,Unknown,PIN_G24,LVDS,B6_N0,,6
+,,Location,Unknown,PIN_J9,,,,
+,,Location,Unknown,PIN_H9,,,,
+,,Location,Unknown,PIN_J8,,,,
+,,Location,Unknown,PIN_F4,,B1_N0,,1
+,,Location,Unknown,PIN_E2,,B1_N0,,1
+,,Location,Unknown,PIN_M6,,B1_N1,,1
+,,Location,Unknown,PIN_P3,,B1_N2,,1
+,,Location,Unknown,PIN_N7,,B1_N2,,1
+,,Location,Unknown,PIN_P4,,B1_N2,,1
+,,Location,Unknown,PIN_P7,,,,
+,,Location,Unknown,PIN_P5,,,,
+,,Location,Unknown,PIN_P8,,B1_N2,,1
+,,Location,Unknown,PIN_P6,,B1_N2,,1
+,,Location,Unknown,PIN_R8,,B1_N2,,1
+,,Location,Unknown,PIN_Y8,,,,
+,,Location,Unknown,PIN_AA9,,,,
+,,Location,Unknown,PIN_Y9,,,,
+,,Location,Unknown,PIN_Y20,,,,
+,,Location,Unknown,PIN_AA20,,,,
+,,Location,Unknown,PIN_Y21,,,,
+,,Location,Unknown,PIN_P24,,,,
+,,Location,Unknown,PIN_N22,,,,
+,,Location,Unknown,PIN_P23,,,,
+,,Location,Unknown,PIN_M22,,,,
+,,Location,Unknown,PIN_P22,,,,
+,,Location,Unknown,PIN_J21,,,,
+,,Location,Unknown,PIN_H20,,,,
+,,Location,Unknown,PIN_J20,,,,
+,,Location,Unknown,PIN_K9,,,,
+,,Location,Unknown,PIN_K11,,,,
+,,Location,Unknown,PIN_K13,,,,
+,,Location,Unknown,PIN_K15,,,,
+,,Location,Unknown,PIN_K17,,,,
+,,Location,Unknown,PIN_K19,,,,
+,,Location,Unknown,PIN_L10,,,,
+,,Location,Unknown,PIN_L12,,,,
+,,Location,Unknown,PIN_L14,,,,
+,,Location,Unknown,PIN_L16,,,,
+,,Location,Unknown,PIN_L18,,,,
+,,Location,Unknown,PIN_L20,,,,
+,,Location,Unknown,PIN_M9,,,,
+,,Location,Unknown,PIN_M11,,,,
+,,Location,Unknown,PIN_M13,,,,
+,,Location,Unknown,PIN_M15,,,,
+,,Location,Unknown,PIN_M17,,,,
+,,Location,Unknown,PIN_M19,,,,
+,,Location,Unknown,PIN_N10,,,,
+,,Location,Unknown,PIN_N12,,,,
+,,Location,Unknown,PIN_N14,,,,
+,,Location,Unknown,PIN_N16,,,,
+,,Location,Unknown,PIN_N18,,,,
+,,Location,Unknown,PIN_N20,,,,
+,,Location,Unknown,PIN_P9,,,,
+,,Location,Unknown,PIN_P11,,,,
+,,Location,Unknown,PIN_P13,,,,
+,,Location,Unknown,PIN_P15,,,,
+,,Location,Unknown,PIN_P17,,,,
+,,Location,Unknown,PIN_P19,,,,
+,,Location,Unknown,PIN_R10,,,,
+,,Location,Unknown,PIN_R12,,,,
+,,Location,Unknown,PIN_R14,,,,
+,,Location,Unknown,PIN_R16,,,,
+,,Location,Unknown,PIN_R18,,,,
+,,Location,Unknown,PIN_R20,,,,
+,,Location,Unknown,PIN_T9,,,,
+,,Location,Unknown,PIN_T11,,,,
+,,Location,Unknown,PIN_T13,,,,
+,,Location,Unknown,PIN_T15,,,,
+,,Location,Unknown,PIN_T17,,,,
+,,Location,Unknown,PIN_T19,,,,
+,,Location,Unknown,PIN_U10,,,,
+,,Location,Unknown,PIN_U12,,,,
+,,Location,Unknown,PIN_U14,,,,
+,,Location,Unknown,PIN_U16,,,,
+,,Location,Unknown,PIN_U18,,,,
+,,Location,Unknown,PIN_U20,,,,
+,,Location,Unknown,PIN_V9,,,,
+,,Location,Unknown,PIN_V11,,,,
+,,Location,Unknown,PIN_V13,,,,
+,,Location,Unknown,PIN_V15,,,,
+,,Location,Unknown,PIN_V17,,,,
+,,Location,Unknown,PIN_V19,,,,
+,,Location,Unknown,PIN_W10,,,,
+,,Location,Unknown,PIN_W12,,,,
+,,Location,Unknown,PIN_W14,,,,
+,,Location,Unknown,PIN_W16,,,,
+,,Location,Unknown,PIN_W18,,,,
+,,Location,Unknown,PIN_W20,,,,
+,,Location,Unknown,PIN_B1,,,,
+,,Location,Unknown,PIN_H1,,,,1
+,,Location,Unknown,PIN_K5,,,,
+,,Location,Unknown,PIN_N1,,,,1
+,,Location,Unknown,PIN_N5,,,,
+,,Location,Unknown,PIN_AA1,,,,2
+,,Location,Unknown,PIN_AG1,,,,2
+,,Location,Unknown,PIN_T1,,,,2
+,,Location,Unknown,PIN_T5,,,,2
+,,Location,Unknown,PIN_W5,,,,2
+,,Location,Unknown,PIN_AA11,,,,3
+,,Location,Unknown,PIN_AD6,,,,3
+,,Location,Unknown,PIN_AD9,,,,3
+,,Location,Unknown,PIN_AD13,,,,3
+,,Location,Unknown,PIN_AH2,,,,3
+,,Location,Unknown,PIN_AH5,,,,3
+,,Location,Unknown,PIN_AH9,,,,3
+,,Location,Unknown,PIN_AH13,,,,3
+,,Location,Unknown,PIN_AA18,,,,4
+,,Location,Unknown,PIN_AD16,,,,4
+,,Location,Unknown,PIN_AD20,,,,4
+,,Location,Unknown,PIN_AD23,,,,4
+,,Location,Unknown,PIN_AH16,,,,4
+,,Location,Unknown,PIN_AH20,,,,4
+,,Location,Unknown,PIN_AH24,,,,4
+,,Location,Unknown,PIN_AH27,,,,4
+,,Location,Unknown,PIN_AA28,,,,5
+,,Location,Unknown,PIN_AG28,,,,5
+,,Location,Unknown,PIN_T24,,,,5
+,,Location,Unknown,PIN_T28,,,,5
+,,Location,Unknown,PIN_W24,,,,5
+,,Location,Unknown,PIN_B28,,,,6
+,,Location,Unknown,PIN_H28,,,,6
+,,Location,Unknown,PIN_K24,,,,6
+,,Location,Unknown,PIN_N24,,,,6
+,,Location,Unknown,PIN_N28,,,,
+,,Location,Unknown,PIN_A16,,,,7
+,,Location,Unknown,PIN_A20,,,,7
+,,Location,Unknown,PIN_A24,,,,
+,,Location,Unknown,PIN_A27,,,,7
+,,Location,Unknown,PIN_E16,,,,7
+,,Location,Unknown,PIN_E20,,,,7
+,,Location,Unknown,PIN_E23,,,,7
+,,Location,Unknown,PIN_H18,,,,7
+,,Location,Unknown,PIN_A2,,,,8
+,,Location,Unknown,PIN_A5,,,,8
+,,Location,Unknown,PIN_A9,,,,8
+,,Location,Unknown,PIN_A13,,,,8
+,,Location,Unknown,PIN_E6,,,,8
+,,Location,Unknown,PIN_E9,,,,8
+,,Location,Unknown,PIN_E13,,,,8
+,,Location,Unknown,PIN_H11,,,,8
+,,Location,Unknown,PIN_K10,,,,
+,,Location,Unknown,PIN_K12,,,,
+,,Location,Unknown,PIN_K14,,,,
+,,Location,Unknown,PIN_K16,,,,
+,,Location,Unknown,PIN_K18,,,,
+,,Location,Unknown,PIN_K20,,,,
+,,Location,Unknown,PIN_L9,,,,
+,,Location,Unknown,PIN_L11,,,,
+,,Location,Unknown,PIN_L13,,,,
+,,Location,Unknown,PIN_L15,,,,
+,,Location,Unknown,PIN_L17,,,,
+,,Location,Unknown,PIN_L19,,,,
+,,Location,Unknown,PIN_M10,,,,
+,,Location,Unknown,PIN_M12,,,,
+,,Location,Unknown,PIN_M14,,,,
+,,Location,Unknown,PIN_M16,,,,
+,,Location,Unknown,PIN_M18,,,,
+,,Location,Unknown,PIN_M20,,,,
+,,Location,Unknown,PIN_N9,,,,
+,,Location,Unknown,PIN_N11,,,,
+,,Location,Unknown,PIN_N13,,,,
+,,Location,Unknown,PIN_N15,,,,
+,,Location,Unknown,PIN_N17,,,,
+,,Location,Unknown,PIN_N19,,,,
+,,Location,Unknown,PIN_P10,,,,
+,,Location,Unknown,PIN_P12,,,,
+,,Location,Unknown,PIN_P14,,,,
+,,Location,Unknown,PIN_P16,,,,
+,,Location,Unknown,PIN_P18,,,,
+,,Location,Unknown,PIN_P20,,,,
+,,Location,Unknown,PIN_R9,,,,
+,,Location,Unknown,PIN_R11,,,,
+,,Location,Unknown,PIN_R13,,,,
+,,Location,Unknown,PIN_R15,,,,
+,,Location,Unknown,PIN_R17,,,,
+,,Location,Unknown,PIN_R19,,,,
+,,Location,Unknown,PIN_T10,,,,
+,,Location,Unknown,PIN_T12,,,,
+,,Location,Unknown,PIN_T14,,,,
+,,Location,Unknown,PIN_T16,,,,
+,,Location,Unknown,PIN_T18,,,,
+,,Location,Unknown,PIN_T20,,,,
+,,Location,Unknown,PIN_U9,,,,
+,,Location,Unknown,PIN_U11,,,,
+,,Location,Unknown,PIN_U13,,,,
+,,Location,Unknown,PIN_U15,,,,
+,,Location,Unknown,PIN_U17,,,,
+,,Location,Unknown,PIN_U19,,,,
+,,Location,Unknown,PIN_V10,,,,
+,,Location,Unknown,PIN_V12,,,,
+,,Location,Unknown,PIN_V14,,,,
+,,Location,Unknown,PIN_V16,,,,
+,,Location,Unknown,PIN_V18,,,,
+,,Location,Unknown,PIN_V20,,,,
+,,Location,Unknown,PIN_W9,,,,
+,,Location,Unknown,PIN_W11,,,,
+,,Location,Unknown,PIN_W13,,,,
+,,Location,Unknown,PIN_W15,,,,
+,,Location,Unknown,PIN_W17,,,,
+,,Location,Unknown,PIN_W19,,,,
+,,Location,Unknown,PIN_AA2,,,,
+,,Location,Unknown,PIN_AA27,,,,
+,,Location,Unknown,PIN_AC6,,,,
+,,Location,Unknown,PIN_AC9,,,,
+,,Location,Unknown,PIN_AC13,,,,
+,,Location,Unknown,PIN_AC16,,,,
+,,Location,Unknown,PIN_AC20,,,,
+,,Location,Unknown,PIN_AC23,,,,
+,,Location,Unknown,PIN_AF1,,,,
+,,Location,Unknown,PIN_AF28,,,,
+,,Location,Unknown,PIN_AG2,,,,
+,,Location,Unknown,PIN_AG5,,,,
+,,Location,Unknown,PIN_AG9,,,,
+,,Location,Unknown,PIN_AG13,,,,
+,,Location,Unknown,PIN_AG16,,,,
+,,Location,Unknown,PIN_AG20,,,,
+,,Location,Unknown,PIN_AG24,,,,
+,,Location,Unknown,PIN_AG27,,,,
+,,Location,Unknown,PIN_B2,,,,
+,,Location,Unknown,PIN_B5,,,,
+,,Location,Unknown,PIN_B9,,,,
+,,Location,Unknown,PIN_B13,,,,
+,,Location,Unknown,PIN_B16,,,,
+,,Location,Unknown,PIN_B20,,,,
+,,Location,Unknown,PIN_B24,,,,
+,,Location,Unknown,PIN_B27,,,,
+,,Location,Unknown,PIN_C1,,,,
+,,Location,Unknown,PIN_C28,,,,
+,,Location,Unknown,PIN_F6,,,,
+,,Location,Unknown,PIN_F9,,,,
+,,Location,Unknown,PIN_F13,,,,
+,,Location,Unknown,PIN_F16,,,,
+,,Location,Unknown,PIN_F20,,,,
+,,Location,Unknown,PIN_F23,,,,
+,,Location,Unknown,PIN_H2,,,,
+,,Location,Unknown,PIN_H27,,,,
+,,Location,Unknown,PIN_J11,,,,
+,,Location,Unknown,PIN_J18,,,,
+,,Location,Unknown,PIN_K6,,,,
+,,Location,Unknown,PIN_K23,,,,
+,,Location,Unknown,PIN_N2,,,,
+,,Location,Unknown,PIN_N6,,,,
+,,Location,Unknown,PIN_N23,,,,
+,,Location,Unknown,PIN_N27,,,,
+,,Location,Unknown,PIN_T2,,,,
+,,Location,Unknown,PIN_T6,,,,
+,,Location,Unknown,PIN_T23,,,,
+,,Location,Unknown,PIN_T27,,,,
+,,Location,Unknown,PIN_W6,,,,
+,,Location,Unknown,PIN_W23,,,,
+,,Location,Unknown,PIN_Y11,,,,
+,,Location,Unknown,PIN_Y18,,,,
+,,Location,Unknown,PIN_J2,,,,
+,,Location,Unknown,PIN_D3,,,,
+,,Location,Unknown,PIN_B12,,,,
