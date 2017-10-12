@@ -37,9 +37,9 @@ A tabela a seguir apresenta as instruções já implementadas:
 Para que o projeto seja completamente compatível com as especificações do módulo RV64I, é necessário implementar:
 
 - [ ] Issue [#3](https://github.com/arthurbeggs/riscv-simple/issues/3) - Tratamento de exceções, interrupções e *traps*;
-- [ ] Issue [#4](https://github.com/arthurbeggs/riscv-simple/issues/4) - Excessão de endereço de instrução desalinhado;
-- [ ] Issue [#5](https://github.com/arthurbeggs/riscv-simple/issues/5) - Excessão de acesso de memória proibido;
-- [ ] Issue [#6](https://github.com/arthurbeggs/riscv-simple/issues/6) - Excessão de instrução ilegal;
+- [ ] Issue [#4](https://github.com/arthurbeggs/riscv-simple/issues/4) - Exceção de endereço de instrução desalinhado;
+- [ ] Issue [#5](https://github.com/arthurbeggs/riscv-simple/issues/5) - Exceção de acesso de memória proibido;
+- [ ] Issue [#6](https://github.com/arthurbeggs/riscv-simple/issues/6) - Exceção de instrução ilegal;
 - [ ] Issue [#7](https://github.com/arthurbeggs/riscv-simple/issues/7) - Registradores de Controle e Status (CSR);
 - [ ] Issue [#8](https://github.com/arthurbeggs/riscv-simple/issues/8) - Instruções CSR;
 - [ ] Issue [#9](https://github.com/arthurbeggs/riscv-simple/issues/9) - Instruções de ambiente (ECALL/EBREAK);
