@@ -18,7 +18,11 @@ module datapath_singlecycle (
     output data_mem_write_en,             // Habilita escrita da mem de dados
     output [31:0] data_mem_addr,          // Endereço desejado da mem de dados
     output [63:0] data_mem_write_data,    // Dado a ser escrito na mem de dados
-    output [2:0]  data_mem_width          // Largura do dado a ser lido/escrito
+    output [2:0]  data_mem_width,         // Largura do dado a ser lido/escrito
+
+    // Informação de debug
+    output [63:0] mem_to_reg_data
+    // Fim da informação de debug
 );
 
 
@@ -87,6 +91,11 @@ assign operand_b_bus    = { immediate,                  // mux_operand_b_in[1]
 assign data_mem_addr        = alu_result[31:0];
 assign data_mem_write_data  = rs2_data;
 assign data_mem_width       = inst[14:12];
+
+
+// Informação de debug
+assign mem_to_reg_data = rd_data;
+// Fim da informação de debug
 
 
 
