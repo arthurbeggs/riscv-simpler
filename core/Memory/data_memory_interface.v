@@ -5,18 +5,21 @@
 //                            BSD 3-Clause License                            //
 ////////////////////////////////////////////////////////////////////////////////
 
+
 module data_memory_interface (
-    input clk,
+    input  clk,
+    input  core_clk,
 
-    input read_en,
-    input write_en,
-    input [2:0]  byte_enable,
+    input  read_en,
+    input  write_en,
+    input  [2:0]  byte_enable,
 
-    input [31:0] address,
-    input [63:0] write_data,
-    output [63:0] data_fetched
+    input  [31:0] address,
+    input  [63:0] write_data,
+    output reg [63:0] data_fetched
 );
 
+    reg         write_acknowledged;
     wire        is_data_mem;
     wire [7:0]  translated_byte_enable;
     wire [63:0] fetched;
@@ -28,12 +31,12 @@ module data_memory_interface (
 
     // Instância de RAM da memória de dados (1024 words de 64 bits)
     data_memory data_memory(
-    	.address(address[12:2]),
+    	.address(address[13:3]),
     	.byteena(translated_byte_enable),
     	.clock(clk),
     	.data(write_data),
     	.rden(read_en),
-    	.wren(write_en),
+    	.wren(write_acknowledged),
     	.q(fetched)
     );
 
@@ -78,6 +81,11 @@ module data_memory_interface (
             endcase
         end
         else sign_adjusted = fetched; //TODO: Verificar se posições não lidas de memória são carregadas com 0 ou outro valor;
+    end
+
+    always @(*) begin
+        if (posedge core_clk) write_acknowledged = ( write_en ? 1'b1 : 1'b0);
+        else write_acknowledged = 1'b0;
     end
 
 endmodule

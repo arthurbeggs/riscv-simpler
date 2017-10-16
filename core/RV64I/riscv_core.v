@@ -62,6 +62,7 @@ module riscv_core (
 
         data_memory_interface data_memory_interface(
             .clk(clk_mem),
+            .core_clk(clk),
             .read_en(data_mem_read_en),
             .write_en(data_mem_write_en),
             .byte_enable(data_mem_width),
