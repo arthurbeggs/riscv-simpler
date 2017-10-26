@@ -7,43 +7,35 @@
 
 module top_de (
     // Osciladores
-    input  iCLK_50,
+    // input  CLOCK_50,
 
     // Switches
-    input  [17:14] iSW,
+    input  [17:15] SW,
+    input  [1:0]   KEY,
 
     // Displays de 7 Segmentos
-    output [6:0] HEX0_D,
-    output [6:0] HEX1_D,
-    output [6:0] HEX2_D,
-    output [6:0] HEX3_D,
-    output [6:0] HEX4_D,
-    output [6:0] HEX5_D,
-    output [6:0] HEX6_D,
-    output [6:0] HEX7_D,
+    output [6:0] HEX0,
+    output [6:0] HEX1,
+    output [6:0] HEX2,
+    output [6:0] HEX3,
+    output [6:0] HEX4,
+    output [6:0] HEX5,
+    output [6:0] HEX6,
+    output [6:0] HEX7
 
-    // Pontos dos displays
-    output HEX0_DP,
-    output HEX1_DP,
-    output HEX2_DP,
-    output HEX3_DP,
-    output HEX4_DP,
-    output HEX5_DP,
-    output HEX6_DP,
-    output HEX7_DP
 );
 
     // Informações de debug
-    wire [32:0] debug_data;
-    wire [32:0] pc_addr;
-    wire [32:0] inst_data;
+    reg  [31:0] debug_data;
+    wire [31:0] pc_addr;
+    wire [31:0] inst_data;
     wire [63:0] reg_writeback;
     // Fim das informações de debug
 
     riscv_core riscv_core (
-        .clk(iSW[15]),      //FIXME: Sinais temporários
-        .clk_mem(iCLK_50),  //FIXME: Sinais temporários
-        .rst(iSW[14]),      //FIXME: Sinais temporários
+        .clk(KEY[1]),       //FIXME: Sinais temporários
+        .clk_mem(KEY[0]),   //FIXME: Sinais temporários
+        .rst(SW[15]),       //FIXME: Sinais temporários
 
         // Informações de debug
         .pc_addr(pc_addr),
@@ -59,29 +51,21 @@ module top_de (
 
     display_7seg_interface display_7seg_interface (
         .data(debug_data),
-        .HEX0_D(HEX0_D),
-        .HEX1_D(HEX1_D),
-        .HEX2_D(HEX2_D),
-        .HEX3_D(HEX3_D),
-        .HEX4_D(HEX4_D),
-        .HEX5_D(HEX5_D),
-        .HEX6_D(HEX6_D),
-        .HEX7_D(HEX7_D),
-        .HEX0_DP(HEX0_DP),
-        .HEX1_DP(HEX1_DP),
-        .HEX2_DP(HEX2_DP),
-        .HEX3_DP(HEX3_DP),
-        .HEX4_DP(HEX4_DP),
-        .EX5_DP(EX5_DP),
-        .HEX6_DP(HEX6_DP),
-        .HEX7_DP(HEX7_D)
+        .HEX0(HEX0),
+        .HEX1(HEX1),
+        .HEX2(HEX2),
+        .HEX3(HEX3),
+        .HEX4(HEX4),
+        .HEX5(HEX5),
+        .HEX6(HEX6),
+        .HEX7(HEX7)
     );
 
 
     // Define dado de debug a ser mostrado nos displays de 7 segmentos
     //FIXME: Colocar dentro do display_7seg_interface
     always @(*) begin
-        case (iSW[17:16])
+        case (SW[17:16])
             2'b00: debug_data = pc_addr;
             2'b01: debug_data = inst_data;
             2'b10: debug_data = reg_writeback[31:0];

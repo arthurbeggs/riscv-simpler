@@ -7,7 +7,7 @@ DATA_RADIX = HEX;           -- The radix for data values
 CONTENT                     -- start of (address : data pairs)
 BEGIN
 
-000 : 0000000000000000;
+000 : 00000000F0CAF0FA;
 [001..3FF] : 0000000000000000;
 
 END;

@@ -24,8 +24,10 @@ module regfile (
 // 32 registradores de 64 bits
 reg [63:0] register [0:31];
 
+
 // Contador para loop de inicialização de registradores
 integer i;
+
 
 // Inicia os registradores
 initial begin
@@ -34,9 +36,11 @@ initial begin
     // NOTE: Inserir registradores com valor inicial != 64'b0
 end
 
+
 // Lê os dados dos registradores rs1 e rs2
 assign rs1_data = register[rs1_addr];
 assign rs2_data = register[rs2_addr];
+
 
 // Grava novos valores no banco de registradores
 always @ (posedge clk or posedge rst) begin

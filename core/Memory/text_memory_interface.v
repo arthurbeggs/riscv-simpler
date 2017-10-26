@@ -13,11 +13,11 @@ module text_memory_interface (
 
     input  [31:0] address,
     input  [31:0] write_data,
-    output [31:0] data_fetched
+    output reg [31:0] data_fetched
 );
 
     wire        is_text_mem;
-    wire [32:0] fetched;
+    wire [31:0] fetched;
 
 
     assign is_text_mem = (address >= `TEXT_BEGIN) && (address <= `TEXT_END);
@@ -25,12 +25,12 @@ module text_memory_interface (
 
     // Instância de RAM da memória de texto (1024 words de 32 bits)
     text_memory text_memory(
-    	.address(address[12:2]),
-    	.clock(clk),
-    	.data(write_data),
-    	.rden(read_en),
-    	.wren(write_en),
-    	.q(fetched)
+        .address(address[11:2]),
+        .clock(clk),
+        .data(write_data),
+        .rden(read_en),
+        .wren(write_en),
+        .q(fetched)
     );
 
 
