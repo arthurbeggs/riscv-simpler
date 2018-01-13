@@ -33,6 +33,7 @@
 \usepackage{makeidx}
 \usepackage{indentfirst}
 \usepackage{import}
+\usepackage{enumitem}
 
 % Escolher um dos seguintes formatos: (ft1unb) ou (ft2unb)
 \usepackage{ft2unb} % ft2unb segue padrão de fontes do LaTeX;
@@ -64,10 +65,10 @@
 
 
 % Membros da banca
-\membrodabancai{Prof. Marcus Vinicius Lamar, CIC/UnB}
+\membrodabancai{Prof.\ Marcus Vinicius Lamar, CIC/UnB}
 \membrodabancaifuncao{Orientador}
 
-\membrodabancaii{Prof. Ricardo Pezzuol Jacobi, CIC/UnB}
+\membrodabancaii{Prof.\ Ricardo Pezzuol Jacobi, CIC/UnB}
 \membrodabancaiifuncao{Co-Orientador}
 
 \membrodabancaiii{}
@@ -81,13 +82,13 @@
 
 
 % Data de defesa
-\mes{dezembro}
+\mes{Dezembro}
 \ano{2018}
 
 
 % Comandos para criar a capa e a página de assinaturas
-\capaprincipal
-\capaassinaturas
+\capaprincipal{}
+\capaassinaturas{}
 
 
 % Ficha Catalográfica
@@ -101,7 +102,7 @@
 \dedicatoriaautorii{}
 \dedicatoriaautoriii{}
 
-\dedicatoria
+\dedicatoria{}
 
 
 % Agradecimentos
@@ -109,7 +110,7 @@
 \agradecimentosautorii{}
 \agradecimentosautoriii{}
 
-\agradecimentos
+\agradecimentos{}
 
 
 \resumo{resumo}{Resumo!
@@ -132,9 +133,9 @@ Keywords: RISC-V
 }
 
 % Listas de conteúdo, figuras e tabelas
-\sumario
-\listadefiguras
-\listadetabelas
+\sumario{}
+\listadefiguras{}
+\listadetabelas{}
 
 
 % Lista de Símbolos
@@ -142,14 +143,15 @@ Keywords: RISC-V
 
 
 % Corpo Principal
-\mainmatter
+\mainmatter{}
 \setcounter{page}{1}
 \pagenumbering{arabic}
 \pagestyle{plain}
 
 \include{cap_Introducao}
-\include{cap_Especificacao}
+\include{cap_Arquitetura}
 \include{cap_Implementacao}
+\include{cap_Resultados}
 \include{cap_Conclusoes}
 
 
@@ -162,7 +164,7 @@ Keywords: RISC-V
 
 
 % Anexos
-\anexos
+\anexos{}
 \makeatletter
 % não retirar estes comandos
 \renewcommand{\@makechapterhead}[1]{%
