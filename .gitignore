@@ -1,0 +1,21 @@
+# Ignored Files
+~*
+*~
+
+# Altera Quartus II ignored file and folder patterns
+**/db
+**/incremental_db
+**/output_files
+**/simulation
+**/greybox_tmp
+*.qws
+*.done
+*.jdi
+*.pof
+*.rpt
+*.smsg
+*.sof
+*.summary
+*.bak
+*.temp
+
