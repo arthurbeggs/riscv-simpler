@@ -1,1 +1,0 @@
-## **Monografia RISC-V SiMPLE**
