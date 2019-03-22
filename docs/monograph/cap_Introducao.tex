@@ -1,6 +1,4 @@
-\chapter{Introdução}
-
-\label{CapIntro}
+\chapter{Introdução}\label{CapIntro}
 
 % Resumo opcional. Comentar se não usar.
 %\resumodocapitulo{Resumo opcional}
@@ -10,15 +8,16 @@
 
     {O mercado de trabalho está a cada dia mais exigente, sempre buscando profissionais que conheçam as melhores e mais recentes ferramentas disponíveis. Além disso, muitos universitários se sentem desestimulados ao estudarem assuntos desatualizados e com baixa possibilidade de aproveitamento do conteúdo no mercado de trabalho. Isso alimenta o desinteresse pelos temas abordados e, em muitos casos, leva à evasão escolar. Assim, é importante renovar as matérias com novas tecnologias e tendências de mercado sempre que possível, a fim de instigar o interesse dos discentes e formar profissionais mais capacitados e preparados para as demandas da atualidade.}
 
-    {Hoje, a disciplina de Organização e Arquitetura de Computadores é ministrada utilizando a arquitetura \textit{MIPS32}. Apesar da arquitetura \textit{MIPS32} ainda ter grande força no meio acadêmico (em boa parte devido a sua simplicidade e extensa bibliografia), sua aplicação na indústria tem diminuído consideravelmente na última década.}
+    {Hoje, a disciplina de Organização e Arquitetura de Computadores da Universidade de Brasília é ministrada utilizando a arquitetura \textit{MIPS32}. Apesar da arquitetura \textit{MIPS32} ainda ter grande força no meio acadêmico (em boa parte devido a sua simplicidade e extensa bibliografia), sua aplicação na indústria tem diminuído consideravelmente na última década.}
 
     {Embora a curva de aprendizagem de linguagens \textit{Assembly} de alguns processadores \textit{RISC} seja relativamente baixa para quem já conhece o \textit{Assembly MIPS32}, aprender uma arquitetura atual traz o benefício de conhecer o \textit{estado da arte} da organização e arquitetura de computadores.}
 
-    {Para a proposta de modernização da disciplina, foi escolhida a \textit{ISA} \textit{RISC-V} desenvolvida na Divisão de Ciência da Computação da Universidade da Califórnia, Berkeley.}
+    {Para a proposta de modernização da disciplina, foi escolhida a \textit{ISA RISC-V} desenvolvida na Divisão de Ciência da Computação da Universidade da Califórnia, Berkeley como substituta à \textit{ISA MIPS32}.}
 
-\section{Por que \textit{RISC-V?}}
 
-    {A \textit{ISA RISC-V} (lê-se \textit{"risk-five"}) é uma arquitetura \textit{open source} com licença \textit{BSD}, o que permite o seu livre uso para quaisquer fins, sem distinção de se o trabalho possui código-fonte aberto ou proprietário. Tal característica possibilita que grandes fabricantes utilizem a arquitetura para criar seus produtos, mantendo a proteção de propriedade intelectual sobre seus métodos de implementação e quaisquer subconjuntos de instruções não-\textit{standard} que as empresas venham a desenvolver, o que estimula investimentos em pesquisa e desenvolvimento.}
+\section{Por que \textit{RISC-V}?}
+
+    {A \textit{ISA RISC-V} (lê-se \textit{``risk-five''}) é uma arquitetura \textit{open source} com licença \textit{BSD}, o que permite o seu livre uso para quaisquer fins, sem distinção de se o trabalho possui código-fonte aberto ou proprietário. Tal característica possibilita que grandes fabricantes utilizem a arquitetura para criar seus produtos, mantendo a proteção de propriedade intelectual sobre seus métodos de implementação e quaisquer subconjuntos de instruções não-\textit{standard} que as empresas venham a desenvolver, o que estimula investimentos em pesquisa e desenvolvimento.}
 
     {Empresas como Google, IBM, AMD, Nvidia, Hewlett Packard, Microsoft, Oracle, Qualcomm e Western Digital são algumas das fundadoras e investidoras da \textit{RISC-V Foundation}, órgão responsável pela governança da arquitetura. Isso demonstra o interesse das gigantes do mercado no sucesso e disseminação da arquitetura.}
 
@@ -29,3 +28,14 @@
     {Outro fator que estimula o uso do \textit{RISC-V} é a modernização dos livros didáticos. A nova versão do livro utilizado em OAC, Organização e Projeto de Computadores, de David Patterson e John Hennessy, utiliza a \textit{ISA RISC-V}.}
 
     {Além disso, com a promessa de se tornar uma das arquiteturas mais utilizadas nos próximos anos, utilizar o \textit{RISC-V} como arquitetura da disciplina de OAC se mostra a escolha ideal no momento.}
+
+
+\section{O Projeto \textit{RISC-V SiMPLE}}
+
+    {O projeto \textit{RISC-V SiMPLE (Single-cycle Multicycle Pipeline Learning Environment)} consiste no desenvolvimento de um processador com conjunto de instruções \textit{RISC-V}, sintetizável em \textit{FPGA} e com \textit{hardware} descrito em \textit{Verilog}. A microarquitetura implementada nesse trabalho é uniciclo, escalar, em ordem, com um único \textit{hart} e com caminho de dados de 64 bits. Trabalhos futuros poderão utilizar a estrutura altamente configurável e modularizada do projeto para desenvolver as versões em microarquiteturas multiciclo e \textit{pipeline}.}
+
+    {O processador contém o conjunto de instruções I (para operações com inteiros, sendo o único módulo com implementação mandatória pela arquitetura) e as extensões \textit{standard} M (para multiplicação e divisão de inteiros) e F (para ponto flutuante com precisão simples conforme o padrão IEEE 754 com revisão de 2008). O projeto não implementa as extensões D (ponto flutuante de precisão dupla) e A (operações atômicas de sincronização), e com isso o \textit{soft core} desenvolvido não pode ser definido como de propósito geral, G (que deve conter os módulos I, M, A, F e D). Assim, pela nomenclatura da arquitetura, o processador desenvolvido é um \textit{RV64IMF}.}
+
+    {O projeto contempla \textit{traps}, interrupções, exceções, \textit{CSRs}, chamadas de sistema e outras funcionalidades de nível privilegiado da arquitetura.}
+
+    {O \textit{soft core} possui barramento Avalon para se comunicar com os periféricos das plataformas de desenvolvimento. O projeto foi desenvolvido utilizando a placa DE2--115 com \textit{FPGA Altera Cyclone} e permite a fácil adaptação para outras placas da Altera.}

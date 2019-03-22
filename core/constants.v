@@ -63,3 +63,9 @@
 
 // Valor inicial de pc
 `define    INITIAL_PC      32'b0
+
+// Intervalos de memória //FIXME: Colocar valores não arbitrários
+`define     DATA_BEGIN      32'h07000000
+`define     DATA_END        32'h070003FF
+`define     TEXT_BEGIN      32'h00000000
+`define     TEXT_END        32'h000001FF
