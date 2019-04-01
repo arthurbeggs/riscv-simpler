@@ -14,24 +14,21 @@ module fpga_top (
     input       CLOCK_50,
     input       CLOCK2_50,
 
-    // Botões e Switches
-    input [3:0] KEY,
-    input [9:0] SW,
 
-    `ifdef USE_LEDS
+`ifdef USE_LEDS
         output [9:0]    LEDR,
-    `endif
+`endif
 
-    `ifdef USE_7SEG
+`ifdef USE_7SEG
         output [6:0]    HEX0,
         output [6:0]    HEX1,
         output [6:0]    HEX2,
         output [6:0]    HEX3,
         output [6:0]    HEX4,
         output [6:0]    HEX5,
-    `endif
+`endif
 
-    `ifdef USE_VIDEO
+`ifdef USE_VIDEO
         output [7:0]    VGA_B,
         output          VGA_BLANK_N,
         output          VGA_CLK,
@@ -40,27 +37,32 @@ module fpga_top (
         output [7:0]    VGA_R,
         output          VGA_SYNC_N,
         output          VGA_VS,
-    `endif
+`endif
 
-    `ifdef USE_AUDIO
+`ifdef USE_AUDIO
         input   AUD_ADCDAT,
         inout   AUD_ADCLRCK,
         inout   AUD_BCLK,
         output  AUD_DACDAT,
         inout   AUD_DACLRCK,
         output  AUD_XCK,
-    `endif
+`endif
 
-    `ifdef USE_KEYBOARD
+`ifdef USE_KEYBOARD
         inout   PS2_CLK,
         inout   PS2_CLK2,
         inout   PS2_DAT,
         inout   PS2_DAT2,
-    `endif
+`endif
 
+`ifdef DEBUG
+`endif
 
-    `ifdef DEBUG
-    `endif
-
+    // Botões e Switches
+    input [3:0] KEY,
+    input [9:0] SW
 );
+
+
+endmodule
 

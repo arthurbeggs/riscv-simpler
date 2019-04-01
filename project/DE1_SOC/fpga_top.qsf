@@ -75,12 +75,16 @@ set_global_assignment -name PHYSICAL_SYNTHESIS_EFFORT EXTRA
 set_global_assignment -name VERILOG_FILE ../../src/core/config.v
 set_global_assignment -name VERILOG_FILE ../../src/core/fpga_top.v
 set_global_assignment -name VERILOG_FILE ../../src/core/misc/adder.v
-set_global_assignment -name VERILOG_FILE ../../src/core/misc/mux.v
-set_global_assignment -name VERILOG_FILE ../../src/core/rv32/regfile/regfile.v
-set_global_assignment -name VERILOG_FILE ../../src/core/rv32/regfile/program_counter.v
-set_global_assignment -name VERILOG_FILE ../../src/core/rv32/immediates/immediate_generator.v
-set_global_assignment -name VERILOG_FILE ../../src/core/rv32/alu/alu_control.v
+set_global_assignment -name VERILOG_FILE ../../src/core/misc/multiplexer.v
+set_global_assignment -name VERILOG_FILE ../../src/core/rv32/control_transfer.v
+set_global_assignment -name VERILOG_FILE ../../src/core/rv32/immediate_generator.v
+set_global_assignment -name VERILOG_FILE ../../src/core/rv32/riscv_core.v
 set_global_assignment -name VERILOG_FILE ../../src/core/rv32/alu/alu.v
+set_global_assignment -name VERILOG_FILE ../../src/core/rv32/alu/alu_control.v
+set_global_assignment -name VERILOG_FILE ../../src/core/rv32/regfile/program_counter.v
+set_global_assignment -name VERILOG_FILE ../../src/core/rv32/regfile/regfile.v
+set_global_assignment -name VERILOG_FILE ../../src/core/rv32/singlecycle/singlecycle_control.v
+set_global_assignment -name VERILOG_FILE ../../src/core/rv32/singlecycle/singlecycle_datapath.v
 
 #============================================================
 # ADC

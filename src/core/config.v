@@ -18,7 +18,7 @@
 
 // Selecione os módulos extras da ISA a serem implementados
 `define M_MODULE    // Operações de multiplicação e divisão
-`define F_MODULE    // Operações de ponto flutuante com precisão simples
+// `define F_MODULE    // Operações de ponto flutuante com precisão simples
 
 // Selecione se sinais virtuais de depuração serão sintetizados
 `define DEBUG
@@ -102,12 +102,12 @@
 `define FUNCT7_FPALU_MV_W   7'b1111000
 
 // Interpretação do campo funct3 para os modos de arredondamento da extensão F
-`define FUNCT_3_ROUND_RNE   3'b000
-`define FUNCT_3_ROUND_RTZ   3'b001
-`define FUNCT_3_ROUND_RDN   3'b010
-`define FUNCT_3_ROUND_RUP   3'b011
-`define FUNCT_3_ROUND_RMM   3'b100
-`define FUNCT_3_ROUND_DYN   3'b111
+`define FUNCT3_ROUND_RNE    3'b000
+`define FUNCT3_ROUND_RTZ    3'b001
+`define FUNCT3_ROUND_RDN    3'b010
+`define FUNCT3_ROUND_RUP    3'b011
+`define FUNCT3_ROUND_RMM    3'b100
+`define FUNCT3_ROUND_DYN    3'b111
 
 // Interpretação do campo funct3 para loads/stores
 `define FUNCT3_MEM_BYTE     3'b000

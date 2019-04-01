@@ -74,12 +74,16 @@ set_global_assignment -name PHYSICAL_SYNTHESIS_EFFORT EXTRA
 set_global_assignment -name VERILOG_FILE ../../src/core/config.v
 set_global_assignment -name VERILOG_FILE ../../src/core/fpga_top.v
 set_global_assignment -name VERILOG_FILE ../../src/core/misc/adder.v
-set_global_assignment -name VERILOG_FILE ../../src/core/misc/mux.v
-set_global_assignment -name VERILOG_FILE ../../src/core/rv32/regfile/regfile.v
-set_global_assignment -name VERILOG_FILE ../../src/core/rv32/regfile/program_counter.v
-set_global_assignment -name VERILOG_FILE ../../src/core/rv32/immediates/immediate_generator.v
-set_global_assignment -name VERILOG_FILE ../../src/core/rv32/alu/alu_control.v
+set_global_assignment -name VERILOG_FILE ../../src/core/misc/multiplexer.v
+set_global_assignment -name VERILOG_FILE ../../src/core/rv32/control_transfer.v
+set_global_assignment -name VERILOG_FILE ../../src/core/rv32/immediate_generator.v
+set_global_assignment -name VERILOG_FILE ../../src/core/rv32/riscv_core.v
 set_global_assignment -name VERILOG_FILE ../../src/core/rv32/alu/alu.v
+set_global_assignment -name VERILOG_FILE ../../src/core/rv32/alu/alu_control.v
+set_global_assignment -name VERILOG_FILE ../../src/core/rv32/regfile/program_counter.v
+set_global_assignment -name VERILOG_FILE ../../src/core/rv32/regfile/regfile.v
+set_global_assignment -name VERILOG_FILE ../../src/core/rv32/singlecycle/singlecycle_control.v
+set_global_assignment -name VERILOG_FILE ../../src/core/rv32/singlecycle/singlecycle_datapath.v
 
 #============================================================
 # CLOCK
@@ -1251,3 +1255,9 @@ set_instance_assignment -name IO_MAXIMUM_TOGGLE_RATE "0 MHz" -to HEX1
 set_instance_assignment -name IO_MAXIMUM_TOGGLE_RATE "0 MHz" -to KEY
 set_instance_assignment -name IO_MAXIMUM_TOGGLE_RATE "0 MHz" -to SW
 
+
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

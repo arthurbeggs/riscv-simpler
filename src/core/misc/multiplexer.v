@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 //                               MODO DE USO                                 //
 //                                                                           //
-// mux #(                                                                    //
+// multiplexer #(                                                            //
 //     .WIDTH(32),     // Largura da palavra                                 //
 //     .CHANNELS(2)    // Quantidade de entradas SEMPRE IGUAL a 2^n          //
 // ) nome_do_mux (                                                           //
@@ -24,25 +24,24 @@
     `include "config.v"
 `endif
 
-module mux #(
+module multiplexer #(
     parameter  WIDTH    = 32,
     parameter  CHANNELS = 2) (
-        input  [(CHANNELS*WIDTH)-1:0] in_bus,
-        input  [$clog2(CHANNELS)-1:0] sel,
-        output [WIDTH-1:0]            out
+        input  [(CHANNELS * WIDTH) - 1:0]   in_bus,
+        input  [$clog2(CHANNELS) - 1:0]     sel,
+        output [WIDTH - 1:0]                out
 );
 
 genvar ig;
 
 // Vetor de palavras de #(WIDTH) bits com #(CHANNELS) posições.
-wire    [WIDTH-1:0] input_array [0:CHANNELS-1];
+wire    [WIDTH - 1:0] input_array [0:CHANNELS - 1];
 
 assign  out = input_array[sel];
 
 generate
     for(ig = 0; ig < CHANNELS; ig = ig + 1) begin: array_assignments
-        assign  input_array[ig] = in_bus[(ig * WIDTH) +:WIDTH];
-        // Seletor indexado: data[offset +:width] == data[ (offset + width - 1) : offset]
+        assign input_array[(CHANNELS - 1) - ig] = in_bus[(ig * WIDTH) +: WIDTH];
     end
 endgenerate
 

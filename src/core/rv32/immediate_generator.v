@@ -25,31 +25,27 @@ wire [63:0] imm_I, imm_S, imm_B, imm_U, imm_J;
 // J = { {12{inst[31]}},              inst[19:12], inst[20], inst[30:25], inst[24:21],  1'b0  };
 
 always @ ( * ) begin
+    immediate = 32'b0;
     case (inst[6:0]) // Opcode
-        `OPC_LOAD,
-        `OPC_LOAD_FP,
-        `OPC_OP_IMM,
-        `OPC_OP_IMM_32,
-        `OPC_JALR:      // Opcodes com imediato do tipo I
+        `OPCODE_LOAD,
+        `OPCODE_LOAD_FP,
+        `OPCODE_OP_IMM,
+        `OPCODE_JALR:   // Opcodes com imediato do tipo I
             immediate = { {21{inst[31]}}, inst[30:25], inst[24:20] };
 
-        `OPC_STORE_FP,
-        `OPC_STORE:     // Opcodes com imediato do tipo S
+        `OPCODE_STORE_FP,
+        `OPCODE_STORE:  // Opcodes com imediato do tipo S
             immediate = { {21{inst[31]}}, inst[30:25], inst[11:7] };
 
-        `OPC_BRANCH:    // Opcodes com imediato do tipo B
+        `OPCODE_BRANCH: // Opcodes com imediato do tipo B
             immediate = { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 };
 
-        `OPC_AUIPC,
-        `OPC_LUI:       // Opcodes com imediato do tipo U
+        `OPCODE_AUIPC,
+        `OPCODE_LUI:    // Opcodes com imediato do tipo U
             immediate = { {1{inst[31]}}, inst[30:20], inst[19:12], 12'b0 };
 
-        `OPC_JAL:    // Opcodes com imediato do tipo J
+        `OPCODE_JAL:    // Opcodes com imediato do tipo J
             immediate = { {12{inst[31]}}, inst[19:12], inst[20], inst[30:25], inst[24:21], 1'b0 };
-
-        default:
-            // Tipo U possui o menor fanout para o bit inst[31];
-            immediate = { {1{inst[31]}}, inst[30:20], inst[19:12], 12'b0 };
     endcase
 end
 

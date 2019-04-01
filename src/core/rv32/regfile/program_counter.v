@@ -12,7 +12,7 @@
 module program_counter (
     input  clock,
     input  reset,
-    input  pc_enable,
+    input  write_enable,
     input  [31:0] next_pc,
 
     output reg [31:0] pc
@@ -29,7 +29,7 @@ always @ (posedge clock or posedge reset) begin
     end
 
     // Habilta a escrita de PC
-    else if (pc_enable) begin
+    else if (write_enable) begin
         pc <= next_pc;
     end
 end

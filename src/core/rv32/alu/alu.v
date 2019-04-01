@@ -27,7 +27,7 @@ assign result_equal_zero = (result == 31'b0);
 
 always @ (*) begin
     result = `ZERO;     // Valor default
-    case (alu_funct)
+    case (alu_function)
         `ALU_ZERO:  result = `ZERO;
         `ALU_ADD:   result = operand_a +    operand_b;
         `ALU_SUB:   result = operand_a -    operand_b;
@@ -48,7 +48,7 @@ always @ (*) begin
             if (operand_b == `ZERO) begin
                 result = 32'b1;
             end
-            else if ((operand_a == 32'h80000000) and (operand_b == 32'b1))
+            else if ((operand_a == 32'h80000000) & (operand_b == 32'b1)) begin
                 result = 32'h80000000;
             end
             else begin
@@ -65,13 +65,13 @@ always @ (*) begin
             if (operand_b == `ZERO) begin
                 result = operand_a;
             end
-            else if ((operand_a == 32'h80000000) and (operand_b == 32'b1))
+            else if ((operand_a == 32'h80000000) & (operand_b == 32'b1)) begin
                 result = `ZERO;
             end
             else begin
                 result = operand_a % operand_b;
             end
-        `ALU_REMU:  result = $unsigned(operand_a) % $unsigned(operand_b);
+        `ALU_REMU:
             if (operand_b == `ZERO) begin
                 result = operand_a;
             end
