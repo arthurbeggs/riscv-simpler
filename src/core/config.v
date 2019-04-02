@@ -28,9 +28,9 @@
 `define DE2_115
 
 // Selecione os periféricos a serem implementados
-`define USE_LEDS
-`define USE_7SEG
-`define USE_VIDEO
+// `define USE_LEDS
+// `define USE_7SEG
+// `define USE_VIDEO
 // `define USE_LCD
 // `define USE_AUDIO
 // `define USE_KEYBOARD
