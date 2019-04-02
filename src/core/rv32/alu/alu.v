@@ -48,7 +48,7 @@ always @ (*) begin
             if (operand_b == `ZERO) begin
                 result = 32'b1;
             end
-            else if ((operand_a == 32'h80000000) & (operand_b == 32'b1)) begin
+            else if ((operand_a == 32'h80000000) && (operand_b == 32'b1)) begin
                 result = 32'h80000000;
             end
             else begin
@@ -65,7 +65,7 @@ always @ (*) begin
             if (operand_b == `ZERO) begin
                 result = operand_a;
             end
-            else if ((operand_a == 32'h80000000) & (operand_b == 32'b1)) begin
+            else if ((operand_a == 32'h80000000) && (operand_b == 32'b1)) begin
                 result = `ZERO;
             end
             else begin
