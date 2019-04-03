@@ -27,29 +27,29 @@ reg [31:0] register [0:31];
 // Contador para loop de inicialização de registradores
 integer i;
 
-// Inicia os registradores
 initial begin
-    for (i = 0; i <= 31; i = i + 1)
-        register[i] <= 64'b0;
-    // TODO: Inserir registradores com valor inicial != 64'b0
+    for (i = 0; i <= 31; i = i + 1) begin
+        register[i] <= 32'b0;
+        // TODO: Inserir registradores com valor inicial != 32'b0
+    end
 end
 
-// Lê os dados dos registradores rs1 e rs2
 assign rs1_data = register[rs1_address];
 assign rs2_data = register[rs2_address];
 
-// Grava novos valores no banco de registradores
 always @ (posedge clock or posedge reset) begin
     // Reseta os registradores
     if (reset) begin
-        for (i = 0; i <= 31; i = i + 1)
-            register[i] <= 64'b0;
-        // TODO: Inserir registradores com valor inicial != 64'b0
+        for (i = 0; i <= 31; i = i + 1) begin
+            register[i] <= 32'b0;
+            // TODO: Inserir registradores com valor inicial != 32'b0
+        end
     end
-
-    else if (write_enable)
-        if (rd_address != 5'b0)
-            register[rd_address] <= rd_data;
+    else if (write_enable) begin
+        if (rd_address != 5'b0) register[rd_address] <= rd_data;
+        else                    register[rd_address] <= 32'b0;
+    end
+    else i <= 0;    // Remove inferência de latch
 end
 
 endmodule

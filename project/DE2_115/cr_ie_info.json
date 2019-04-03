@@ -1,0 +1,22 @@
+{
+	"system" : {
+		"platform" : "linux64",
+		"os_name" : "Arch Linux",
+		"os_version" : ""
+	},
+	"error" : {
+		"executable" : "quartus",
+		"comment" : "none",
+		"error_message" : "Floating Point Exception",
+		"source_file" : "unknown",
+		"line" : "0",
+		"stack_trace" : "\t0x7f502df7dcc2: QtCore.so.4 + 0xaccc2 (_ZN9QHashData8nextNodeEPNS_4NodeE + 0x22)\n\t0x7f50075826f7: QtGui.so.4 + 0x2136f7\n\t0x7f5007573f18: QtGui.so.4 + 0x204f18 (_ZN12QApplication10allWidgetsEv + 0x18)\n\t0x7f5007573f6a: QtGui.so.4 + 0x204f6a (_ZN12QApplication15topLevelWidgetsEv + 0x2a)\n\t0x7f50075c9771: QtGui.so.4 + 0x25a771 (_ZN14QWidgetPrivate12close_helperENS_9CloseModeE + 0x121)\n\t0x7f50075c9932: QtGui.so.4 + 0x25a932 (_ZN7QWidget5closeEv + 0x12)\n\t0x7f4ff33471bd: mega_ipcatviewq + 0x201bd (_ZN20IPCATVIEWQ_FRAME_WND11close_frameEv + 0x3d)\n\t0x7f4ff33473b2: mega_ipcatviewq + 0x203b2 (_ZN20IPCATVIEWQ_FRAME_WND17on_ip_view_closedERKSs + 0x116)\n\t0x7f4ffa933333: mega_ipcatalog + 0x15333 (_ZN22IPCATALOG_IP_VIEW_BASE10close_viewEv + 0x2b)\n\t0x7f4ffa9365f5: mega_ipcatalog + 0x185f5 (_ZN24IPCATALOG_LEGACY_IP_VIEW17process_exit_dataERKSsj + 0x1bd)\n\t0x7f4ffa9337f2: mega_ipcatalog + 0x157f2 (_ZN22IPCATALOG_PROC_HANDLER15on_process_exitEN11IPC_COMMAND6STATUSEj + 0x5a)\n\t0x7f503778fc8f: mega_ipqx + 0x2dc8f (_ZN17IPQX_PROC_MANAGER12IPQX_IPC_CMD15set_exit_statusEN11IPC_COMMAND6STATUSEj + 0x13)\n\t0x7f503778fe2a: mega_ipqx + 0x2de2a (_Z21ipqx_proc_thread_funcPv + 0x195)\n\t0x7f500a1e402c: ccl_thr + 0x602c (thr_final_wrapper + 0xc)\n\t0x7f500ce927df: ccl_msg + 0x407df (_Z18msg_thread_wrapperPFPvS_ES_ + 0x62)\n\t0x7f500a857559: ccl_mem + 0xa559 (_Z18mem_thread_wrapperPFPvS_ES_ + 0x99)\n\t0x7f500a624f92: ccl_err + 0x8f92 (_Z18err_thread_wrapperPFPvS_ES_ + 0x27)\n\t0x7f500a1e43f2: ccl_thr + 0x63f2 (thr_thread_wrapper + 0x15)\n\t0x7f500a1e46d2: ccl_thr + 0x66d2 (thr_thread_begin + 0x46)\n\t0x7f5002c49a9d: pthread.so.0 + 0x7a9d (start_thread + 0xfd)\n\t0x7f50020beb23: c.so.6 + 0xfbb23 (clone + 0x43)\n",
+		"subsystem" : "unknown"
+	},
+	"quartus" : {
+		"quartus_bits" : "64",
+		"version" : "18.1.0",
+		"build" : "625",
+		"edition" : "Lite Edition"
+	}
+}

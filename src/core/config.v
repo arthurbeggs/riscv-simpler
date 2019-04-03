@@ -50,6 +50,9 @@
 `define OFF             1'b0
 `define ZERO            32'b0
 
+// Ciclos para a parada do processador (clock de 50Mhz)
+`define TIMEUP_CYCLES   500000000
+
 // Opcodes das instruções de 32 bits
 `define OPCODE_LOAD     7'b0000011
 `define OPCODE_LOAD_FP  7'b0000111

@@ -36,6 +36,7 @@ always @ ( * ) begin
             `FUNCT3_BRANCH_GE:  next_pc_select = result_equal_zero ? 2'b01 : 2'b00;
             `FUNCT3_BRANCH_LTU: next_pc_select = result_equal_zero ? 2'b00 : 2'b01;
             `FUNCT3_BRANCH_GEU: next_pc_select = result_equal_zero ? 2'b01 : 2'b00;
+            default:            next_pc_select = 2'b00;
         endcase
     end
     else if (jal_enable) begin

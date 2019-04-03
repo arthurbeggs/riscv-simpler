@@ -26,7 +26,7 @@ module alu (
 assign result_equal_zero = (result == 31'b0);
 
 always @ (*) begin
-    result = `ZERO;     // Valor default
+    result = `ZERO;
     case (alu_function)
         `ALU_ZERO:  result = `ZERO;
         `ALU_ADD:   result = operand_a +    operand_b;
@@ -79,6 +79,8 @@ always @ (*) begin
                 result = $unsigned(operand_a) % $unsigned(operand_b);
             end
 `endif
+        default:
+            result = `ZERO;
     endcase
 end
 

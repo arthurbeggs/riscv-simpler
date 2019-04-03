@@ -32,20 +32,17 @@ always @ ( * ) begin
         `OPCODE_OP_IMM,
         `OPCODE_JALR:   // Opcodes com imediato do tipo I
             immediate = { {21{inst[31]}}, inst[30:25], inst[24:20] };
-
         `OPCODE_STORE_FP,
         `OPCODE_STORE:  // Opcodes com imediato do tipo S
             immediate = { {21{inst[31]}}, inst[30:25], inst[11:7] };
-
         `OPCODE_BRANCH: // Opcodes com imediato do tipo B
             immediate = { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 };
-
         `OPCODE_AUIPC,
         `OPCODE_LUI:    // Opcodes com imediato do tipo U
             immediate = { {1{inst[31]}}, inst[30:20], inst[19:12], 12'b0 };
-
         `OPCODE_JAL:    // Opcodes com imediato do tipo J
             immediate = { {12{inst[31]}}, inst[19:12], inst[20], inst[30:25], inst[24:21], 1'b0 };
+        default: immediate = 32'b0;
     endcase
 end
 

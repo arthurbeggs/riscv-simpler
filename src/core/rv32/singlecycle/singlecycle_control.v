@@ -9,7 +9,7 @@
     `include "config.v"
 `endif
 
-module control_singlecycle (
+module singlecycle_control (
     input  [6:0] inst_opcode,
     input  inst_bit_30,             // Identifica funções secundárias da ULA
 `ifdef M_MODULE
@@ -285,6 +285,20 @@ always @ (*) begin
         //     reg_writeback_select    = 3'b000;
         // end
 
+        default:
+        begin
+            pc_write_enable         = 1'b1;
+            regfile_write_enable    = 1'b0;
+            alu_operand_a_select    = 1'b0;
+            alu_operand_b_select    = 1'b0;
+            alu_op_type             = 3'b000;
+            jal_enable              = 1'b0;
+            jalr_enable             = 1'b0;
+            branch_enable           = 1'b0;
+            data_mem_read_enable    = 1'b0;
+            data_mem_write_enable   = 1'b0;
+            reg_writeback_select    = 3'b000;
+        end
     endcase
 end
 

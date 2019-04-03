@@ -18,7 +18,7 @@ module singlecycle_datapath (
     output data_mem_write_enable,           // Habilita escrita da mem de dados
     output [31:0] data_mem_address,         // Endereço desejado da mem de dados
     output [31:0] data_mem_write_data,      // Dado a ser escrito na mem de dados
-    output [2:0]  data_mem_width,           // Largura do dado a ser lido/escrito
+    output [2:0]  data_mem_format,          // Largura do dado a ser lido/escrito
 
     input  [31:0] inst,     // Instrução atual
     output [31:0] pc        // Program Counter atual
@@ -56,6 +56,9 @@ wire [31:0] alu_operand_b;
 wire [31:0] alu_result;
 wire alu_result_equal_zero;
 
+assign data_mem_address     = alu_result;
+assign data_mem_write_data  = rs2_data;
+assign data_mem_format      = inst[14:12];
 
 adder #(
     .WIDTH(32)
@@ -102,23 +105,6 @@ immediate_generator immediate_generator(
 );
 
 multiplexer #(
-    .WIDTH      (32),
-    .CHANNELS   (8)
-    ) mux_reg_writeback (
-        .in_bus         ({  {alu_result},
-                            {data_mem_data_fetched},
-                            {pc_plus_4},
-                            {immediate},
-                            {32'b0},
-                            {32'b0},
-                            {32'b0},
-                            {32'b0}
-                        }),
-        .sel            (reg_writeback_select),
-        .out            (rd_data)
-);
-
-multiplexer #(
     .WIDTH(32),
     .CHANNELS(4)
     ) mux_next_pc_select (
@@ -151,6 +137,23 @@ multiplexer #(
                         }),
         .sel            (alu_operand_b_select),
         .out            (alu_operand_b)
+);
+
+multiplexer #(
+    .WIDTH      (32),
+    .CHANNELS   (8)
+    ) mux_reg_writeback (
+        .in_bus         ({  {alu_result},
+                            {data_mem_data_fetched},
+                            {pc_plus_4},
+                            {immediate},
+                            {32'b0},
+                            {32'b0},
+                            {32'b0},
+                            {32'b0}
+                        }),
+        .sel            (reg_writeback_select),
+        .out            (rd_data)
 );
 
 program_counter program_counter(

@@ -12,8 +12,6 @@
 module fpga_top (
     // Osciladores
     input       CLOCK_50,
-    input       CLOCK2_50,
-
 
 `ifdef USE_LEDS
         output [9:0]    LEDR,
@@ -60,9 +58,64 @@ module fpga_top (
 
     // Botões e Switches
     input [3:0] KEY,
-    input [9:0] SW
+    // input [9:0] SW
+    input [5:0] SW
 );
 
+// Clocks e reset
+wire reset;
+wire core_clock;
+wire clock_100mhz;
+wire clock_50mhz;
+wire clock_25mhz;
+wire clock_18mhz;
+
+// Instrução e Program Counter
+wire [31:0] inst;
+wire [31:0] pc;
+
+// Barramento da memória de dados
+wire [31:0] bus_data_fetched;
+wire [31:0] bus_address;
+wire [31:0] bus_write_data;
+wire [2:0]  bus_format;
+wire bus_read_enable;
+wire bus_write_enable;
+
+
+assign bus_data_fetched = 32'hzzzzzzzz; // XXX
+
+clock_interface clock_interface (
+    .clock_reference        (CLOCK_50),
+    .core_clock_divisor     (SW[4:0]),
+    .reset_button           (KEY[0]),
+    .frequency_mode_button  (KEY[1]),
+    .clock_mode_button      (KEY[2]),
+    .manual_clock_button    (KEY[3]),
+    .countdown_enable       (SW[5]),
+    .hard_breakpoint        (1'b0),
+    .soft_breakpoint        (1'b0),
+    .clock_100mhz           (clock_100mhz),
+    .clock_50mhz            (clock_50mhz),
+    .clock_25mhz            (clock_25mhz),
+    .clock_18mhz            (clock_18mhz),
+    .core_clock             (core_clock),
+    .reset                  (reset)
+);
+
+riscv_core riscv_core (
+    .clock                  (core_clock),
+    .clock_memory           (clock_100mhz),
+    .reset                  (reset),
+    .bus_data_fetched       (bus_data_fetched),
+    .bus_address            (bus_address),
+    .bus_write_data         (bus_write_data),
+    .bus_format             (bus_format),
+    .bus_read_enable        (bus_read_enable),
+    .bus_write_enable       (bus_write_enable),
+    .inst                   (inst),
+    .pc                     (pc)
+);
 
 endmodule
 

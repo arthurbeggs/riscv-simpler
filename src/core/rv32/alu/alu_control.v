@@ -41,6 +41,7 @@ always @ (*) begin
 `ifdef M_MODULE
             3'b101: alu_function = m_extension_funct;
 `endif
+        default: alu_function = `ALU_ZERO;
     endcase
 end
 
@@ -55,6 +56,7 @@ always @ (*) begin
         `FUNCT3_ALU_SHIFTR:     default_funct = `ALU_SRL;
         `FUNCT3_ALU_OR:         default_funct = `ALU_OR;
         `FUNCT3_ALU_AND:        default_funct = `ALU_AND;
+        default:                default_funct = `ALU_ZERO;
     endcase
 end
 
@@ -63,6 +65,7 @@ always @ (*) begin
     case (inst_funct3)
         `FUNCT3_ALU_ADD_SUB:    secondary_funct = `ALU_SUB;
         `FUNCT3_ALU_SHIFTR:     secondary_funct = `ALU_SRA;
+        default:                secondary_funct = `ALU_ZERO;
     endcase
 end
 
@@ -75,6 +78,7 @@ always @ (*) begin
         `FUNCT3_BRANCH_GE:  branch_funct = `ALU_SLT;
         `FUNCT3_BRANCH_LTU: branch_funct = `ALU_SLTU;
         `FUNCT3_BRANCH_GEU: branch_funct = `ALU_SLTU;
+        default:            branch_funct = `ALU_ZERO;
     endcase
 end
 
@@ -90,6 +94,7 @@ end
             `FUNCT3_ALU_DIVU:   m_extension_funct = `ALU_DIVU;
             `FUNCT3_ALU_REM:    m_extension_funct = `ALU_REM;
             `FUNCT3_ALU_REMU:   m_extension_funct = `ALU_REMU;
+            default:            m_extension_funct = `ALU_ZERO;
         endcase
     end
 `endif

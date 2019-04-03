@@ -14,12 +14,12 @@ module riscv_core (
     input  clock_memory,
     input  reset,
 
-    input  [31:0] data_mem_data_fetched,
-    output [31:0] data_mem_address,
-    output [31:0] data_mem_write_data,
-    output [2:0]  data_mem_width,
-    output data_mem_read_enable,
-    output data_mem_write_enable,
+    input  [31:0] bus_data_fetched,
+    output [31:0] bus_address,
+    output [31:0] bus_write_data,
+    output [2:0]  bus_format,
+    output bus_read_enable,
+    output bus_write_enable,
 
     output [31:0] inst,
     output [31:0] pc
@@ -29,12 +29,12 @@ module riscv_core (
 singlecycle_datapath singlecycle_datapath (
     .clock                  (clock),
     .reset                  (reset),
-    .data_mem_data_fetched  (data_mem_data_fetched),
-    .data_mem_read_enable   (data_mem_read_enable),
-    .data_mem_write_enable  (data_mem_write_enable),
-    .data_mem_address       (data_mem_address),
-    .data_mem_write_data    (data_mem_write_data),
-    .data_mem_width         (data_mem_width),
+    .data_mem_data_fetched  (bus_data_fetched),
+    .data_mem_read_enable   (bus_read_enable),
+    .data_mem_write_enable  (bus_write_enable),
+    .data_mem_address       (bus_address),
+    .data_mem_write_data    (bus_write_data),
+    .data_mem_format        (bus_format),
     .inst                   (inst),
     .pc                     (pc)
 );
@@ -42,11 +42,12 @@ singlecycle_datapath singlecycle_datapath (
 data_memory_interface data_memory_interface (
     .clock                  (clock_memory),
     .core_clock             (clock),
-    .read_enable            (data_mem_read_enable),
-    .write_enable           (data_mem_write_enable),
-    .inst_funct3            (inst[14:12]),
-    .address                (data_mem_address),
-    .data_fetched           (data_mem_data_fetched)
+    .read_enable            (bus_read_enable),
+    .write_enable           (bus_write_enable),
+    .data_format            (inst[14:12]),
+    .address                (bus_address),
+    .write_data             (bus_write_data),
+    .data_fetched           (bus_data_fetched)
 );
 
 text_memory_interface text_memory_interface (
