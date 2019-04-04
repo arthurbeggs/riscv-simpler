@@ -8,6 +8,8 @@
 **/output_files
 **/simulation
 **/greybox_tmp
+**/.qsys_edit
+*cr_ie_info.json
 *.qws
 *.done
 *.jdi
@@ -15,6 +17,7 @@
 *.rpt
 *.smsg
 *.sof
+*.srf
 *.summary
 *.bak
 *.temp
