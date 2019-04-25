@@ -17,7 +17,8 @@ module data_memory_interface (
 );
 
 wire [31:0] fetched;
-reg  [31:0] position_fix;
+reg  [31:0] read_pos_fix;
+reg  [31:0] write_pos_fix;
 reg  [31:0] sign_fix;
 reg  [3:0]  translated_byte_enable;
 reg         write_allowed;
@@ -29,14 +30,18 @@ data_memory data_memory(
     .address    (address[16:2]),
     .byteena    (translated_byte_enable),
     .clock      (clock),
-    .data       (write_data),
+    .data       (write_pos_fix),
     .wren       (write_allowed),
     .q          (fetched)
 );
 
+// Ajusta posição do dado a ser escrito
+always @ (*) begin
+   write_pos_fix = write_data << (4'd8 * address[1:0]);
+end
+
 // Cálculo de bytes habilitados
-always @(*) begin
-   translated_byte_enable = 4'b0000;
+always @ (*) begin
    case (data_format[1:0])
        2'b00:   translated_byte_enable = 4'b0001 << address[1:0];
        2'b01:   translated_byte_enable = 4'b0011 << address[1:0];
@@ -46,30 +51,29 @@ always @(*) begin
 end
 
 // Ajusta posição do dado lido
-always @(*) begin
-   position_fix = fetched >> address[1:0];
+always @ (*) begin
+   read_pos_fix = fetched >> (4'd8 * address[1:0]);
 end
 
 // Extensão de sinal
-always @(*) begin
+always @ (*) begin
    if (data_format[2] == 0) begin
-       sign_fix = 32'b0;
        case (data_format[1:0])
-           2'b00:   sign_fix = {{22{position_fix[7]}}, position_fix[7:0]};
-           2'b01:   sign_fix = {{16{position_fix[15]}}, position_fix[15:0]};
-           2'b10:   sign_fix = position_fix[31:0];
+           2'b00:   sign_fix = {{24{read_pos_fix[7]}}, read_pos_fix[7:0]};
+           2'b01:   sign_fix = {{16{read_pos_fix[15]}}, read_pos_fix[15:0]};
+           2'b10:   sign_fix = read_pos_fix[31:0];
            default: sign_fix = 32'b0;
        endcase
    end
-   else             sign_fix = position_fix;
+   else             sign_fix = read_pos_fix;
 end
 
 always @ (*) begin
-    if (read_enable) begin
-        if (is_data_memory) data_fetched = sign_fix;
-        else                data_fetched = 32'hzzzzzzzz;
+    if (is_data_memory) begin
+        if (read_enable) data_fetched = sign_fix;
+        else             data_fetched = 32'b1;
     end
-    else                    data_fetched = 32'hzzzzzzzz;
+    else                 data_fetched = 32'hzzzzzzzz;
 end
 
 // Escreve na borda negativa de clock do processador
