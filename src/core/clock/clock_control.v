@@ -43,28 +43,28 @@ initial begin
     selected_clock  <= 1'b0;
 end
 
-// Blocos sincronizados com 'clock_100mhz' ajustam a fase do 'core_clock'
 always @ (posedge clock_100mhz) begin
-    if (manual_clock_button)        manual_clock <= 1'b1;
+    if (~manual_clock_button)       manual_clock <= 1'b1;
     else                            manual_clock <= 1'b0;
 end
 
-always @ (posedge clock_100mhz or posedge reset_button) begin
-    if (reset_button)               reset <= 1'b1;
+always @ (posedge clock_100mhz or negedge reset_button) begin
+    if (~reset_button)              reset <= 1'b1;
     else                            reset <= 1'b0;
 end
 
-always @ (posedge clock_100mhz or posedge reset) begin
+always @ (negedge frequency_mode_button or posedge reset) begin
     if (reset)                      slow_mode <= 1'b1;
-    else if (frequency_mode_button) slow_mode <= ~slow_mode;
+    else                            slow_mode <= ~slow_mode;
 end
 
-always @ (posedge clock_100mhz or posedge reset) begin
+always @ (posedge reset or posedge hard_breakpoint or posedge soft_breakpoint
+            or posedge countdown_timed_up or negedge clock_mode_button) begin
     if (reset)                      manual_mode <= 1'b1;
     else if (hard_breakpoint)       manual_mode <= 1'b1;
     else if (soft_breakpoint)       manual_mode <= 1'b1;
     else if (countdown_timed_up)    manual_mode <= 1'b1;
-    else if (clock_mode_button)     manual_mode <= ~manual_mode;
+    else if (~clock_mode_button)    manual_mode <= ~manual_mode;
 end
 
 always @ (posedge clock_100mhz or posedge reset) begin
@@ -75,8 +75,8 @@ end
 always @ (posedge clock_100mhz or posedge reset) begin
     if (reset)                      selected_clock <= manual_clock;
     case (manual_mode)
-        1'b0:                       selected_clock <= manual_clock;
-        1'b1:                       selected_clock <= clock_divided;
+        1'b0:                       selected_clock <= clock_divided;
+        1'b1:                       selected_clock <= manual_clock;
         default:                    selected_clock <= manual_clock;
     endcase
 end
