@@ -59,7 +59,7 @@ module fpga_top (
     // Botões e Switches
     input [3:0] KEY,
     // input [9:0] SW
-    input [5:0] SW
+    input [6:0] SW
 );
 
 // Clocks e reset
@@ -116,6 +116,30 @@ riscv_core riscv_core (
     .inst                   (inst),
     .pc                     (pc)
 );
+
+`ifdef USE_VIDEO
+video_interface video_interface (
+    .clock_core             (core_clock),
+    .clock_memory           (clock_100mhz),
+    .clock_video            (clock_25mhz),
+    .reset                  (reset),
+    .frame_select_switch    (SW[6]),
+    .bus_data_fetched       (bus_data_fetched),
+    .bus_address            (bus_address),
+    .bus_write_data         (bus_write_data),
+    .bus_format             (bus_format),
+    .bus_read_enable        (bus_read_enable),
+    .bus_write_enable       (bus_write_enable),
+    .vga_red                (VGA_R),
+    .vga_green              (VGA_G),
+    .vga_blue               (VGA_B),
+    .vga_clock              (VGA_CLK),
+    .vga_horizontal_sync    (VGA_HS),
+    .vga_vertical_sync      (VGA_VS),
+    .vga_blank              (VGA_BLANK_N),
+    .vga_sync               (VGA_SYNC_N)
+);
+`endif
 
 endmodule
 

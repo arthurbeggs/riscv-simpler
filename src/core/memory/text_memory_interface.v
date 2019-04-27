@@ -23,7 +23,7 @@ always @ (*) begin
     if ((address >= `TEXT_BEGIN) && (address <= `TEXT_END))
         data_fetched = fetched;
     else
-        data_fetched = 32'hzzzzzzzz;
+        data_fetched = 32'b1;
 end
 
 endmodule

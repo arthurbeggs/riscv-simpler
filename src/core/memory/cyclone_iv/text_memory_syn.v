@@ -33,14 +33,14 @@
 //refer to the applicable agreement for further details.
 
 
-//altsyncram ADDRESS_ACLR_A="NONE" CLOCK_ENABLE_INPUT_A="BYPASS" CLOCK_ENABLE_OUTPUT_A="BYPASS" DEVICE_FAMILY="Cyclone IV E" ENABLE_RUNTIME_MOD="YES" INIT_FILE="../../src/core/default_text.mif" INSTANCE_NAME="text" NUMWORDS_A=16384 OPERATION_MODE="ROM" OUTDATA_ACLR_A="NONE" OUTDATA_REG_A="UNREGISTERED" WIDTH_A=32 WIDTH_BYTEENA_A=1 WIDTHAD_A=14 address_a clock0 q_a
+//altsyncram ADDRESS_ACLR_A="NONE" CLOCK_ENABLE_INPUT_A="BYPASS" CLOCK_ENABLE_OUTPUT_A="BYPASS" DEVICE_FAMILY="Cyclone IV E" ENABLE_RUNTIME_MOD="YES" INIT_FILE="../../src/core/default_text.mif" INSTANCE_NAME="text" NUMWORDS_A=16384 OPERATION_MODE="ROM" OUTDATA_ACLR_A="NONE" OUTDATA_REG_A="CLOCK0" WIDTH_A=32 WIDTH_BYTEENA_A=1 WIDTHAD_A=14 address_a clock0 q_a
 //VERSION_BEGIN 18.1 cbx_altera_syncram_nd_impl 2018:09:12:13:04:09:SJ cbx_altsyncram 2018:09:12:13:04:09:SJ cbx_cycloneii 2018:09:12:13:04:09:SJ cbx_lpm_add_sub 2018:09:12:13:04:09:SJ cbx_lpm_compare 2018:09:12:13:04:09:SJ cbx_lpm_decode 2018:09:12:13:04:09:SJ cbx_lpm_mux 2018:09:12:13:04:09:SJ cbx_mgl 2018:09:12:14:15:07:SJ cbx_nadder 2018:09:12:13:04:09:SJ cbx_stratix 2018:09:12:13:04:09:SJ cbx_stratixii 2018:09:12:13:04:09:SJ cbx_stratixiii 2018:09:12:13:04:09:SJ cbx_stratixv 2018:09:12:13:04:09:SJ cbx_util_mgl 2018:09:12:13:04:09:SJ  VERSION_END
 // synthesis VERILOG_INPUT_VERSION VERILOG_2001
 // altera message_off 10463
 
 
 
-//altsyncram ADDRESS_ACLR_A="NONE" ADDRESS_ACLR_B="NONE" ADDRESS_REG_B="CLOCK1" CLOCK_ENABLE_INPUT_A="BYPASS" CLOCK_ENABLE_OUTPUT_A="BYPASS" DEVICE_FAMILY="Cyclone IV E" ENABLE_RUNTIME_MOD="NO" INDATA_ACLR_B="NONE" INDATA_REG_B="CLOCK1" INIT_FILE="../../src/core/default_text.mif" NUMWORDS_A=16384 NUMWORDS_B=16384 OPERATION_MODE="BIDIR_DUAL_PORT" OUTDATA_ACLR_A="NONE" OUTDATA_ACLR_B="NONE" OUTDATA_REG_A="UNREGISTERED" OUTDATA_REG_B="UNREGISTERED" RDCONTROL_REG_B="CLOCK1" read_during_write_mode_port_a="NEW_DATA_NO_NBE_READ" WIDTH_A=32 WIDTH_B=32 WIDTH_BYTEENA_A=1 WIDTHAD_A=14 WIDTHAD_B=14 WRCONTROL_ACLR_A="NONE" WRCONTROL_ACLR_B="NONE" WRCONTROL_WRADDRESS_REG_B="CLOCK1" address_a address_b clock0 clock1 data_b q_a q_b wren_b
+//altsyncram ADDRESS_ACLR_A="NONE" ADDRESS_ACLR_B="NONE" ADDRESS_REG_B="CLOCK1" CLOCK_ENABLE_INPUT_A="BYPASS" CLOCK_ENABLE_OUTPUT_A="BYPASS" DEVICE_FAMILY="Cyclone IV E" ENABLE_RUNTIME_MOD="NO" INDATA_ACLR_B="NONE" INDATA_REG_B="CLOCK1" INIT_FILE="../../src/core/default_text.mif" NUMWORDS_A=16384 NUMWORDS_B=16384 OPERATION_MODE="BIDIR_DUAL_PORT" OUTDATA_ACLR_A="NONE" OUTDATA_ACLR_B="NONE" OUTDATA_REG_A="CLOCK0" OUTDATA_REG_B="UNREGISTERED" RDCONTROL_REG_B="CLOCK1" read_during_write_mode_port_a="NEW_DATA_NO_NBE_READ" WIDTH_A=32 WIDTH_B=32 WIDTH_BYTEENA_A=1 WIDTHAD_A=14 WIDTHAD_B=14 WRCONTROL_ACLR_A="NONE" WRCONTROL_ACLR_B="NONE" WRCONTROL_WRADDRESS_REG_B="CLOCK1" address_a address_b clock0 clock1 data_b q_a q_b wren_b
 //VERSION_BEGIN 18.1 cbx_altera_syncram_nd_impl 2018:09:12:13:04:09:SJ cbx_altsyncram 2018:09:12:13:04:09:SJ cbx_cycloneii 2018:09:12:13:04:09:SJ cbx_lpm_add_sub 2018:09:12:13:04:09:SJ cbx_lpm_compare 2018:09:12:13:04:09:SJ cbx_lpm_decode 2018:09:12:13:04:09:SJ cbx_lpm_mux 2018:09:12:13:04:09:SJ cbx_mgl 2018:09:12:14:15:07:SJ cbx_nadder 2018:09:12:13:04:09:SJ cbx_stratix 2018:09:12:13:04:09:SJ cbx_stratixii 2018:09:12:13:04:09:SJ cbx_stratixiii 2018:09:12:13:04:09:SJ cbx_stratixv 2018:09:12:13:04:09:SJ cbx_util_mgl 2018:09:12:13:04:09:SJ  VERSION_END
 
 
@@ -205,7 +205,7 @@ module  text_memory_mux
 		w_data990w = {data[42], data[10]};
 endmodule //text_memory_mux
 
-//synthesis_resources = lut 68 M9K 64 reg 2 
+//synthesis_resources = lut 68 M9K 64 reg 3 
 //synopsys translate_off
 `timescale 1 ps / 1 ps
 //synopsys translate_on
@@ -242,6 +242,7 @@ module  text_memory_altsyncram1
 
 	reg	[0:0]	address_reg_a;
 	reg	[0:0]	address_reg_b;
+	reg	[0:0]	out_address_reg_a;
 	wire  [1:0]   wire_decode4_eq;
 	wire  [1:0]   wire_decode5_eq;
 	wire  [1:0]   wire_rden_decode_a_eq;
@@ -399,6 +400,12 @@ module  text_memory_altsyncram1
 	// synopsys translate_on
 	always @ ( posedge clock1)
 		  address_reg_b <= address_b_sel;
+	// synopsys translate_off
+	initial
+		out_address_reg_a = 0;
+	// synopsys translate_on
+	always @ ( posedge clock0)
+		  out_address_reg_a <= address_reg_a;
 	text_memory_decode   decode4
 	( 
 	.data(address_a_wire[13]),
@@ -422,7 +429,7 @@ module  text_memory_altsyncram1
 	.data({wire_ram_block3a_63portadataout[0], wire_ram_block3a_62portadataout[0], wire_ram_block3a_61portadataout[0], wire_ram_block3a_60portadataout[0], wire_ram_block3a_59portadataout[0], wire_ram_block3a_58portadataout[0], wire_ram_block3a_57portadataout[0], wire_ram_block3a_56portadataout[0], wire_ram_block3a_55portadataout[0], wire_ram_block3a_54portadataout[0], wire_ram_block3a_53portadataout[0], wire_ram_block3a_52portadataout[0], wire_ram_block3a_51portadataout[0], wire_ram_block3a_50portadataout[0], wire_ram_block3a_49portadataout[0], wire_ram_block3a_48portadataout[0], wire_ram_block3a_47portadataout[0], wire_ram_block3a_46portadataout[0], wire_ram_block3a_45portadataout[0], wire_ram_block3a_44portadataout[0], wire_ram_block3a_43portadataout[0], wire_ram_block3a_42portadataout[0], wire_ram_block3a_41portadataout[0], wire_ram_block3a_40portadataout[0], wire_ram_block3a_39portadataout[0], wire_ram_block3a_38portadataout[0], wire_ram_block3a_37portadataout[0], wire_ram_block3a_36portadataout[0], wire_ram_block3a_35portadataout[0], wire_ram_block3a_34portadataout[0], wire_ram_block3a_33portadataout[0], wire_ram_block3a_32portadataout[0], wire_ram_block3a_31portadataout[0], wire_ram_block3a_30portadataout[0], wire_ram_block3a_29portadataout[0], wire_ram_block3a_28portadataout[0], wire_ram_block3a_27portadataout[0], wire_ram_block3a_26portadataout[0], wire_ram_block3a_25portadataout[0], wire_ram_block3a_24portadataout[0], wire_ram_block3a_23portadataout[0], wire_ram_block3a_22portadataout[0], wire_ram_block3a_21portadataout[0], wire_ram_block3a_20portadataout[0], wire_ram_block3a_19portadataout[0], wire_ram_block3a_18portadataout[0], wire_ram_block3a_17portadataout[0], wire_ram_block3a_16portadataout[0], wire_ram_block3a_15portadataout[0], wire_ram_block3a_14portadataout[0], wire_ram_block3a_13portadataout[0], wire_ram_block3a_12portadataout[0], wire_ram_block3a_11portadataout[0], wire_ram_block3a_10portadataout[0], wire_ram_block3a_9portadataout[0], wire_ram_block3a_8portadataout[0], wire_ram_block3a_7portadataout[0]
 , wire_ram_block3a_6portadataout[0], wire_ram_block3a_5portadataout[0], wire_ram_block3a_4portadataout[0], wire_ram_block3a_3portadataout[0], wire_ram_block3a_2portadataout[0], wire_ram_block3a_1portadataout[0], wire_ram_block3a_0portadataout[0]}),
 	.result(wire_mux6_result),
-	.sel(address_reg_a));
+	.sel(out_address_reg_a));
 	text_memory_mux   mux7
 	( 
 	.data({wire_ram_block3a_63portbdataout[0], wire_ram_block3a_62portbdataout[0], wire_ram_block3a_61portbdataout[0], wire_ram_block3a_60portbdataout[0], wire_ram_block3a_59portbdataout[0], wire_ram_block3a_58portbdataout[0], wire_ram_block3a_57portbdataout[0], wire_ram_block3a_56portbdataout[0], wire_ram_block3a_55portbdataout[0], wire_ram_block3a_54portbdataout[0], wire_ram_block3a_53portbdataout[0], wire_ram_block3a_52portbdataout[0], wire_ram_block3a_51portbdataout[0], wire_ram_block3a_50portbdataout[0], wire_ram_block3a_49portbdataout[0], wire_ram_block3a_48portbdataout[0], wire_ram_block3a_47portbdataout[0], wire_ram_block3a_46portbdataout[0], wire_ram_block3a_45portbdataout[0], wire_ram_block3a_44portbdataout[0], wire_ram_block3a_43portbdataout[0], wire_ram_block3a_42portbdataout[0], wire_ram_block3a_41portbdataout[0], wire_ram_block3a_40portbdataout[0], wire_ram_block3a_39portbdataout[0], wire_ram_block3a_38portbdataout[0], wire_ram_block3a_37portbdataout[0], wire_ram_block3a_36portbdataout[0], wire_ram_block3a_35portbdataout[0], wire_ram_block3a_34portbdataout[0], wire_ram_block3a_33portbdataout[0], wire_ram_block3a_32portbdataout[0], wire_ram_block3a_31portbdataout[0], wire_ram_block3a_30portbdataout[0], wire_ram_block3a_29portbdataout[0], wire_ram_block3a_28portbdataout[0], wire_ram_block3a_27portbdataout[0], wire_ram_block3a_26portbdataout[0], wire_ram_block3a_25portbdataout[0], wire_ram_block3a_24portbdataout[0], wire_ram_block3a_23portbdataout[0], wire_ram_block3a_22portbdataout[0], wire_ram_block3a_21portbdataout[0], wire_ram_block3a_20portbdataout[0], wire_ram_block3a_19portbdataout[0], wire_ram_block3a_18portbdataout[0], wire_ram_block3a_17portbdataout[0], wire_ram_block3a_16portbdataout[0], wire_ram_block3a_15portbdataout[0], wire_ram_block3a_14portbdataout[0], wire_ram_block3a_13portbdataout[0], wire_ram_block3a_12portbdataout[0], wire_ram_block3a_11portbdataout[0], wire_ram_block3a_10portbdataout[0], wire_ram_block3a_9portbdataout[0], wire_ram_block3a_8portbdataout[0], wire_ram_block3a_7portbdataout[0]
@@ -469,6 +476,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_0.clk0_core_clock_enable = "ena0",
 		ram_block3a_0.clk0_input_clock_enable = "none",
+		ram_block3a_0.clk0_output_clock_enable = "none",
 		ram_block3a_0.clk1_core_clock_enable = "ena1",
 		ram_block3a_0.clk1_input_clock_enable = "none",
 		ram_block3a_0.connectivity_checking = "OFF",
@@ -483,6 +491,7 @@ module  text_memory_altsyncram1
 		ram_block3a_0.operation_mode = "bidir_dual_port",
 		ram_block3a_0.port_a_address_width = 13,
 		ram_block3a_0.port_a_data_out_clear = "none",
+		ram_block3a_0.port_a_data_out_clock = "clock0",
 		ram_block3a_0.port_a_data_width = 1,
 		ram_block3a_0.port_a_first_address = 0,
 		ram_block3a_0.port_a_first_bit_number = 0,
@@ -545,6 +554,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_1.clk0_core_clock_enable = "ena0",
 		ram_block3a_1.clk0_input_clock_enable = "none",
+		ram_block3a_1.clk0_output_clock_enable = "none",
 		ram_block3a_1.clk1_core_clock_enable = "ena1",
 		ram_block3a_1.clk1_input_clock_enable = "none",
 		ram_block3a_1.connectivity_checking = "OFF",
@@ -559,6 +569,7 @@ module  text_memory_altsyncram1
 		ram_block3a_1.operation_mode = "bidir_dual_port",
 		ram_block3a_1.port_a_address_width = 13,
 		ram_block3a_1.port_a_data_out_clear = "none",
+		ram_block3a_1.port_a_data_out_clock = "clock0",
 		ram_block3a_1.port_a_data_width = 1,
 		ram_block3a_1.port_a_first_address = 0,
 		ram_block3a_1.port_a_first_bit_number = 1,
@@ -621,6 +632,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_2.clk0_core_clock_enable = "ena0",
 		ram_block3a_2.clk0_input_clock_enable = "none",
+		ram_block3a_2.clk0_output_clock_enable = "none",
 		ram_block3a_2.clk1_core_clock_enable = "ena1",
 		ram_block3a_2.clk1_input_clock_enable = "none",
 		ram_block3a_2.connectivity_checking = "OFF",
@@ -635,6 +647,7 @@ module  text_memory_altsyncram1
 		ram_block3a_2.operation_mode = "bidir_dual_port",
 		ram_block3a_2.port_a_address_width = 13,
 		ram_block3a_2.port_a_data_out_clear = "none",
+		ram_block3a_2.port_a_data_out_clock = "clock0",
 		ram_block3a_2.port_a_data_width = 1,
 		ram_block3a_2.port_a_first_address = 0,
 		ram_block3a_2.port_a_first_bit_number = 2,
@@ -697,6 +710,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_3.clk0_core_clock_enable = "ena0",
 		ram_block3a_3.clk0_input_clock_enable = "none",
+		ram_block3a_3.clk0_output_clock_enable = "none",
 		ram_block3a_3.clk1_core_clock_enable = "ena1",
 		ram_block3a_3.clk1_input_clock_enable = "none",
 		ram_block3a_3.connectivity_checking = "OFF",
@@ -711,6 +725,7 @@ module  text_memory_altsyncram1
 		ram_block3a_3.operation_mode = "bidir_dual_port",
 		ram_block3a_3.port_a_address_width = 13,
 		ram_block3a_3.port_a_data_out_clear = "none",
+		ram_block3a_3.port_a_data_out_clock = "clock0",
 		ram_block3a_3.port_a_data_width = 1,
 		ram_block3a_3.port_a_first_address = 0,
 		ram_block3a_3.port_a_first_bit_number = 3,
@@ -773,6 +788,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_4.clk0_core_clock_enable = "ena0",
 		ram_block3a_4.clk0_input_clock_enable = "none",
+		ram_block3a_4.clk0_output_clock_enable = "none",
 		ram_block3a_4.clk1_core_clock_enable = "ena1",
 		ram_block3a_4.clk1_input_clock_enable = "none",
 		ram_block3a_4.connectivity_checking = "OFF",
@@ -787,6 +803,7 @@ module  text_memory_altsyncram1
 		ram_block3a_4.operation_mode = "bidir_dual_port",
 		ram_block3a_4.port_a_address_width = 13,
 		ram_block3a_4.port_a_data_out_clear = "none",
+		ram_block3a_4.port_a_data_out_clock = "clock0",
 		ram_block3a_4.port_a_data_width = 1,
 		ram_block3a_4.port_a_first_address = 0,
 		ram_block3a_4.port_a_first_bit_number = 4,
@@ -849,6 +866,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_5.clk0_core_clock_enable = "ena0",
 		ram_block3a_5.clk0_input_clock_enable = "none",
+		ram_block3a_5.clk0_output_clock_enable = "none",
 		ram_block3a_5.clk1_core_clock_enable = "ena1",
 		ram_block3a_5.clk1_input_clock_enable = "none",
 		ram_block3a_5.connectivity_checking = "OFF",
@@ -863,6 +881,7 @@ module  text_memory_altsyncram1
 		ram_block3a_5.operation_mode = "bidir_dual_port",
 		ram_block3a_5.port_a_address_width = 13,
 		ram_block3a_5.port_a_data_out_clear = "none",
+		ram_block3a_5.port_a_data_out_clock = "clock0",
 		ram_block3a_5.port_a_data_width = 1,
 		ram_block3a_5.port_a_first_address = 0,
 		ram_block3a_5.port_a_first_bit_number = 5,
@@ -925,6 +944,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_6.clk0_core_clock_enable = "ena0",
 		ram_block3a_6.clk0_input_clock_enable = "none",
+		ram_block3a_6.clk0_output_clock_enable = "none",
 		ram_block3a_6.clk1_core_clock_enable = "ena1",
 		ram_block3a_6.clk1_input_clock_enable = "none",
 		ram_block3a_6.connectivity_checking = "OFF",
@@ -939,6 +959,7 @@ module  text_memory_altsyncram1
 		ram_block3a_6.operation_mode = "bidir_dual_port",
 		ram_block3a_6.port_a_address_width = 13,
 		ram_block3a_6.port_a_data_out_clear = "none",
+		ram_block3a_6.port_a_data_out_clock = "clock0",
 		ram_block3a_6.port_a_data_width = 1,
 		ram_block3a_6.port_a_first_address = 0,
 		ram_block3a_6.port_a_first_bit_number = 6,
@@ -1001,6 +1022,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_7.clk0_core_clock_enable = "ena0",
 		ram_block3a_7.clk0_input_clock_enable = "none",
+		ram_block3a_7.clk0_output_clock_enable = "none",
 		ram_block3a_7.clk1_core_clock_enable = "ena1",
 		ram_block3a_7.clk1_input_clock_enable = "none",
 		ram_block3a_7.connectivity_checking = "OFF",
@@ -1015,6 +1037,7 @@ module  text_memory_altsyncram1
 		ram_block3a_7.operation_mode = "bidir_dual_port",
 		ram_block3a_7.port_a_address_width = 13,
 		ram_block3a_7.port_a_data_out_clear = "none",
+		ram_block3a_7.port_a_data_out_clock = "clock0",
 		ram_block3a_7.port_a_data_width = 1,
 		ram_block3a_7.port_a_first_address = 0,
 		ram_block3a_7.port_a_first_bit_number = 7,
@@ -1077,6 +1100,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_8.clk0_core_clock_enable = "ena0",
 		ram_block3a_8.clk0_input_clock_enable = "none",
+		ram_block3a_8.clk0_output_clock_enable = "none",
 		ram_block3a_8.clk1_core_clock_enable = "ena1",
 		ram_block3a_8.clk1_input_clock_enable = "none",
 		ram_block3a_8.connectivity_checking = "OFF",
@@ -1091,6 +1115,7 @@ module  text_memory_altsyncram1
 		ram_block3a_8.operation_mode = "bidir_dual_port",
 		ram_block3a_8.port_a_address_width = 13,
 		ram_block3a_8.port_a_data_out_clear = "none",
+		ram_block3a_8.port_a_data_out_clock = "clock0",
 		ram_block3a_8.port_a_data_width = 1,
 		ram_block3a_8.port_a_first_address = 0,
 		ram_block3a_8.port_a_first_bit_number = 8,
@@ -1153,6 +1178,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_9.clk0_core_clock_enable = "ena0",
 		ram_block3a_9.clk0_input_clock_enable = "none",
+		ram_block3a_9.clk0_output_clock_enable = "none",
 		ram_block3a_9.clk1_core_clock_enable = "ena1",
 		ram_block3a_9.clk1_input_clock_enable = "none",
 		ram_block3a_9.connectivity_checking = "OFF",
@@ -1167,6 +1193,7 @@ module  text_memory_altsyncram1
 		ram_block3a_9.operation_mode = "bidir_dual_port",
 		ram_block3a_9.port_a_address_width = 13,
 		ram_block3a_9.port_a_data_out_clear = "none",
+		ram_block3a_9.port_a_data_out_clock = "clock0",
 		ram_block3a_9.port_a_data_width = 1,
 		ram_block3a_9.port_a_first_address = 0,
 		ram_block3a_9.port_a_first_bit_number = 9,
@@ -1229,6 +1256,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_10.clk0_core_clock_enable = "ena0",
 		ram_block3a_10.clk0_input_clock_enable = "none",
+		ram_block3a_10.clk0_output_clock_enable = "none",
 		ram_block3a_10.clk1_core_clock_enable = "ena1",
 		ram_block3a_10.clk1_input_clock_enable = "none",
 		ram_block3a_10.connectivity_checking = "OFF",
@@ -1243,6 +1271,7 @@ module  text_memory_altsyncram1
 		ram_block3a_10.operation_mode = "bidir_dual_port",
 		ram_block3a_10.port_a_address_width = 13,
 		ram_block3a_10.port_a_data_out_clear = "none",
+		ram_block3a_10.port_a_data_out_clock = "clock0",
 		ram_block3a_10.port_a_data_width = 1,
 		ram_block3a_10.port_a_first_address = 0,
 		ram_block3a_10.port_a_first_bit_number = 10,
@@ -1305,6 +1334,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_11.clk0_core_clock_enable = "ena0",
 		ram_block3a_11.clk0_input_clock_enable = "none",
+		ram_block3a_11.clk0_output_clock_enable = "none",
 		ram_block3a_11.clk1_core_clock_enable = "ena1",
 		ram_block3a_11.clk1_input_clock_enable = "none",
 		ram_block3a_11.connectivity_checking = "OFF",
@@ -1319,6 +1349,7 @@ module  text_memory_altsyncram1
 		ram_block3a_11.operation_mode = "bidir_dual_port",
 		ram_block3a_11.port_a_address_width = 13,
 		ram_block3a_11.port_a_data_out_clear = "none",
+		ram_block3a_11.port_a_data_out_clock = "clock0",
 		ram_block3a_11.port_a_data_width = 1,
 		ram_block3a_11.port_a_first_address = 0,
 		ram_block3a_11.port_a_first_bit_number = 11,
@@ -1381,6 +1412,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_12.clk0_core_clock_enable = "ena0",
 		ram_block3a_12.clk0_input_clock_enable = "none",
+		ram_block3a_12.clk0_output_clock_enable = "none",
 		ram_block3a_12.clk1_core_clock_enable = "ena1",
 		ram_block3a_12.clk1_input_clock_enable = "none",
 		ram_block3a_12.connectivity_checking = "OFF",
@@ -1395,6 +1427,7 @@ module  text_memory_altsyncram1
 		ram_block3a_12.operation_mode = "bidir_dual_port",
 		ram_block3a_12.port_a_address_width = 13,
 		ram_block3a_12.port_a_data_out_clear = "none",
+		ram_block3a_12.port_a_data_out_clock = "clock0",
 		ram_block3a_12.port_a_data_width = 1,
 		ram_block3a_12.port_a_first_address = 0,
 		ram_block3a_12.port_a_first_bit_number = 12,
@@ -1457,6 +1490,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_13.clk0_core_clock_enable = "ena0",
 		ram_block3a_13.clk0_input_clock_enable = "none",
+		ram_block3a_13.clk0_output_clock_enable = "none",
 		ram_block3a_13.clk1_core_clock_enable = "ena1",
 		ram_block3a_13.clk1_input_clock_enable = "none",
 		ram_block3a_13.connectivity_checking = "OFF",
@@ -1471,6 +1505,7 @@ module  text_memory_altsyncram1
 		ram_block3a_13.operation_mode = "bidir_dual_port",
 		ram_block3a_13.port_a_address_width = 13,
 		ram_block3a_13.port_a_data_out_clear = "none",
+		ram_block3a_13.port_a_data_out_clock = "clock0",
 		ram_block3a_13.port_a_data_width = 1,
 		ram_block3a_13.port_a_first_address = 0,
 		ram_block3a_13.port_a_first_bit_number = 13,
@@ -1533,6 +1568,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_14.clk0_core_clock_enable = "ena0",
 		ram_block3a_14.clk0_input_clock_enable = "none",
+		ram_block3a_14.clk0_output_clock_enable = "none",
 		ram_block3a_14.clk1_core_clock_enable = "ena1",
 		ram_block3a_14.clk1_input_clock_enable = "none",
 		ram_block3a_14.connectivity_checking = "OFF",
@@ -1547,6 +1583,7 @@ module  text_memory_altsyncram1
 		ram_block3a_14.operation_mode = "bidir_dual_port",
 		ram_block3a_14.port_a_address_width = 13,
 		ram_block3a_14.port_a_data_out_clear = "none",
+		ram_block3a_14.port_a_data_out_clock = "clock0",
 		ram_block3a_14.port_a_data_width = 1,
 		ram_block3a_14.port_a_first_address = 0,
 		ram_block3a_14.port_a_first_bit_number = 14,
@@ -1609,6 +1646,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_15.clk0_core_clock_enable = "ena0",
 		ram_block3a_15.clk0_input_clock_enable = "none",
+		ram_block3a_15.clk0_output_clock_enable = "none",
 		ram_block3a_15.clk1_core_clock_enable = "ena1",
 		ram_block3a_15.clk1_input_clock_enable = "none",
 		ram_block3a_15.connectivity_checking = "OFF",
@@ -1623,6 +1661,7 @@ module  text_memory_altsyncram1
 		ram_block3a_15.operation_mode = "bidir_dual_port",
 		ram_block3a_15.port_a_address_width = 13,
 		ram_block3a_15.port_a_data_out_clear = "none",
+		ram_block3a_15.port_a_data_out_clock = "clock0",
 		ram_block3a_15.port_a_data_width = 1,
 		ram_block3a_15.port_a_first_address = 0,
 		ram_block3a_15.port_a_first_bit_number = 15,
@@ -1685,6 +1724,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_16.clk0_core_clock_enable = "ena0",
 		ram_block3a_16.clk0_input_clock_enable = "none",
+		ram_block3a_16.clk0_output_clock_enable = "none",
 		ram_block3a_16.clk1_core_clock_enable = "ena1",
 		ram_block3a_16.clk1_input_clock_enable = "none",
 		ram_block3a_16.connectivity_checking = "OFF",
@@ -1699,6 +1739,7 @@ module  text_memory_altsyncram1
 		ram_block3a_16.operation_mode = "bidir_dual_port",
 		ram_block3a_16.port_a_address_width = 13,
 		ram_block3a_16.port_a_data_out_clear = "none",
+		ram_block3a_16.port_a_data_out_clock = "clock0",
 		ram_block3a_16.port_a_data_width = 1,
 		ram_block3a_16.port_a_first_address = 0,
 		ram_block3a_16.port_a_first_bit_number = 16,
@@ -1761,6 +1802,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_17.clk0_core_clock_enable = "ena0",
 		ram_block3a_17.clk0_input_clock_enable = "none",
+		ram_block3a_17.clk0_output_clock_enable = "none",
 		ram_block3a_17.clk1_core_clock_enable = "ena1",
 		ram_block3a_17.clk1_input_clock_enable = "none",
 		ram_block3a_17.connectivity_checking = "OFF",
@@ -1775,6 +1817,7 @@ module  text_memory_altsyncram1
 		ram_block3a_17.operation_mode = "bidir_dual_port",
 		ram_block3a_17.port_a_address_width = 13,
 		ram_block3a_17.port_a_data_out_clear = "none",
+		ram_block3a_17.port_a_data_out_clock = "clock0",
 		ram_block3a_17.port_a_data_width = 1,
 		ram_block3a_17.port_a_first_address = 0,
 		ram_block3a_17.port_a_first_bit_number = 17,
@@ -1837,6 +1880,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_18.clk0_core_clock_enable = "ena0",
 		ram_block3a_18.clk0_input_clock_enable = "none",
+		ram_block3a_18.clk0_output_clock_enable = "none",
 		ram_block3a_18.clk1_core_clock_enable = "ena1",
 		ram_block3a_18.clk1_input_clock_enable = "none",
 		ram_block3a_18.connectivity_checking = "OFF",
@@ -1851,6 +1895,7 @@ module  text_memory_altsyncram1
 		ram_block3a_18.operation_mode = "bidir_dual_port",
 		ram_block3a_18.port_a_address_width = 13,
 		ram_block3a_18.port_a_data_out_clear = "none",
+		ram_block3a_18.port_a_data_out_clock = "clock0",
 		ram_block3a_18.port_a_data_width = 1,
 		ram_block3a_18.port_a_first_address = 0,
 		ram_block3a_18.port_a_first_bit_number = 18,
@@ -1913,6 +1958,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_19.clk0_core_clock_enable = "ena0",
 		ram_block3a_19.clk0_input_clock_enable = "none",
+		ram_block3a_19.clk0_output_clock_enable = "none",
 		ram_block3a_19.clk1_core_clock_enable = "ena1",
 		ram_block3a_19.clk1_input_clock_enable = "none",
 		ram_block3a_19.connectivity_checking = "OFF",
@@ -1927,6 +1973,7 @@ module  text_memory_altsyncram1
 		ram_block3a_19.operation_mode = "bidir_dual_port",
 		ram_block3a_19.port_a_address_width = 13,
 		ram_block3a_19.port_a_data_out_clear = "none",
+		ram_block3a_19.port_a_data_out_clock = "clock0",
 		ram_block3a_19.port_a_data_width = 1,
 		ram_block3a_19.port_a_first_address = 0,
 		ram_block3a_19.port_a_first_bit_number = 19,
@@ -1989,6 +2036,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_20.clk0_core_clock_enable = "ena0",
 		ram_block3a_20.clk0_input_clock_enable = "none",
+		ram_block3a_20.clk0_output_clock_enable = "none",
 		ram_block3a_20.clk1_core_clock_enable = "ena1",
 		ram_block3a_20.clk1_input_clock_enable = "none",
 		ram_block3a_20.connectivity_checking = "OFF",
@@ -2003,6 +2051,7 @@ module  text_memory_altsyncram1
 		ram_block3a_20.operation_mode = "bidir_dual_port",
 		ram_block3a_20.port_a_address_width = 13,
 		ram_block3a_20.port_a_data_out_clear = "none",
+		ram_block3a_20.port_a_data_out_clock = "clock0",
 		ram_block3a_20.port_a_data_width = 1,
 		ram_block3a_20.port_a_first_address = 0,
 		ram_block3a_20.port_a_first_bit_number = 20,
@@ -2065,6 +2114,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_21.clk0_core_clock_enable = "ena0",
 		ram_block3a_21.clk0_input_clock_enable = "none",
+		ram_block3a_21.clk0_output_clock_enable = "none",
 		ram_block3a_21.clk1_core_clock_enable = "ena1",
 		ram_block3a_21.clk1_input_clock_enable = "none",
 		ram_block3a_21.connectivity_checking = "OFF",
@@ -2079,6 +2129,7 @@ module  text_memory_altsyncram1
 		ram_block3a_21.operation_mode = "bidir_dual_port",
 		ram_block3a_21.port_a_address_width = 13,
 		ram_block3a_21.port_a_data_out_clear = "none",
+		ram_block3a_21.port_a_data_out_clock = "clock0",
 		ram_block3a_21.port_a_data_width = 1,
 		ram_block3a_21.port_a_first_address = 0,
 		ram_block3a_21.port_a_first_bit_number = 21,
@@ -2141,6 +2192,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_22.clk0_core_clock_enable = "ena0",
 		ram_block3a_22.clk0_input_clock_enable = "none",
+		ram_block3a_22.clk0_output_clock_enable = "none",
 		ram_block3a_22.clk1_core_clock_enable = "ena1",
 		ram_block3a_22.clk1_input_clock_enable = "none",
 		ram_block3a_22.connectivity_checking = "OFF",
@@ -2155,6 +2207,7 @@ module  text_memory_altsyncram1
 		ram_block3a_22.operation_mode = "bidir_dual_port",
 		ram_block3a_22.port_a_address_width = 13,
 		ram_block3a_22.port_a_data_out_clear = "none",
+		ram_block3a_22.port_a_data_out_clock = "clock0",
 		ram_block3a_22.port_a_data_width = 1,
 		ram_block3a_22.port_a_first_address = 0,
 		ram_block3a_22.port_a_first_bit_number = 22,
@@ -2217,6 +2270,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_23.clk0_core_clock_enable = "ena0",
 		ram_block3a_23.clk0_input_clock_enable = "none",
+		ram_block3a_23.clk0_output_clock_enable = "none",
 		ram_block3a_23.clk1_core_clock_enable = "ena1",
 		ram_block3a_23.clk1_input_clock_enable = "none",
 		ram_block3a_23.connectivity_checking = "OFF",
@@ -2231,6 +2285,7 @@ module  text_memory_altsyncram1
 		ram_block3a_23.operation_mode = "bidir_dual_port",
 		ram_block3a_23.port_a_address_width = 13,
 		ram_block3a_23.port_a_data_out_clear = "none",
+		ram_block3a_23.port_a_data_out_clock = "clock0",
 		ram_block3a_23.port_a_data_width = 1,
 		ram_block3a_23.port_a_first_address = 0,
 		ram_block3a_23.port_a_first_bit_number = 23,
@@ -2293,6 +2348,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_24.clk0_core_clock_enable = "ena0",
 		ram_block3a_24.clk0_input_clock_enable = "none",
+		ram_block3a_24.clk0_output_clock_enable = "none",
 		ram_block3a_24.clk1_core_clock_enable = "ena1",
 		ram_block3a_24.clk1_input_clock_enable = "none",
 		ram_block3a_24.connectivity_checking = "OFF",
@@ -2307,6 +2363,7 @@ module  text_memory_altsyncram1
 		ram_block3a_24.operation_mode = "bidir_dual_port",
 		ram_block3a_24.port_a_address_width = 13,
 		ram_block3a_24.port_a_data_out_clear = "none",
+		ram_block3a_24.port_a_data_out_clock = "clock0",
 		ram_block3a_24.port_a_data_width = 1,
 		ram_block3a_24.port_a_first_address = 0,
 		ram_block3a_24.port_a_first_bit_number = 24,
@@ -2369,6 +2426,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_25.clk0_core_clock_enable = "ena0",
 		ram_block3a_25.clk0_input_clock_enable = "none",
+		ram_block3a_25.clk0_output_clock_enable = "none",
 		ram_block3a_25.clk1_core_clock_enable = "ena1",
 		ram_block3a_25.clk1_input_clock_enable = "none",
 		ram_block3a_25.connectivity_checking = "OFF",
@@ -2383,6 +2441,7 @@ module  text_memory_altsyncram1
 		ram_block3a_25.operation_mode = "bidir_dual_port",
 		ram_block3a_25.port_a_address_width = 13,
 		ram_block3a_25.port_a_data_out_clear = "none",
+		ram_block3a_25.port_a_data_out_clock = "clock0",
 		ram_block3a_25.port_a_data_width = 1,
 		ram_block3a_25.port_a_first_address = 0,
 		ram_block3a_25.port_a_first_bit_number = 25,
@@ -2445,6 +2504,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_26.clk0_core_clock_enable = "ena0",
 		ram_block3a_26.clk0_input_clock_enable = "none",
+		ram_block3a_26.clk0_output_clock_enable = "none",
 		ram_block3a_26.clk1_core_clock_enable = "ena1",
 		ram_block3a_26.clk1_input_clock_enable = "none",
 		ram_block3a_26.connectivity_checking = "OFF",
@@ -2459,6 +2519,7 @@ module  text_memory_altsyncram1
 		ram_block3a_26.operation_mode = "bidir_dual_port",
 		ram_block3a_26.port_a_address_width = 13,
 		ram_block3a_26.port_a_data_out_clear = "none",
+		ram_block3a_26.port_a_data_out_clock = "clock0",
 		ram_block3a_26.port_a_data_width = 1,
 		ram_block3a_26.port_a_first_address = 0,
 		ram_block3a_26.port_a_first_bit_number = 26,
@@ -2521,6 +2582,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_27.clk0_core_clock_enable = "ena0",
 		ram_block3a_27.clk0_input_clock_enable = "none",
+		ram_block3a_27.clk0_output_clock_enable = "none",
 		ram_block3a_27.clk1_core_clock_enable = "ena1",
 		ram_block3a_27.clk1_input_clock_enable = "none",
 		ram_block3a_27.connectivity_checking = "OFF",
@@ -2535,6 +2597,7 @@ module  text_memory_altsyncram1
 		ram_block3a_27.operation_mode = "bidir_dual_port",
 		ram_block3a_27.port_a_address_width = 13,
 		ram_block3a_27.port_a_data_out_clear = "none",
+		ram_block3a_27.port_a_data_out_clock = "clock0",
 		ram_block3a_27.port_a_data_width = 1,
 		ram_block3a_27.port_a_first_address = 0,
 		ram_block3a_27.port_a_first_bit_number = 27,
@@ -2597,6 +2660,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_28.clk0_core_clock_enable = "ena0",
 		ram_block3a_28.clk0_input_clock_enable = "none",
+		ram_block3a_28.clk0_output_clock_enable = "none",
 		ram_block3a_28.clk1_core_clock_enable = "ena1",
 		ram_block3a_28.clk1_input_clock_enable = "none",
 		ram_block3a_28.connectivity_checking = "OFF",
@@ -2611,6 +2675,7 @@ module  text_memory_altsyncram1
 		ram_block3a_28.operation_mode = "bidir_dual_port",
 		ram_block3a_28.port_a_address_width = 13,
 		ram_block3a_28.port_a_data_out_clear = "none",
+		ram_block3a_28.port_a_data_out_clock = "clock0",
 		ram_block3a_28.port_a_data_width = 1,
 		ram_block3a_28.port_a_first_address = 0,
 		ram_block3a_28.port_a_first_bit_number = 28,
@@ -2673,6 +2738,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_29.clk0_core_clock_enable = "ena0",
 		ram_block3a_29.clk0_input_clock_enable = "none",
+		ram_block3a_29.clk0_output_clock_enable = "none",
 		ram_block3a_29.clk1_core_clock_enable = "ena1",
 		ram_block3a_29.clk1_input_clock_enable = "none",
 		ram_block3a_29.connectivity_checking = "OFF",
@@ -2687,6 +2753,7 @@ module  text_memory_altsyncram1
 		ram_block3a_29.operation_mode = "bidir_dual_port",
 		ram_block3a_29.port_a_address_width = 13,
 		ram_block3a_29.port_a_data_out_clear = "none",
+		ram_block3a_29.port_a_data_out_clock = "clock0",
 		ram_block3a_29.port_a_data_width = 1,
 		ram_block3a_29.port_a_first_address = 0,
 		ram_block3a_29.port_a_first_bit_number = 29,
@@ -2749,6 +2816,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_30.clk0_core_clock_enable = "ena0",
 		ram_block3a_30.clk0_input_clock_enable = "none",
+		ram_block3a_30.clk0_output_clock_enable = "none",
 		ram_block3a_30.clk1_core_clock_enable = "ena1",
 		ram_block3a_30.clk1_input_clock_enable = "none",
 		ram_block3a_30.connectivity_checking = "OFF",
@@ -2763,6 +2831,7 @@ module  text_memory_altsyncram1
 		ram_block3a_30.operation_mode = "bidir_dual_port",
 		ram_block3a_30.port_a_address_width = 13,
 		ram_block3a_30.port_a_data_out_clear = "none",
+		ram_block3a_30.port_a_data_out_clock = "clock0",
 		ram_block3a_30.port_a_data_width = 1,
 		ram_block3a_30.port_a_first_address = 0,
 		ram_block3a_30.port_a_first_bit_number = 30,
@@ -2825,6 +2894,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_31.clk0_core_clock_enable = "ena0",
 		ram_block3a_31.clk0_input_clock_enable = "none",
+		ram_block3a_31.clk0_output_clock_enable = "none",
 		ram_block3a_31.clk1_core_clock_enable = "ena1",
 		ram_block3a_31.clk1_input_clock_enable = "none",
 		ram_block3a_31.connectivity_checking = "OFF",
@@ -2839,6 +2909,7 @@ module  text_memory_altsyncram1
 		ram_block3a_31.operation_mode = "bidir_dual_port",
 		ram_block3a_31.port_a_address_width = 13,
 		ram_block3a_31.port_a_data_out_clear = "none",
+		ram_block3a_31.port_a_data_out_clock = "clock0",
 		ram_block3a_31.port_a_data_width = 1,
 		ram_block3a_31.port_a_first_address = 0,
 		ram_block3a_31.port_a_first_bit_number = 31,
@@ -2901,6 +2972,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_32.clk0_core_clock_enable = "ena0",
 		ram_block3a_32.clk0_input_clock_enable = "none",
+		ram_block3a_32.clk0_output_clock_enable = "none",
 		ram_block3a_32.clk1_core_clock_enable = "ena1",
 		ram_block3a_32.clk1_input_clock_enable = "none",
 		ram_block3a_32.connectivity_checking = "OFF",
@@ -2915,6 +2987,7 @@ module  text_memory_altsyncram1
 		ram_block3a_32.operation_mode = "bidir_dual_port",
 		ram_block3a_32.port_a_address_width = 13,
 		ram_block3a_32.port_a_data_out_clear = "none",
+		ram_block3a_32.port_a_data_out_clock = "clock0",
 		ram_block3a_32.port_a_data_width = 1,
 		ram_block3a_32.port_a_first_address = 8192,
 		ram_block3a_32.port_a_first_bit_number = 0,
@@ -2977,6 +3050,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_33.clk0_core_clock_enable = "ena0",
 		ram_block3a_33.clk0_input_clock_enable = "none",
+		ram_block3a_33.clk0_output_clock_enable = "none",
 		ram_block3a_33.clk1_core_clock_enable = "ena1",
 		ram_block3a_33.clk1_input_clock_enable = "none",
 		ram_block3a_33.connectivity_checking = "OFF",
@@ -2991,6 +3065,7 @@ module  text_memory_altsyncram1
 		ram_block3a_33.operation_mode = "bidir_dual_port",
 		ram_block3a_33.port_a_address_width = 13,
 		ram_block3a_33.port_a_data_out_clear = "none",
+		ram_block3a_33.port_a_data_out_clock = "clock0",
 		ram_block3a_33.port_a_data_width = 1,
 		ram_block3a_33.port_a_first_address = 8192,
 		ram_block3a_33.port_a_first_bit_number = 1,
@@ -3053,6 +3128,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_34.clk0_core_clock_enable = "ena0",
 		ram_block3a_34.clk0_input_clock_enable = "none",
+		ram_block3a_34.clk0_output_clock_enable = "none",
 		ram_block3a_34.clk1_core_clock_enable = "ena1",
 		ram_block3a_34.clk1_input_clock_enable = "none",
 		ram_block3a_34.connectivity_checking = "OFF",
@@ -3067,6 +3143,7 @@ module  text_memory_altsyncram1
 		ram_block3a_34.operation_mode = "bidir_dual_port",
 		ram_block3a_34.port_a_address_width = 13,
 		ram_block3a_34.port_a_data_out_clear = "none",
+		ram_block3a_34.port_a_data_out_clock = "clock0",
 		ram_block3a_34.port_a_data_width = 1,
 		ram_block3a_34.port_a_first_address = 8192,
 		ram_block3a_34.port_a_first_bit_number = 2,
@@ -3129,6 +3206,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_35.clk0_core_clock_enable = "ena0",
 		ram_block3a_35.clk0_input_clock_enable = "none",
+		ram_block3a_35.clk0_output_clock_enable = "none",
 		ram_block3a_35.clk1_core_clock_enable = "ena1",
 		ram_block3a_35.clk1_input_clock_enable = "none",
 		ram_block3a_35.connectivity_checking = "OFF",
@@ -3143,6 +3221,7 @@ module  text_memory_altsyncram1
 		ram_block3a_35.operation_mode = "bidir_dual_port",
 		ram_block3a_35.port_a_address_width = 13,
 		ram_block3a_35.port_a_data_out_clear = "none",
+		ram_block3a_35.port_a_data_out_clock = "clock0",
 		ram_block3a_35.port_a_data_width = 1,
 		ram_block3a_35.port_a_first_address = 8192,
 		ram_block3a_35.port_a_first_bit_number = 3,
@@ -3205,6 +3284,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_36.clk0_core_clock_enable = "ena0",
 		ram_block3a_36.clk0_input_clock_enable = "none",
+		ram_block3a_36.clk0_output_clock_enable = "none",
 		ram_block3a_36.clk1_core_clock_enable = "ena1",
 		ram_block3a_36.clk1_input_clock_enable = "none",
 		ram_block3a_36.connectivity_checking = "OFF",
@@ -3219,6 +3299,7 @@ module  text_memory_altsyncram1
 		ram_block3a_36.operation_mode = "bidir_dual_port",
 		ram_block3a_36.port_a_address_width = 13,
 		ram_block3a_36.port_a_data_out_clear = "none",
+		ram_block3a_36.port_a_data_out_clock = "clock0",
 		ram_block3a_36.port_a_data_width = 1,
 		ram_block3a_36.port_a_first_address = 8192,
 		ram_block3a_36.port_a_first_bit_number = 4,
@@ -3281,6 +3362,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_37.clk0_core_clock_enable = "ena0",
 		ram_block3a_37.clk0_input_clock_enable = "none",
+		ram_block3a_37.clk0_output_clock_enable = "none",
 		ram_block3a_37.clk1_core_clock_enable = "ena1",
 		ram_block3a_37.clk1_input_clock_enable = "none",
 		ram_block3a_37.connectivity_checking = "OFF",
@@ -3295,6 +3377,7 @@ module  text_memory_altsyncram1
 		ram_block3a_37.operation_mode = "bidir_dual_port",
 		ram_block3a_37.port_a_address_width = 13,
 		ram_block3a_37.port_a_data_out_clear = "none",
+		ram_block3a_37.port_a_data_out_clock = "clock0",
 		ram_block3a_37.port_a_data_width = 1,
 		ram_block3a_37.port_a_first_address = 8192,
 		ram_block3a_37.port_a_first_bit_number = 5,
@@ -3357,6 +3440,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_38.clk0_core_clock_enable = "ena0",
 		ram_block3a_38.clk0_input_clock_enable = "none",
+		ram_block3a_38.clk0_output_clock_enable = "none",
 		ram_block3a_38.clk1_core_clock_enable = "ena1",
 		ram_block3a_38.clk1_input_clock_enable = "none",
 		ram_block3a_38.connectivity_checking = "OFF",
@@ -3371,6 +3455,7 @@ module  text_memory_altsyncram1
 		ram_block3a_38.operation_mode = "bidir_dual_port",
 		ram_block3a_38.port_a_address_width = 13,
 		ram_block3a_38.port_a_data_out_clear = "none",
+		ram_block3a_38.port_a_data_out_clock = "clock0",
 		ram_block3a_38.port_a_data_width = 1,
 		ram_block3a_38.port_a_first_address = 8192,
 		ram_block3a_38.port_a_first_bit_number = 6,
@@ -3433,6 +3518,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_39.clk0_core_clock_enable = "ena0",
 		ram_block3a_39.clk0_input_clock_enable = "none",
+		ram_block3a_39.clk0_output_clock_enable = "none",
 		ram_block3a_39.clk1_core_clock_enable = "ena1",
 		ram_block3a_39.clk1_input_clock_enable = "none",
 		ram_block3a_39.connectivity_checking = "OFF",
@@ -3447,6 +3533,7 @@ module  text_memory_altsyncram1
 		ram_block3a_39.operation_mode = "bidir_dual_port",
 		ram_block3a_39.port_a_address_width = 13,
 		ram_block3a_39.port_a_data_out_clear = "none",
+		ram_block3a_39.port_a_data_out_clock = "clock0",
 		ram_block3a_39.port_a_data_width = 1,
 		ram_block3a_39.port_a_first_address = 8192,
 		ram_block3a_39.port_a_first_bit_number = 7,
@@ -3509,6 +3596,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_40.clk0_core_clock_enable = "ena0",
 		ram_block3a_40.clk0_input_clock_enable = "none",
+		ram_block3a_40.clk0_output_clock_enable = "none",
 		ram_block3a_40.clk1_core_clock_enable = "ena1",
 		ram_block3a_40.clk1_input_clock_enable = "none",
 		ram_block3a_40.connectivity_checking = "OFF",
@@ -3523,6 +3611,7 @@ module  text_memory_altsyncram1
 		ram_block3a_40.operation_mode = "bidir_dual_port",
 		ram_block3a_40.port_a_address_width = 13,
 		ram_block3a_40.port_a_data_out_clear = "none",
+		ram_block3a_40.port_a_data_out_clock = "clock0",
 		ram_block3a_40.port_a_data_width = 1,
 		ram_block3a_40.port_a_first_address = 8192,
 		ram_block3a_40.port_a_first_bit_number = 8,
@@ -3585,6 +3674,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_41.clk0_core_clock_enable = "ena0",
 		ram_block3a_41.clk0_input_clock_enable = "none",
+		ram_block3a_41.clk0_output_clock_enable = "none",
 		ram_block3a_41.clk1_core_clock_enable = "ena1",
 		ram_block3a_41.clk1_input_clock_enable = "none",
 		ram_block3a_41.connectivity_checking = "OFF",
@@ -3599,6 +3689,7 @@ module  text_memory_altsyncram1
 		ram_block3a_41.operation_mode = "bidir_dual_port",
 		ram_block3a_41.port_a_address_width = 13,
 		ram_block3a_41.port_a_data_out_clear = "none",
+		ram_block3a_41.port_a_data_out_clock = "clock0",
 		ram_block3a_41.port_a_data_width = 1,
 		ram_block3a_41.port_a_first_address = 8192,
 		ram_block3a_41.port_a_first_bit_number = 9,
@@ -3661,6 +3752,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_42.clk0_core_clock_enable = "ena0",
 		ram_block3a_42.clk0_input_clock_enable = "none",
+		ram_block3a_42.clk0_output_clock_enable = "none",
 		ram_block3a_42.clk1_core_clock_enable = "ena1",
 		ram_block3a_42.clk1_input_clock_enable = "none",
 		ram_block3a_42.connectivity_checking = "OFF",
@@ -3675,6 +3767,7 @@ module  text_memory_altsyncram1
 		ram_block3a_42.operation_mode = "bidir_dual_port",
 		ram_block3a_42.port_a_address_width = 13,
 		ram_block3a_42.port_a_data_out_clear = "none",
+		ram_block3a_42.port_a_data_out_clock = "clock0",
 		ram_block3a_42.port_a_data_width = 1,
 		ram_block3a_42.port_a_first_address = 8192,
 		ram_block3a_42.port_a_first_bit_number = 10,
@@ -3737,6 +3830,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_43.clk0_core_clock_enable = "ena0",
 		ram_block3a_43.clk0_input_clock_enable = "none",
+		ram_block3a_43.clk0_output_clock_enable = "none",
 		ram_block3a_43.clk1_core_clock_enable = "ena1",
 		ram_block3a_43.clk1_input_clock_enable = "none",
 		ram_block3a_43.connectivity_checking = "OFF",
@@ -3751,6 +3845,7 @@ module  text_memory_altsyncram1
 		ram_block3a_43.operation_mode = "bidir_dual_port",
 		ram_block3a_43.port_a_address_width = 13,
 		ram_block3a_43.port_a_data_out_clear = "none",
+		ram_block3a_43.port_a_data_out_clock = "clock0",
 		ram_block3a_43.port_a_data_width = 1,
 		ram_block3a_43.port_a_first_address = 8192,
 		ram_block3a_43.port_a_first_bit_number = 11,
@@ -3813,6 +3908,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_44.clk0_core_clock_enable = "ena0",
 		ram_block3a_44.clk0_input_clock_enable = "none",
+		ram_block3a_44.clk0_output_clock_enable = "none",
 		ram_block3a_44.clk1_core_clock_enable = "ena1",
 		ram_block3a_44.clk1_input_clock_enable = "none",
 		ram_block3a_44.connectivity_checking = "OFF",
@@ -3827,6 +3923,7 @@ module  text_memory_altsyncram1
 		ram_block3a_44.operation_mode = "bidir_dual_port",
 		ram_block3a_44.port_a_address_width = 13,
 		ram_block3a_44.port_a_data_out_clear = "none",
+		ram_block3a_44.port_a_data_out_clock = "clock0",
 		ram_block3a_44.port_a_data_width = 1,
 		ram_block3a_44.port_a_first_address = 8192,
 		ram_block3a_44.port_a_first_bit_number = 12,
@@ -3889,6 +3986,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_45.clk0_core_clock_enable = "ena0",
 		ram_block3a_45.clk0_input_clock_enable = "none",
+		ram_block3a_45.clk0_output_clock_enable = "none",
 		ram_block3a_45.clk1_core_clock_enable = "ena1",
 		ram_block3a_45.clk1_input_clock_enable = "none",
 		ram_block3a_45.connectivity_checking = "OFF",
@@ -3903,6 +4001,7 @@ module  text_memory_altsyncram1
 		ram_block3a_45.operation_mode = "bidir_dual_port",
 		ram_block3a_45.port_a_address_width = 13,
 		ram_block3a_45.port_a_data_out_clear = "none",
+		ram_block3a_45.port_a_data_out_clock = "clock0",
 		ram_block3a_45.port_a_data_width = 1,
 		ram_block3a_45.port_a_first_address = 8192,
 		ram_block3a_45.port_a_first_bit_number = 13,
@@ -3965,6 +4064,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_46.clk0_core_clock_enable = "ena0",
 		ram_block3a_46.clk0_input_clock_enable = "none",
+		ram_block3a_46.clk0_output_clock_enable = "none",
 		ram_block3a_46.clk1_core_clock_enable = "ena1",
 		ram_block3a_46.clk1_input_clock_enable = "none",
 		ram_block3a_46.connectivity_checking = "OFF",
@@ -3979,6 +4079,7 @@ module  text_memory_altsyncram1
 		ram_block3a_46.operation_mode = "bidir_dual_port",
 		ram_block3a_46.port_a_address_width = 13,
 		ram_block3a_46.port_a_data_out_clear = "none",
+		ram_block3a_46.port_a_data_out_clock = "clock0",
 		ram_block3a_46.port_a_data_width = 1,
 		ram_block3a_46.port_a_first_address = 8192,
 		ram_block3a_46.port_a_first_bit_number = 14,
@@ -4041,6 +4142,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_47.clk0_core_clock_enable = "ena0",
 		ram_block3a_47.clk0_input_clock_enable = "none",
+		ram_block3a_47.clk0_output_clock_enable = "none",
 		ram_block3a_47.clk1_core_clock_enable = "ena1",
 		ram_block3a_47.clk1_input_clock_enable = "none",
 		ram_block3a_47.connectivity_checking = "OFF",
@@ -4055,6 +4157,7 @@ module  text_memory_altsyncram1
 		ram_block3a_47.operation_mode = "bidir_dual_port",
 		ram_block3a_47.port_a_address_width = 13,
 		ram_block3a_47.port_a_data_out_clear = "none",
+		ram_block3a_47.port_a_data_out_clock = "clock0",
 		ram_block3a_47.port_a_data_width = 1,
 		ram_block3a_47.port_a_first_address = 8192,
 		ram_block3a_47.port_a_first_bit_number = 15,
@@ -4117,6 +4220,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_48.clk0_core_clock_enable = "ena0",
 		ram_block3a_48.clk0_input_clock_enable = "none",
+		ram_block3a_48.clk0_output_clock_enable = "none",
 		ram_block3a_48.clk1_core_clock_enable = "ena1",
 		ram_block3a_48.clk1_input_clock_enable = "none",
 		ram_block3a_48.connectivity_checking = "OFF",
@@ -4131,6 +4235,7 @@ module  text_memory_altsyncram1
 		ram_block3a_48.operation_mode = "bidir_dual_port",
 		ram_block3a_48.port_a_address_width = 13,
 		ram_block3a_48.port_a_data_out_clear = "none",
+		ram_block3a_48.port_a_data_out_clock = "clock0",
 		ram_block3a_48.port_a_data_width = 1,
 		ram_block3a_48.port_a_first_address = 8192,
 		ram_block3a_48.port_a_first_bit_number = 16,
@@ -4193,6 +4298,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_49.clk0_core_clock_enable = "ena0",
 		ram_block3a_49.clk0_input_clock_enable = "none",
+		ram_block3a_49.clk0_output_clock_enable = "none",
 		ram_block3a_49.clk1_core_clock_enable = "ena1",
 		ram_block3a_49.clk1_input_clock_enable = "none",
 		ram_block3a_49.connectivity_checking = "OFF",
@@ -4207,6 +4313,7 @@ module  text_memory_altsyncram1
 		ram_block3a_49.operation_mode = "bidir_dual_port",
 		ram_block3a_49.port_a_address_width = 13,
 		ram_block3a_49.port_a_data_out_clear = "none",
+		ram_block3a_49.port_a_data_out_clock = "clock0",
 		ram_block3a_49.port_a_data_width = 1,
 		ram_block3a_49.port_a_first_address = 8192,
 		ram_block3a_49.port_a_first_bit_number = 17,
@@ -4269,6 +4376,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_50.clk0_core_clock_enable = "ena0",
 		ram_block3a_50.clk0_input_clock_enable = "none",
+		ram_block3a_50.clk0_output_clock_enable = "none",
 		ram_block3a_50.clk1_core_clock_enable = "ena1",
 		ram_block3a_50.clk1_input_clock_enable = "none",
 		ram_block3a_50.connectivity_checking = "OFF",
@@ -4283,6 +4391,7 @@ module  text_memory_altsyncram1
 		ram_block3a_50.operation_mode = "bidir_dual_port",
 		ram_block3a_50.port_a_address_width = 13,
 		ram_block3a_50.port_a_data_out_clear = "none",
+		ram_block3a_50.port_a_data_out_clock = "clock0",
 		ram_block3a_50.port_a_data_width = 1,
 		ram_block3a_50.port_a_first_address = 8192,
 		ram_block3a_50.port_a_first_bit_number = 18,
@@ -4345,6 +4454,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_51.clk0_core_clock_enable = "ena0",
 		ram_block3a_51.clk0_input_clock_enable = "none",
+		ram_block3a_51.clk0_output_clock_enable = "none",
 		ram_block3a_51.clk1_core_clock_enable = "ena1",
 		ram_block3a_51.clk1_input_clock_enable = "none",
 		ram_block3a_51.connectivity_checking = "OFF",
@@ -4359,6 +4469,7 @@ module  text_memory_altsyncram1
 		ram_block3a_51.operation_mode = "bidir_dual_port",
 		ram_block3a_51.port_a_address_width = 13,
 		ram_block3a_51.port_a_data_out_clear = "none",
+		ram_block3a_51.port_a_data_out_clock = "clock0",
 		ram_block3a_51.port_a_data_width = 1,
 		ram_block3a_51.port_a_first_address = 8192,
 		ram_block3a_51.port_a_first_bit_number = 19,
@@ -4421,6 +4532,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_52.clk0_core_clock_enable = "ena0",
 		ram_block3a_52.clk0_input_clock_enable = "none",
+		ram_block3a_52.clk0_output_clock_enable = "none",
 		ram_block3a_52.clk1_core_clock_enable = "ena1",
 		ram_block3a_52.clk1_input_clock_enable = "none",
 		ram_block3a_52.connectivity_checking = "OFF",
@@ -4435,6 +4547,7 @@ module  text_memory_altsyncram1
 		ram_block3a_52.operation_mode = "bidir_dual_port",
 		ram_block3a_52.port_a_address_width = 13,
 		ram_block3a_52.port_a_data_out_clear = "none",
+		ram_block3a_52.port_a_data_out_clock = "clock0",
 		ram_block3a_52.port_a_data_width = 1,
 		ram_block3a_52.port_a_first_address = 8192,
 		ram_block3a_52.port_a_first_bit_number = 20,
@@ -4497,6 +4610,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_53.clk0_core_clock_enable = "ena0",
 		ram_block3a_53.clk0_input_clock_enable = "none",
+		ram_block3a_53.clk0_output_clock_enable = "none",
 		ram_block3a_53.clk1_core_clock_enable = "ena1",
 		ram_block3a_53.clk1_input_clock_enable = "none",
 		ram_block3a_53.connectivity_checking = "OFF",
@@ -4511,6 +4625,7 @@ module  text_memory_altsyncram1
 		ram_block3a_53.operation_mode = "bidir_dual_port",
 		ram_block3a_53.port_a_address_width = 13,
 		ram_block3a_53.port_a_data_out_clear = "none",
+		ram_block3a_53.port_a_data_out_clock = "clock0",
 		ram_block3a_53.port_a_data_width = 1,
 		ram_block3a_53.port_a_first_address = 8192,
 		ram_block3a_53.port_a_first_bit_number = 21,
@@ -4573,6 +4688,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_54.clk0_core_clock_enable = "ena0",
 		ram_block3a_54.clk0_input_clock_enable = "none",
+		ram_block3a_54.clk0_output_clock_enable = "none",
 		ram_block3a_54.clk1_core_clock_enable = "ena1",
 		ram_block3a_54.clk1_input_clock_enable = "none",
 		ram_block3a_54.connectivity_checking = "OFF",
@@ -4587,6 +4703,7 @@ module  text_memory_altsyncram1
 		ram_block3a_54.operation_mode = "bidir_dual_port",
 		ram_block3a_54.port_a_address_width = 13,
 		ram_block3a_54.port_a_data_out_clear = "none",
+		ram_block3a_54.port_a_data_out_clock = "clock0",
 		ram_block3a_54.port_a_data_width = 1,
 		ram_block3a_54.port_a_first_address = 8192,
 		ram_block3a_54.port_a_first_bit_number = 22,
@@ -4649,6 +4766,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_55.clk0_core_clock_enable = "ena0",
 		ram_block3a_55.clk0_input_clock_enable = "none",
+		ram_block3a_55.clk0_output_clock_enable = "none",
 		ram_block3a_55.clk1_core_clock_enable = "ena1",
 		ram_block3a_55.clk1_input_clock_enable = "none",
 		ram_block3a_55.connectivity_checking = "OFF",
@@ -4663,6 +4781,7 @@ module  text_memory_altsyncram1
 		ram_block3a_55.operation_mode = "bidir_dual_port",
 		ram_block3a_55.port_a_address_width = 13,
 		ram_block3a_55.port_a_data_out_clear = "none",
+		ram_block3a_55.port_a_data_out_clock = "clock0",
 		ram_block3a_55.port_a_data_width = 1,
 		ram_block3a_55.port_a_first_address = 8192,
 		ram_block3a_55.port_a_first_bit_number = 23,
@@ -4725,6 +4844,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_56.clk0_core_clock_enable = "ena0",
 		ram_block3a_56.clk0_input_clock_enable = "none",
+		ram_block3a_56.clk0_output_clock_enable = "none",
 		ram_block3a_56.clk1_core_clock_enable = "ena1",
 		ram_block3a_56.clk1_input_clock_enable = "none",
 		ram_block3a_56.connectivity_checking = "OFF",
@@ -4739,6 +4859,7 @@ module  text_memory_altsyncram1
 		ram_block3a_56.operation_mode = "bidir_dual_port",
 		ram_block3a_56.port_a_address_width = 13,
 		ram_block3a_56.port_a_data_out_clear = "none",
+		ram_block3a_56.port_a_data_out_clock = "clock0",
 		ram_block3a_56.port_a_data_width = 1,
 		ram_block3a_56.port_a_first_address = 8192,
 		ram_block3a_56.port_a_first_bit_number = 24,
@@ -4801,6 +4922,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_57.clk0_core_clock_enable = "ena0",
 		ram_block3a_57.clk0_input_clock_enable = "none",
+		ram_block3a_57.clk0_output_clock_enable = "none",
 		ram_block3a_57.clk1_core_clock_enable = "ena1",
 		ram_block3a_57.clk1_input_clock_enable = "none",
 		ram_block3a_57.connectivity_checking = "OFF",
@@ -4815,6 +4937,7 @@ module  text_memory_altsyncram1
 		ram_block3a_57.operation_mode = "bidir_dual_port",
 		ram_block3a_57.port_a_address_width = 13,
 		ram_block3a_57.port_a_data_out_clear = "none",
+		ram_block3a_57.port_a_data_out_clock = "clock0",
 		ram_block3a_57.port_a_data_width = 1,
 		ram_block3a_57.port_a_first_address = 8192,
 		ram_block3a_57.port_a_first_bit_number = 25,
@@ -4877,6 +5000,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_58.clk0_core_clock_enable = "ena0",
 		ram_block3a_58.clk0_input_clock_enable = "none",
+		ram_block3a_58.clk0_output_clock_enable = "none",
 		ram_block3a_58.clk1_core_clock_enable = "ena1",
 		ram_block3a_58.clk1_input_clock_enable = "none",
 		ram_block3a_58.connectivity_checking = "OFF",
@@ -4891,6 +5015,7 @@ module  text_memory_altsyncram1
 		ram_block3a_58.operation_mode = "bidir_dual_port",
 		ram_block3a_58.port_a_address_width = 13,
 		ram_block3a_58.port_a_data_out_clear = "none",
+		ram_block3a_58.port_a_data_out_clock = "clock0",
 		ram_block3a_58.port_a_data_width = 1,
 		ram_block3a_58.port_a_first_address = 8192,
 		ram_block3a_58.port_a_first_bit_number = 26,
@@ -4953,6 +5078,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_59.clk0_core_clock_enable = "ena0",
 		ram_block3a_59.clk0_input_clock_enable = "none",
+		ram_block3a_59.clk0_output_clock_enable = "none",
 		ram_block3a_59.clk1_core_clock_enable = "ena1",
 		ram_block3a_59.clk1_input_clock_enable = "none",
 		ram_block3a_59.connectivity_checking = "OFF",
@@ -4967,6 +5093,7 @@ module  text_memory_altsyncram1
 		ram_block3a_59.operation_mode = "bidir_dual_port",
 		ram_block3a_59.port_a_address_width = 13,
 		ram_block3a_59.port_a_data_out_clear = "none",
+		ram_block3a_59.port_a_data_out_clock = "clock0",
 		ram_block3a_59.port_a_data_width = 1,
 		ram_block3a_59.port_a_first_address = 8192,
 		ram_block3a_59.port_a_first_bit_number = 27,
@@ -5029,6 +5156,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_60.clk0_core_clock_enable = "ena0",
 		ram_block3a_60.clk0_input_clock_enable = "none",
+		ram_block3a_60.clk0_output_clock_enable = "none",
 		ram_block3a_60.clk1_core_clock_enable = "ena1",
 		ram_block3a_60.clk1_input_clock_enable = "none",
 		ram_block3a_60.connectivity_checking = "OFF",
@@ -5043,6 +5171,7 @@ module  text_memory_altsyncram1
 		ram_block3a_60.operation_mode = "bidir_dual_port",
 		ram_block3a_60.port_a_address_width = 13,
 		ram_block3a_60.port_a_data_out_clear = "none",
+		ram_block3a_60.port_a_data_out_clock = "clock0",
 		ram_block3a_60.port_a_data_width = 1,
 		ram_block3a_60.port_a_first_address = 8192,
 		ram_block3a_60.port_a_first_bit_number = 28,
@@ -5105,6 +5234,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_61.clk0_core_clock_enable = "ena0",
 		ram_block3a_61.clk0_input_clock_enable = "none",
+		ram_block3a_61.clk0_output_clock_enable = "none",
 		ram_block3a_61.clk1_core_clock_enable = "ena1",
 		ram_block3a_61.clk1_input_clock_enable = "none",
 		ram_block3a_61.connectivity_checking = "OFF",
@@ -5119,6 +5249,7 @@ module  text_memory_altsyncram1
 		ram_block3a_61.operation_mode = "bidir_dual_port",
 		ram_block3a_61.port_a_address_width = 13,
 		ram_block3a_61.port_a_data_out_clear = "none",
+		ram_block3a_61.port_a_data_out_clock = "clock0",
 		ram_block3a_61.port_a_data_width = 1,
 		ram_block3a_61.port_a_first_address = 8192,
 		ram_block3a_61.port_a_first_bit_number = 29,
@@ -5181,6 +5312,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_62.clk0_core_clock_enable = "ena0",
 		ram_block3a_62.clk0_input_clock_enable = "none",
+		ram_block3a_62.clk0_output_clock_enable = "none",
 		ram_block3a_62.clk1_core_clock_enable = "ena1",
 		ram_block3a_62.clk1_input_clock_enable = "none",
 		ram_block3a_62.connectivity_checking = "OFF",
@@ -5195,6 +5327,7 @@ module  text_memory_altsyncram1
 		ram_block3a_62.operation_mode = "bidir_dual_port",
 		ram_block3a_62.port_a_address_width = 13,
 		ram_block3a_62.port_a_data_out_clear = "none",
+		ram_block3a_62.port_a_data_out_clock = "clock0",
 		ram_block3a_62.port_a_data_width = 1,
 		ram_block3a_62.port_a_first_address = 8192,
 		ram_block3a_62.port_a_first_bit_number = 30,
@@ -5257,6 +5390,7 @@ module  text_memory_altsyncram1
 	defparam
 		ram_block3a_63.clk0_core_clock_enable = "ena0",
 		ram_block3a_63.clk0_input_clock_enable = "none",
+		ram_block3a_63.clk0_output_clock_enable = "none",
 		ram_block3a_63.clk1_core_clock_enable = "ena1",
 		ram_block3a_63.clk1_input_clock_enable = "none",
 		ram_block3a_63.connectivity_checking = "OFF",
@@ -5271,6 +5405,7 @@ module  text_memory_altsyncram1
 		ram_block3a_63.operation_mode = "bidir_dual_port",
 		ram_block3a_63.port_a_address_width = 13,
 		ram_block3a_63.port_a_data_out_clear = "none",
+		ram_block3a_63.port_a_data_out_clock = "clock0",
 		ram_block3a_63.port_a_data_width = 1,
 		ram_block3a_63.port_a_first_address = 8192,
 		ram_block3a_63.port_a_first_bit_number = 31,
@@ -5308,7 +5443,7 @@ module  text_memory_altsyncram1
 		wren_decode_addr_sel_b = address_b_wire[13];
 endmodule //text_memory_altsyncram1
 
-//synthesis_resources = lut 68 M9K 64 reg 2 sld_mod_ram_rom 1 
+//synthesis_resources = lut 68 M9K 64 reg 3 sld_mod_ram_rom 1 
 //synopsys translate_off
 `timescale 1 ps / 1 ps
 //synopsys translate_on
@@ -5420,7 +5555,7 @@ endmodule
 // Retrieval info: PRIVATE: NUMWORDS_A NUMERIC "16384"
 // Retrieval info: PRIVATE: RAM_BLOCK_TYPE NUMERIC "0"
 // Retrieval info: PRIVATE: RegAddr NUMERIC "1"
-// Retrieval info: PRIVATE: RegOutput NUMERIC "0"
+// Retrieval info: PRIVATE: RegOutput NUMERIC "1"
 // Retrieval info: PRIVATE: SYNTH_WRAPPER_GEN_POSTFIX STRING "1"
 // Retrieval info: PRIVATE: SingleClock NUMERIC "1"
 // Retrieval info: PRIVATE: UseDQRAM NUMERIC "0"
@@ -5438,7 +5573,7 @@ endmodule
 // Retrieval info: CONSTANT: NUMWORDS_A NUMERIC "16384"
 // Retrieval info: CONSTANT: OPERATION_MODE STRING "ROM"
 // Retrieval info: CONSTANT: OUTDATA_ACLR_A STRING "NONE"
-// Retrieval info: CONSTANT: OUTDATA_REG_A STRING "UNREGISTERED"
+// Retrieval info: CONSTANT: OUTDATA_REG_A STRING "CLOCK0"
 // Retrieval info: CONSTANT: WIDTHAD_A NUMERIC "14"
 // Retrieval info: CONSTANT: WIDTH_A NUMERIC "32"
 // Retrieval info: CONSTANT: WIDTH_BYTEENA_A NUMERIC "1"

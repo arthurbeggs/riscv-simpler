@@ -51,7 +51,7 @@ data_memory_interface data_memory_interface (
 );
 
 text_memory_interface text_memory_interface (
-    .clock                  (clock),
+    .clock                  (clock_memory),
     .address                (pc),
     .data_fetched           (inst)
 );
