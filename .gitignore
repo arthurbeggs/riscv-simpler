@@ -22,3 +22,9 @@
 *.bak
 *.temp
 
+# Compiled files
+**/bin
+**/obj
+**/dep
+**/lib
+
