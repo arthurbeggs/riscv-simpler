@@ -21,6 +21,8 @@ module riscv_core (
     output bus_read_enable,
     output bus_write_enable,
 
+    input  [4:0]  reg_debug_address,
+    output [31:0] reg_debug_data,
     output [31:0] inst,
     output [31:0] pc
 );
@@ -35,6 +37,8 @@ singlecycle_datapath singlecycle_datapath (
     .data_mem_address       (bus_address),
     .data_mem_write_data    (bus_write_data),
     .data_mem_format        (bus_format),
+    .reg_debug_data         (reg_debug_data),
+    .reg_debug_address      (reg_debug_address),
     .inst                   (inst),
     .pc                     (pc)
 );

@@ -18,7 +18,9 @@ module regfile (
     input  [4:0] rs2_address,   // Endereço do registrador rs2
     input  [31:0] rd_data,      // Dado a ser gravado no registrador rd
     output [31:0] rs1_data,     // Dado lido do registrador rs1
-    output [31:0] rs2_data      // Dado lido do registrador rs2
+    output [31:0] rs2_data,     // Dado lido do registrador rs2
+    input  [4:0]  reg_debug_address,        // Reg a ser lido para a tela
+    output [31:0] reg_debug_data           // Dado a ser printado na tela
 );
 
 // 32 registradores de 32 bits
@@ -36,6 +38,7 @@ end
 
 assign rs1_data = register[rs1_address];
 assign rs2_data = register[rs2_address];
+assign reg_debug_data = register[reg_debug_address];
 
 always @ (posedge clock or posedge reset) begin
     // Reseta os registradores

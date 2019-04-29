@@ -59,7 +59,7 @@ module fpga_top (
     // Botões e Switches
     input [3:0] KEY,
     // input [9:0] SW
-    input [6:0] SW
+    input [7:0] SW
 );
 
 // Clocks e reset
@@ -73,6 +73,8 @@ wire clock_18mhz;
 // Instrução e Program Counter
 wire [31:0] inst;
 wire [31:0] pc;
+wire [31:0] reg_debug_data;
+wire [4:0]  reg_debug_address;
 
 // Barramento da memória de dados
 wire [31:0] bus_data_fetched;
@@ -81,9 +83,6 @@ wire [31:0] bus_write_data;
 wire [2:0]  bus_format;
 wire bus_read_enable;
 wire bus_write_enable;
-
-
-assign bus_data_fetched = 32'hzzzzzzzz; // XXX
 
 clock_interface clock_interface (
     .clock_reference        (CLOCK_50),
@@ -113,6 +112,8 @@ riscv_core riscv_core (
     .bus_format             (bus_format),
     .bus_read_enable        (bus_read_enable),
     .bus_write_enable       (bus_write_enable),
+    .reg_debug_address      (reg_debug_address),
+    .reg_debug_data         (reg_debug_data),
     .inst                   (inst),
     .pc                     (pc)
 );
@@ -124,6 +125,13 @@ video_interface video_interface (
     .clock_video            (clock_25mhz),
     .reset                  (reset),
     .frame_select_switch    (SW[6]),
+    .osd_display            (SW[7]),
+    .reg_debug_data         (reg_debug_data),
+    .reg_debug_address      (reg_debug_address),
+    .pc                     (pc),
+    .inst                   (inst),
+    .epc                    (32'b0),
+    .ecause                 (4'b0),
     .bus_data_fetched       (bus_data_fetched),
     .bus_address            (bus_address),
     .bus_write_data         (bus_write_data),

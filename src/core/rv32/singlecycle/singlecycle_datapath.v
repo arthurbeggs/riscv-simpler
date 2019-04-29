@@ -20,6 +20,8 @@ module singlecycle_datapath (
     output [31:0] data_mem_write_data,      // Dado a ser escrito na mem de dados
     output [2:0]  data_mem_format,          // Largura do dado a ser lido/escrito
 
+    input  [4:0]  reg_debug_address,        // Reg a ser lido para a tela
+    output [31:0] reg_debug_data,           // Dado a ser printado na tela
     input  [31:0] inst,     // Instrução atual
     output [31:0] pc        // Program Counter atual
 );
@@ -173,7 +175,9 @@ regfile regfile(
     .rs2_address        (inst[24:20]),
     .rd_data            (rd_data),
     .rs1_data           (rs1_data),
-    .rs2_data           (rs2_data)
+    .rs2_data           (rs2_data),
+    .reg_debug_data     (reg_debug_data),
+    .reg_debug_address  (reg_debug_address)
 );
 
 singlecycle_control singlecycle_control(
