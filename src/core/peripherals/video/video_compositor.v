@@ -132,16 +132,7 @@ localparam C_T = 5'h1B; // t
 localparam C_U = 5'h1C; // u
 localparam C_X = 5'h1D; // x
 localparam SPC = 5'h1E; // Espaço
-// localparam C__ = 5'h1F; // Indica que o dado deve ser recperado de outra tabela
-localparam C__ = 5'h00; // Indica que o dado deve ser recperado de outra tabela
-// localparam R_0 = {1'b0, reg_debug_data[31:28]};
-// localparam R_1 = {1'b0, reg_debug_data[27:24]};
-// localparam R_2 = {1'b0, reg_debug_data[32:20]};
-// localparam R_3 = {1'b0, reg_debug_data[19:16]};
-// localparam R_4 = {1'b0, reg_debug_data[15:12]};
-// localparam R_5 = {1'b0, reg_debug_data[11:8]};
-// localparam R_6 = {1'b0, reg_debug_data[7:4]};
-// localparam R_7 = {1'b0, reg_debug_data[3:0]};
+localparam C__ = 5'h1F; // Indica que o dado deve ser recperado de outra tabela
 
 reg  [4:0] osd_line;
 reg  [4:0] osd_column;
@@ -151,6 +142,7 @@ reg  [3:0] osd_cell_column;
 reg  [4:0] osd_cell_line_without_border;
 reg  [3:0] osd_cell_column_without_border;
 reg  [4:0] osd_cell_matrix [0:23] [0:31];
+reg  [4:0] selected_character;
 
 font font(
     .character  (osd_character),
@@ -190,12 +182,95 @@ always @ (*) begin
     begin
         osd_cell_column_without_border  = osd_cell_column -1'b1;
         osd_cell_line_without_border    = osd_cell_line - 1'b1;
-        osd_character                   = osd_cell_matrix[osd_line][osd_column];
+        osd_character                   = selected_character;
     end
     else begin
         osd_cell_column_without_border  = 4'b0;
         osd_cell_line_without_border    = 5'b0;
         osd_character                   = SPC;
+    end
+end
+
+// Escolhe qual registrador será lido
+always @ (*) begin
+    if (osd_column < 5'd16) reg_debug_address[4] = 1'b0;
+    else                    reg_debug_address[4] = 1'b1;
+    case (osd_line)
+        5'h02: reg_debug_address[3:0] = 4'h0;
+        5'h03: reg_debug_address[3:0] = 4'h1;
+        5'h04: reg_debug_address[3:0] = 4'h2;
+        5'h05: reg_debug_address[3:0] = 4'h3;
+        5'h06: reg_debug_address[3:0] = 4'h4;
+        5'h07: reg_debug_address[3:0] = 4'h5;
+        5'h08: reg_debug_address[3:0] = 4'h6;
+        5'h09: reg_debug_address[3:0] = 4'h7;
+        5'h0B: reg_debug_address[3:0] = 4'h8;
+        5'h0C: reg_debug_address[3:0] = 4'h9;
+        5'h0D: reg_debug_address[3:0] = 4'hA;
+        5'h0E: reg_debug_address[3:0] = 4'hB;
+        5'h0F: reg_debug_address[3:0] = 4'hC;
+        5'h10: reg_debug_address[3:0] = 4'hD;
+        5'h11: reg_debug_address[3:0] = 4'hE;
+        5'h12: reg_debug_address[3:0] = 4'hF;
+        default: reg_debug_address[3:0] = 4'b0;
+    endcase
+end
+
+// Seleciona caracteres dos registradores
+always @ (*) begin
+    if (osd_cell_matrix[osd_line][osd_column] == C__) begin
+        if (osd_line < 5'h13) begin
+            case (osd_column[3:0])
+                4'h6: selected_character = {1'b0, reg_debug_data[31:28]};
+                4'h7: selected_character = {1'b0, reg_debug_data[27:24]};
+                4'h8: selected_character = {1'b0, reg_debug_data[23:20]};
+                4'h9: selected_character = {1'b0, reg_debug_data[19:16]};
+                4'hA: selected_character = {1'b0, reg_debug_data[15:12]};
+                4'hB: selected_character = {1'b0, reg_debug_data[11:8]};
+                4'hC: selected_character = {1'b0, reg_debug_data[7:4]};
+                4'hD: selected_character = {1'b0, reg_debug_data[3:0]};
+                default: selected_character = SPC;
+            endcase
+        end
+        else if (osd_line == 5'h14) begin
+            case (osd_column)
+                5'h06: selected_character = {1'b0, pc[31:28]};
+                5'h07: selected_character = {1'b0, pc[27:24]};
+                5'h08: selected_character = {1'b0, pc[23:20]};
+                5'h09: selected_character = {1'b0, pc[19:16]};
+                5'h0A: selected_character = {1'b0, pc[15:12]};
+                5'h0B: selected_character = {1'b0, pc[11:8]};
+                5'h0C: selected_character = {1'b0, pc[7:4]};
+                5'h0D: selected_character = {1'b0, pc[3:0]};
+                5'h16: selected_character = {1'b0, epc[31:28]};
+                5'h17: selected_character = {1'b0, epc[27:24]};
+                5'h18: selected_character = {1'b0, epc[23:20]};
+                5'h19: selected_character = {1'b0, epc[19:16]};
+                5'h1A: selected_character = {1'b0, epc[15:12]};
+                5'h1B: selected_character = {1'b0, epc[11:8]};
+                5'h1C: selected_character = {1'b0, epc[7:4]};
+                5'h1D: selected_character = {1'b0, epc[3:0]};
+                default: selected_character = SPC;
+            endcase
+        end
+        else if (osd_line == 5'h15) begin
+            case (osd_column)
+                5'h06: selected_character = {1'b0, inst[31:28]};
+                5'h07: selected_character = {1'b0, inst[27:24]};
+                5'h08: selected_character = {1'b0, inst[23:20]};
+                5'h09: selected_character = {1'b0, inst[19:16]};
+                5'h0A: selected_character = {1'b0, inst[15:12]};
+                5'h0B: selected_character = {1'b0, inst[11:8]};
+                5'h0C: selected_character = {1'b0, inst[7:4]};
+                5'h0D: selected_character = {1'b0, inst[3:0]};
+                5'h19: selected_character = {1'b0, ecause};
+                default: selected_character = SPC;
+            endcase
+        end
+        else selected_character = SPC;
+    end
+    else begin
+        selected_character = osd_cell_matrix[osd_line][osd_column];
     end
 end
 
@@ -223,8 +298,8 @@ always @ (*) begin
         '{SPC, SPC, C_A, C_4, SPC, SPC, C__, C__, C__, C__, C__, C__, C__, C__, SPC, SPC, SPC, SPC, C_T, C_5, SPC, SPC, C__, C__, C__, C__, C__, C__, C__, C__, SPC, SPC},
         '{SPC, SPC, C_A, C_5, SPC, SPC, C__, C__, C__, C__, C__, C__, C__, C__, SPC, SPC, SPC, SPC, C_T, C_6, SPC, SPC, C__, C__, C__, C__, C__, C__, C__, C__, SPC, SPC},
         '{SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC},
-        '{SPC, SPC, C_P, C_C, SPC, SPC, C__, C__, C__, C__, C__, C__, C__, C__, SPC, SPC, SPC, SPC, C_I, C_N, C_S, SPC, C__, C__, C__, C__, C__, C__, C__, C__, SPC, SPC},
-        '{SPC, SPC, C_E, C_P, C_C, SPC, C__, C__, C__, C__, C__, C__, C__, C__, SPC, SPC, SPC, SPC, C_C, C_A, C_U, C_S, C_E, SPC, C__, SPC, SPC, SPC, SPC, SPC, SPC, SPC},
+        '{SPC, SPC, C_P, C_C, SPC, SPC, C__, C__, C__, C__, C__, C__, C__, C__, SPC, SPC, SPC, SPC, C_E, C_P, C_C, SPC, C__, C__, C__, C__, C__, C__, C__, C__, SPC, SPC},
+        '{SPC, SPC, C_I, C_N, C_S, SPC, C__, C__, C__, C__, C__, C__, C__, C__, SPC, SPC, SPC, SPC, C_E, C_C, C_A, C_U, C_S, C_E, SPC, C__, SPC, SPC, SPC, SPC, SPC, SPC},
         '{SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC},
         '{SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC, SPC}
     };
