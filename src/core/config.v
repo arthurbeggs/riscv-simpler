@@ -24,8 +24,8 @@
 `define DEBUG
 
 // Selecione a FPGA utilizada [ative somente uma]
-// `define DE1_SOC
-`define DE2_115
+`define DE1_SOC
+// `define DE2_115
 
 // Selecione os periféricos a serem implementados
 // `define USE_LEDS

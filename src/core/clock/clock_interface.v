@@ -66,6 +66,7 @@ break_countdown break_countdown (
     .countdown_timed_up     (countdown_timed_up)
 );
 
+`ifdef DE2_115
 pll pll (
     .inclk0         (clock_reference),
     .c0             (clock_100mhz),
@@ -74,6 +75,18 @@ pll pll (
     .c3             (clock_18mhz),
     .locked         (pll_locked)
 );
+`endif
+`ifdef DE1_SOC
+pll pll (
+    .refclk         (clock_reference),
+    .rst            (1'b0),
+    .outclk_0       (clock_100mhz),
+    .outclk_1       (clock_50mhz),
+    .outclk_2       (clock_25mhz),
+    .outclk_3       (clock_18mhz),
+    .locked         (pll_locked)
+);
+`endif
 
 endmodule
 
