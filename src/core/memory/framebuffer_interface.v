@@ -15,7 +15,7 @@ module framebuffer_interface (
     input  clock_video,
     input  reset,
 
-    output [31:0] bus_data_fetched,
+    output reg [31:0] bus_data_fetched,
     input  [31:0] bus_address,
     input  [31:0] bus_write_data,
     input  [2:0]  bus_format,
@@ -41,9 +41,9 @@ reg  [31:0] sign_fix;
 reg  [31:0] write_pos_fix;
 wire [16:0] pixel_address;
 reg  [3:0]  translated_byte_enable;
-wire [3:0]  byte_enable;
-wire frame0_write_enable;
-wire frame1_write_enable;
+reg  [3:0]  byte_enable;
+reg  frame0_write_enable;
+reg  frame1_write_enable;
 wire is_frame_0;
 wire is_frame_1;
 wire is_frame_select;

@@ -5,6 +5,10 @@
 //                            BSD 3-Clause License                           //
 ///////////////////////////////////////////////////////////////////////////////
 
+`ifndef CONFIG_AND_CONSTANTS
+    `include "config.v"
+`endif
+
 module text_memory_interface (
     input  clock,
     input  [31:0] address,

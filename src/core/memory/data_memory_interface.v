@@ -5,6 +5,10 @@
 //                            BSD 3-Clause License                           //
 ///////////////////////////////////////////////////////////////////////////////
 
+`ifndef CONFIG_AND_CONSTANTS
+    `include "config.v"
+`endif
+
 module data_memory_interface (
     input  clock,
     input  core_clock,

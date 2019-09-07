@@ -21,7 +21,7 @@
 // `define F_MODULE    // Operações de ponto flutuante com precisão simples
 
 // Selecione se sinais virtuais de depuração serão sintetizados
-`define DEBUG
+// `define DEBUG
 
 // Selecione a FPGA utilizada [ative somente uma]
 `define DE1_SOC

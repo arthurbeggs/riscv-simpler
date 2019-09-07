@@ -19,7 +19,7 @@ module video_compositor (
     input  frame_select_switch,
 
     input  osd_display,
-    output [4:0]  reg_debug_address,
+    output reg [4:0]  reg_debug_address,
     input  [31:0] reg_debug_data,
     input  [31:0] pc,
     input  [31:0] inst,
